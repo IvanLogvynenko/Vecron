@@ -54,7 +54,7 @@ import (
 // 	}
 // 	var choiceStr string
 // 	fmt.Print(">>> ")
-// 	_, err := fmt.Scanln(&choiceStr) 
+// 	_, err := fmt.Scanln(&choiceStr)
 // 	if err != nil {
 // 		return 0, err
 // 	}
@@ -82,6 +82,33 @@ import (
 
 // 	return choice, nil
 // }
+
+func PromptInput(msg string) (string, error) {
+	fmt.Println(msg)
+	var input string
+	fmt.Println(">>>")
+	count, err := fmt.Scanln(&input)
+	if err != nil {
+		return "", err
+	}
+	if count <= 0 {
+		return "", fmt.Errorf("empty input")
+	}
+	return input, nil
+
+}
+
+func PromptErrorlessInput(msg string) string {
+	for {
+		input, err := PromptInput(msg)
+		if err != nil {
+			fmt.Println(err.Error())
+		} else {
+			return input
+		}
+	}
+	return ""
+}
 
 func FzfSelect(msg string, options []string) (int, error) {
 	fmt.Println(msg)

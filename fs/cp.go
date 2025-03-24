@@ -1,9 +1,9 @@
 package fs
 
 import (
+	"fmt"
 	"io"
 	"os"
-	"fmt"
 	"path/filepath"
 )
 
@@ -44,8 +44,8 @@ func CpDir(src string, dst string) error {
 
 	err = os.MkdirAll(dst, srcStat.Mode())
 	if err != nil {
-        return fmt.Errorf("failed to create destination directory: %w", err)
-    }
+		return fmt.Errorf("failed to create destination directory: %w", err)
+	}
 
 	return filepath.Walk(src, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
