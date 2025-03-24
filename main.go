@@ -2,16 +2,19 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/IvanLogvynenko/vecron/cli"
 	"github.com/IvanLogvynenko/vecron/fs"
+	inputqueue "github.com/IvanLogvynenko/vecron/inputQueue"
 )
 
 // shoud be able to create new project
 func main() {
+	inputQueue := inputqueue.MakeInputQueue(os.Args[1:])
 	cli.Clear()
 	cli.PrintLogo()
-	input, error := cli.FzfSelect("Available commands:", []string{"new", "build", "push", "run"})
+	input, error := inputQueue.GetLineFZF("Available commands:", []string{"new", "build", "push", "run"})
 	if error != nil {
 		fmt.Printf("Error: %v\n", error)
 		return
@@ -26,13 +29,13 @@ func main() {
 			fmt.Printf("Error: %v\n", err)
 			return
 		}
-		id, err := cli.FzfSelect("Available languages:", availableLanguages)
+		id, err := inputQueue.GetLineFZF("Available languages:", availableLanguages)
 		if err != nil {
 			fmt.Printf("Error: %v\n", err)
 			return
 		}
 		fmt.Printf("Creating new project: %s\n", availableLanguages[id])
-		projectName := cli.PromptErrorlessInput("Project name: ")
+		projectName := inputQueue.GetLine("Project name: ")
 		fs.CpDir(fs.Home()+"/.config/vecron/templates/"+availableLanguages[id], "./"+projectName)
 	default:
 		fmt.Printf("Creating new project: %d\n", input)

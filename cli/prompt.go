@@ -86,7 +86,7 @@ import (
 func PromptInput(msg string) (string, error) {
 	fmt.Println(msg)
 	var input string
-	fmt.Println(">>>")
+	fmt.Print(">>> ")
 	count, err := fmt.Scanln(&input)
 	if err != nil {
 		return "", err
@@ -116,6 +116,7 @@ func FzfSelect(msg string, options []string) (int, error) {
 	idx, err := fuzzyfinder.Find(
 		options,
 		func(i int) string { return options[i] },
+		fuzzyfinder.WithPromptString("> "),
 	)
 	return idx, err
 }
