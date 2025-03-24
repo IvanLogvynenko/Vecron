@@ -107,7 +107,6 @@ func PromptErrorlessInput(msg string) string {
 			return input
 		}
 	}
-	return ""
 }
 
 func FzfSelect(msg string, options []string) (int, error) {
