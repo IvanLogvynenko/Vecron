@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/IvanLogvynenko/vecron/cli"
+	"github.com/sahilm/fuzzy"
 )
 
 type InputQueue struct {
@@ -52,10 +53,10 @@ func (InputQueue *InputQueue) GetLineFZF(msg string, options []string) (int, err
 	}
 	line := InputQueue.inputList[0]
 	InputQueue.inputList = InputQueue.inputList[1:]
-	for id, option := range options {
-		if line == option {
-			return id, nil
-		}
+	matches := fuzzy.Find(line, options)
+	if len(matches) != 0 {
+		match := matches[0]
+		return match.Index, nil
 	}
 	return -1, fmt.Errorf("option not found")
 

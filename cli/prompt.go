@@ -109,14 +109,12 @@ func PromptErrorlessInput(msg string) string {
 	}
 }
 
-func FzfSelect(msg string, options []string) (int, error) {
-	fmt.Println(msg)
-
+func FzfSelect(prompt string, options []string) (int, error) {
 	// Run fuzzy finder
 	idx, err := fuzzyfinder.Find(
 		options,
 		func(i int) string { return options[i] },
-		fuzzyfinder.WithPromptString("> "),
+		fuzzyfinder.WithPromptString(prompt),
 	)
 	return idx, err
 }

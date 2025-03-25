@@ -3,7 +3,9 @@ package main
 import (
 	"fmt"
 	"os"
+	"slices"
 
+	"github.com/IvanLogvynenko/vecron/cfg"
 	"github.com/IvanLogvynenko/vecron/cli"
 	"github.com/IvanLogvynenko/vecron/fs"
 	inputqueue "github.com/IvanLogvynenko/vecron/inputQueue"
@@ -11,10 +13,28 @@ import (
 
 // shoud be able to create new project
 func main() {
-	inputQueue := inputqueue.MakeInputQueue(os.Args[1:])
+	args := os.Args[1:]
+	configPath := ""
+	if slices.Contains(args, "-c") {
+		id := slices.Index(args, "-c")
+		configPath = args[id+1]
+		args = append(args[:id], args[id+2:]...)
+	}
+	dataBase := cfg.GetDataBaseInstance()
+	dataBase.Set("configPath", configPath)
+
+	targetPath := ""
+	if slices.Contains(args, "-o") {
+		id := slices.Index(args, "-o")
+		targetPath = args[id+1]
+		args = append(args[:id], args[id+2:]...)
+	}
+	dataBase.Set("targetPath", targetPath)
+	inputQueue := inputqueue.MakeInputQueue(args)
+
 	cli.Clear()
 	cli.PrintLogo()
-	input, error := inputQueue.GetLineFZF("Available commands:", []string{"new", "build", "push", "run"})
+	input, error := inputQueue.GetLineFZF("Select command: ", []string{"new", "build", "push", "run"})
 	if error != nil {
 		fmt.Printf("Error: %v\n", error)
 		return
@@ -29,7 +49,7 @@ func main() {
 			fmt.Printf("Error: %v\n", err)
 			return
 		}
-		id, err := inputQueue.GetLineFZF("Available languages:", availableLanguages)
+		id, err := inputQueue.GetLineFZF("Select language: ", availableLanguages)
 		if err != nil {
 			fmt.Printf("Error: %v\n", err)
 			return
