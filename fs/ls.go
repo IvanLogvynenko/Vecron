@@ -2,10 +2,10 @@ package fs
 
 import "os"
 
-func ListDirectories(path string) ([]string, error) {
+func ListDirectories(path string) []string {
 	entries, err := os.ReadDir(path)
 	if err != nil {
-		return nil, err
+		panic(err)
 	}
 
 	var dirs []string
@@ -14,13 +14,13 @@ func ListDirectories(path string) ([]string, error) {
 			dirs = append(dirs, entry.Name())
 		}
 	}
-	return dirs, nil
+	return dirs
 }
 
-func ListFiles(path string) ([]string, error) {
+func ListFiles(path string) []string {
 	entries, err := os.ReadDir(path)
 	if err != nil {
-		return nil, err
+		panic(err)
 	}
 
 	var files []string
@@ -29,5 +29,5 @@ func ListFiles(path string) ([]string, error) {
 			files = append(files, entry.Name())
 		}
 	}
-	return files, nil
+	return files
 }

@@ -1,10 +1,10 @@
 package inputqueue
 
 import (
-	"fmt"
 	"strings"
 
 	"github.com/IvanLogvynenko/vecron/cli"
+	"github.com/ktr0731/go-fuzzyfinder"
 	"github.com/sahilm/fuzzy"
 )
 
@@ -43,21 +43,62 @@ func (inputQueue *InputQueue) GetLine(msg string) string {
 	return line
 }
 
-func (InputQueue *InputQueue) GetLineFZF(msg string, options []string) (int, error) {
+func (InputQueue *InputQueue) GetLineFZF(prompt string, options []string) int {
 	if len(InputQueue.inputList) == 0 {
-		id, err := cli.FzfSelect(msg, options)
+		id, err := fuzzyfinder.Find(
+			options,
+			func(i int) string { return options[i] },
+			fuzzyfinder.WithPromptString(prompt),
+		)
 		if err != nil {
-			return -1, err
+			panic(err)
 		}
-		return id, nil
+		return id
 	}
 	line := InputQueue.inputList[0]
 	InputQueue.inputList = InputQueue.inputList[1:]
 	matches := fuzzy.Find(line, options)
 	if len(matches) != 0 {
 		match := matches[0]
-		return match.Index, nil
+		return match.Index
 	}
-	return -1, fmt.Errorf("option not found")
-
+	return -1
 }
+
+// type Matchable interface {
+// }
+
+// type matchableSource struct {
+// 	options []Matchable
+// }
+
+// func (ms matchableSource) String(i int) string {
+// 	return ms.options[i]
+// }
+
+// // Well... you can pass whatever you want here, but you also pass
+// func (InputQueue *InputQueue) GetLineFZFCustomStruct(msg string, options []Matchable,
+// 	mapper func(item Matchable) string,
+// 	description func(item Matchable) string) int {
+// 	if len(InputQueue.inputList) == 0 {
+// 		id, err := fuzzyfinder.Find(options,
+// 			func(i int) string { return mapper(options[i]) },
+// 			fuzzyfinder.WithPromptString(msg),
+// 			fuzzyfinder.WithPreviewWindow(func(i int, width int, height int) string {
+// 				return description(options[i])
+// 			}),
+// 		)
+// 		if err != nil {
+// 			panic(err)
+// 		}
+// 		return id
+// 	}
+// 	line := InputQueue.inputList[0]
+// 	InputQueue.inputList = InputQueue.inputList[1:]
+// 	matches := fuzzy.FindFrom(line, )
+// 	if len(matches) != 0 {
+// 		match := matches[0]
+// 		return match.Index
+// 	}
+// 	return -1
+// }

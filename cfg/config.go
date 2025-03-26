@@ -1,6 +1,7 @@
 package cfg
 
 import (
+	"encoding/json"
 	"os"
 
 	"github.com/IvanLogvynenko/vecron/fs"
@@ -21,6 +22,8 @@ func getConfigPath() string {
 	if instance != nil {
 		configPath, err := instance.dataBase.Get("configPath")
 		if err == nil {
+			instance.dataBase.Delete("configPath")
+			instance.ConfigPath = configPath
 			return configPath
 		}
 	}
@@ -48,7 +51,34 @@ func GetConfig() *Config {
 	return instance
 }
 
+func (cfg Config) ToJson() []byte {
+	jsonBytes, err := json.Marshal(cfg)
+	if err != nil {
+		panic(err)
+	}
+	return jsonBytes
+}
+
+func (cfg Config) Save() {
+	json := cfg.ToJson()
+	os.WriteFile(cfg.ConfigPath, json, 0644)
+}
+
+func FromJson(jsonByte []byte) *Config {
+	config := &Config{}
+	err := json.Unmarshal(jsonByte, config)
+	if err != nil {
+		panic(err)
+	}
+	return config
+}
+
 // Prefer this over getconfig as get* will create it from beginning
 func LoadConfig() *Config {
-	return nil
+	configPath := getConfigPath()
+	file, err := os.ReadFile(configPath)
+	if err != nil {
+		panic(err)
+	}
+	return FromJson(file)
 }

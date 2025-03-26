@@ -11,7 +11,6 @@ import (
 	inputqueue "github.com/IvanLogvynenko/vecron/inputQueue"
 )
 
-// shoud be able to create new project
 func main() {
 	args := os.Args[1:]
 	configPath := ""
@@ -34,26 +33,14 @@ func main() {
 
 	cli.Clear()
 	cli.PrintLogo()
-	input, error := inputQueue.GetLineFZF("Select command: ", []string{"new", "build", "push", "run"})
-	if error != nil {
-		fmt.Printf("Error: %v\n", error)
-		return
-	}
+	input := inputQueue.GetLineFZF("Select command: ", []string{"new", "build", "push", "run"})
 	switch input {
 	case -1:
 		fmt.Println("No input provided")
 	case 0:
 		fmt.Println("Building new project!")
-		availableLanguages, err := fs.ListDirectories(fs.Home() + "/.config/vecron/templates")
-		if err != nil {
-			fmt.Printf("Error: %v\n", err)
-			return
-		}
-		id, err := inputQueue.GetLineFZF("Select language: ", availableLanguages)
-		if err != nil {
-			fmt.Printf("Error: %v\n", err)
-			return
-		}
+		availableLanguages := fs.ListDirectories(fs.Home() + "/.config/vecron/templates")
+		id := inputQueue.GetLineFZF("Select language: ", availableLanguages)
 		fmt.Printf("Creating new project: %s\n", availableLanguages[id])
 		projectName := inputQueue.GetLine("Project name: ")
 		fs.CpDir(fs.Home()+"/.config/vecron/templates/"+availableLanguages[id], "./"+projectName)

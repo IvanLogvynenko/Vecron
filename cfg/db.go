@@ -32,11 +32,10 @@ func (db *DataBase) Set(key string, value string) {
 	db.kv[key] = value
 }
 
-func (db *DataBase) Delete(key string) error {
+func (db *DataBase) Delete(key string) {
 	_, err := db.Get(key)
 	if err != nil {
-		return err
+		panic(err)
 	}
 	delete(db.kv, key)
-	return nil
 }
