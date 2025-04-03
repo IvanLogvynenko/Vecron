@@ -5,11 +5,13 @@ import (
 	"os"
 
 	"github.com/IvanLogvynenko/vecron/fs"
+	"github.com/IvanLogvynenko/vecron/utils"
 )
 
+// Global config, to be loaded when Vecron has to manage projects in the system
 type Config struct {
 	ConfigPath string `json:"ConfigPath"`
-	dataBase   *DataBase
+	DataBase   *utils.DataBase
 }
 
 var instance *Config = nil
@@ -20,9 +22,9 @@ const configFileName = "cfg.json"
 // returns empty string is nothing found
 func getConfigPath() string {
 	if instance != nil {
-		configPath, err := instance.dataBase.Get("configPath")
+		configPath, err := instance.DataBase.Get("configPath")
 		if err == nil {
-			instance.dataBase.Delete("configPath")
+			instance.DataBase.Delete("configPath")
 			instance.ConfigPath = configPath
 			return configPath
 		}
@@ -45,7 +47,7 @@ func getConfigPath() string {
 func GetConfig() *Config {
 	if instance == nil {
 		instance = &Config{}
-		instance.dataBase = GetDataBaseInstance()
+		instance.DataBase = utils.GetDataBaseInstance()
 		instance.ConfigPath = getConfigPath()
 	}
 	return instance

@@ -3,7 +3,7 @@ package cli
 import (
 	"slices"
 
-	"github.com/IvanLogvynenko/vecron/cfg"
+	"github.com/IvanLogvynenko/vecron/utils"
 )
 
 func ParseArgs(args []string) (map[string]string, []string) {
@@ -15,7 +15,7 @@ func ParseArgs(args []string) (map[string]string, []string) {
 	return res, args
 }
 
-func LoadArgs(args []string, db *cfg.DataBase) []string {
+func LoadArgs(args []string, db *utils.DataBase) []string {
 	arg_map, args := ParseArgs(args)
 	for k, v := range arg_map {
 		db.Set(k, v)

@@ -1,7 +1,11 @@
 package cli
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func PrintHelp() {
-	fmt.Println("Vecron ")
+	fmt.Println("Options: ")
+	fmt.Println("new - create a new project")
+	fmt.Println("help - print this message")
 }

@@ -31,3 +31,24 @@ func ListFiles(path string) []string {
 	}
 	return files
 }
+
+func ListFilesRecursive(path string) []string {
+	entries, err := os.ReadDir(path)
+	if err != nil {
+		panic(err)
+	}
+
+	var files []string
+	for _, entry := range entries {
+		if !entry.IsDir() {
+			if path == "." || path == "./" {
+				files = append(files, entry.Name())
+			} else {
+				files = append(files, path+entry.Name())
+			}
+		} else {
+			files = append(files, ListFilesRecursive(path+"/"+entry.Name())...)
+		}
+	}
+	return files
+}

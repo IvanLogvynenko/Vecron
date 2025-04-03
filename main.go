@@ -1,21 +1,23 @@
 package main
 
 import (
+	"fmt"
 	"os"
 
 	gofzf "github.com/IvanLogvynenko/go-fzf"
-	"github.com/IvanLogvynenko/vecron/cfg"
 	"github.com/IvanLogvynenko/vecron/cli"
 	"github.com/IvanLogvynenko/vecron/command"
 	inputqueue "github.com/IvanLogvynenko/vecron/inputQueue"
+	"github.com/IvanLogvynenko/vecron/utils"
 )
 
 func main() {
 	args := os.Args[1:]
-	dataBase := cfg.GetDataBaseInstance()
+	args = append(args, "pre")
+	dataBase := utils.GetDataBaseInstance()
 	rest := cli.LoadArgs(args, dataBase)
 	inputQueue := inputqueue.MakeInputQueue(rest)
-	dataBase.Print()
+	dataBase.Set("ProjectName", "Vecron")
 
 	cli.Clear()
 	cli.PrintLogo()
@@ -25,11 +27,15 @@ func main() {
 	}
 	input, err := inputQueue.GetLineFZFStruct("Select command", commands)
 	if err != nil {
-		panic(err)
+		fmt.Println("Caught error: ", err.Error(), ". Prining Help Message")
+		cli.PrintHelp()
+		os.Exit(1)
 	}
 	selectedCommand := command.Commands[input]
 	err = selectedCommand.Exec(&inputQueue)
 	if err != nil {
-		panic(err)
+		fmt.Println("Caught error: ", err.Error(), ". Prining Help Message")
+		cli.PrintHelp()
+		os.Exit(1)
 	}
 }

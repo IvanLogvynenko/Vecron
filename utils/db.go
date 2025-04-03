@@ -1,10 +1,10 @@
-package cfg
+package utils
 
 import (
 	"fmt"
 )
 
-// Lightweight version of config
+// Simple key-value storage
 type DataBase struct {
 	kv map[string]string
 }
@@ -21,7 +21,7 @@ func GetDataBaseInstance() *DataBase {
 
 func (db DataBase) Get(key string) (string, error) {
 	data := db.kv[key]
-	if data == "" {
+	if data != "" {
 		return data, nil
 	} else {
 		return "", fmt.Errorf("data not found")
