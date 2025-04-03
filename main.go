@@ -33,18 +33,24 @@ func main() {
 
 	cli.Clear()
 	cli.PrintLogo()
-	input := inputQueue.GetLineFZF("Select command: ", []string{"new", "build", "push", "run"})
+	input, err := inputQueue.GetLineFZF("Select command", []string{"new", "build", "push", "run"})
+	if err != nil {
+		panic(err)
+	}
 	switch input {
-	case -1:
+	case "":
 		fmt.Println("No input provided")
-	case 0:
+	case "new":
 		fmt.Println("Building new project!")
 		availableLanguages := fs.ListDirectories(fs.Home() + "/.config/vecron/templates")
-		id := inputQueue.GetLineFZF("Select language: ", availableLanguages)
-		fmt.Printf("Creating new project: %s\n", availableLanguages[id])
-		projectName := inputQueue.GetLine("Project name: ")
-		fs.CpDir(fs.Home()+"/.config/vecron/templates/"+availableLanguages[id], "./"+projectName)
+		selectedLanguage, err := inputQueue.GetLineFZF("Select language", availableLanguages)
+		if err != nil {
+			panic(err)
+		}
+		fmt.Printf("Creating new project: %v\n", selectedLanguage)
+		projectName := inputQueue.GetLine("Project name")
+		fs.CpDir(fs.Home()+"/.config/vecron/templates/"+selectedLanguage, "./"+projectName)
 	default:
-		fmt.Printf("Creating new project: %d\n", input)
+		fmt.Printf("Option %v is still in development\n", input)
 	}
 }

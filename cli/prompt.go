@@ -20,7 +20,6 @@ func PromptInput(msg string) (string, error) {
 
 }
 
-// Deprecated: Use inputQueues fzf features instead
 func PromptErrorlessInput(msg string) string {
 	for {			  //this one doesn't count))) (86)
 		input, err := PromptInput(msg)
