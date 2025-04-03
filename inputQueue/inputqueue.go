@@ -1,6 +1,7 @@
 package inputqueue
 
 import (
+	"errors"
 	"fmt"
 	"strings"
 
@@ -33,6 +34,12 @@ func MakeEmptyInputQueue() InputQueue {
 	return inputQueue
 }
 
+func (InputQueue *InputQueue) pop() string {
+	line := InputQueue.inputList[0]
+	InputQueue.inputList = InputQueue.inputList[1:]
+	return line
+}
+
 // Pass msg without ': '
 func (inputQueue *InputQueue) GetLine(msg string) string {
 	if len(inputQueue.inputList) == 0 {
@@ -44,7 +51,6 @@ func (inputQueue *InputQueue) GetLine(msg string) string {
 	inputQueue.inputList = inputQueue.inputList[1:]
 	return line
 }
-
 func (InputQueue *InputQueue) GetLineFZF(prompt string, data []string) (string, error) {
 	if len(InputQueue.inputList) == 0 {
 		inputs, err := gofzf.FzfPrompt(
@@ -58,50 +64,48 @@ func (InputQueue *InputQueue) GetLineFZF(prompt string, data []string) (string, 
 		)
 		return inputs[0], err
 	}
-	line := InputQueue.inputList[0]
-	InputQueue.inputList = InputQueue.inputList[1:]
+	line := InputQueue.pop()
 	matches, err := gofzf.FzfPrompt(data, gofzf.Pattern(line))
-	if len(matches) != 0 {
-		match := matches[0]
-		return match, err
+	if len(matches) == 0 {
+		return "", fmt.Errorf("none were selected")
 	}
-	return "", fmt.Errorf("how did we end up here")
+	if len(matches) != 1 {
+		errorStr := "Found multiple command: "
+		for _, value := range matches {
+			errorStr += value
+		}
+		errorStr += "\nOnly one command can be provided"
+		return "", errors.Join(err, fmt.Errorf("%v", errorStr))
+	}
+	return matches[0], nil
 }
-
-// type Matchable interface {
-// }
-
-// type matchableSource struct {
-// 	options []Matchable
-// }
-
-// func (ms matchableSource) String(i int) string {
-// 	return ms.options[i]
-// }
-
-// // Well... you can pass whatever you want here, but you also pass
-// func (InputQueue *InputQueue) GetLineFZFCustomStruct(msg string, options []Matchable,
-// 	mapper func(item Matchable) string,
-// 	description func(item Matchable) string) int {
-// 	if len(InputQueue.inputList) == 0 {
-// 		id, err := fuzzyfinder.Find(options,
-// 			func(i int) string { return mapper(options[i]) },
-// 			fuzzyfinder.WithPromptString(msg),
-// 			fuzzyfinder.WithPreviewWindow(func(i int, width int, height int) string {
-// 				return description(options[i])
-// 			}),
-// 		)
-// 		if err != nil {
-// 			panic(err)
-// 		}
-// 		return id
-// 	}
-// 	line := InputQueue.inputList[0]
-// 	InputQueue.inputList = InputQueue.inputList[1:]
-// 	matches := fuzzy.FindFrom(line, )
-// 	if len(matches) != 0 {
-// 		match := matches[0]
-// 		return match.Index
-// 	}
-// 	return -1
-// }
+func (InputQueue *InputQueue) GetLineFZFStruct(prompt string, data []gofzf.Struct) (int, error) {
+	if len(InputQueue.inputList) == 0 {
+		inputs, err := gofzf.FzfPromptStruct(
+			data,
+			gofzf.Header(prompt),
+			gofzf.Cycle(),
+			gofzf.Reverse(),
+			gofzf.Height(20),
+			gofzf.Binds(),
+			gofzf.Style(gofzf.Full),
+			gofzf.Info(nil),
+			gofzf.InfoPosition(gofzf.Down),
+		)
+		return inputs[0], err
+	}
+	line := InputQueue.pop()
+	matches, err := gofzf.FzfPromptStruct(data, gofzf.Pattern(line))
+	if len(matches) == 0 {
+		return -1, fmt.Errorf("none were selected")
+	}
+	if len(matches) != 1 {
+		errorStr := "Found multiple command: "
+		for _, id := range matches {
+			errorStr += data[id].ToString()
+		}
+		errorStr += "\nOnly one command can be provided"
+		return -1, errors.Join(err, fmt.Errorf("%v", errorStr))
+	}
+	return matches[0], nil
+}

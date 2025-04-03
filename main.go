@@ -1,56 +1,35 @@
 package main
 
 import (
-	"fmt"
 	"os"
-	"slices"
 
+	gofzf "github.com/IvanLogvynenko/go-fzf"
 	"github.com/IvanLogvynenko/vecron/cfg"
 	"github.com/IvanLogvynenko/vecron/cli"
-	"github.com/IvanLogvynenko/vecron/fs"
+	"github.com/IvanLogvynenko/vecron/command"
 	inputqueue "github.com/IvanLogvynenko/vecron/inputQueue"
 )
 
 func main() {
 	args := os.Args[1:]
-	configPath := ""
-	if slices.Contains(args, "-c") {
-		id := slices.Index(args, "-c")
-		configPath = args[id+1]
-		args = append(args[:id], args[id+2:]...)
-	}
 	dataBase := cfg.GetDataBaseInstance()
-	dataBase.Set("configPath", configPath)
-
-	targetPath := ""
-	if slices.Contains(args, "-o") {
-		id := slices.Index(args, "-o")
-		targetPath = args[id+1]
-		args = append(args[:id], args[id+2:]...)
-	}
-	dataBase.Set("targetPath", targetPath)
-	inputQueue := inputqueue.MakeInputQueue(args)
+	rest := cli.LoadArgs(args, dataBase)
+	inputQueue := inputqueue.MakeInputQueue(rest)
+	dataBase.Print()
 
 	cli.Clear()
 	cli.PrintLogo()
-	input, err := inputQueue.GetLineFZF("Select command", []string{"new", "build", "push", "run"})
+	commands := make([]gofzf.Struct, len(command.Commands))
+	for i, val := range command.Commands {
+		commands[i] = val
+	}
+	input, err := inputQueue.GetLineFZFStruct("Select command", commands)
 	if err != nil {
 		panic(err)
 	}
-	switch input {
-	case "":
-		fmt.Println("No input provided")
-	case "new":
-		fmt.Println("Building new project!")
-		availableLanguages := fs.ListDirectories(fs.Home() + "/.config/vecron/templates")
-		selectedLanguage, err := inputQueue.GetLineFZF("Select language", availableLanguages)
-		if err != nil {
-			panic(err)
-		}
-		fmt.Printf("Creating new project: %v\n", selectedLanguage)
-		projectName := inputQueue.GetLine("Project name")
-		fs.CpDir(fs.Home()+"/.config/vecron/templates/"+selectedLanguage, "./"+projectName)
-	default:
-		fmt.Printf("Option %v is still in development\n", input)
+	selectedCommand := command.Commands[input]
+	err = selectedCommand.Exec(&inputQueue)
+	if err != nil {
+		panic(err)
 	}
 }
