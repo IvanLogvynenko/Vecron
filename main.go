@@ -21,7 +21,6 @@ func handleError(err error) {
 
 func main() {
 	args := os.Args[1:]
-	args = append(args, []string{"new", "cpp", "some"}...)
 	dataBase := utils.GetDataBaseInstance()
 	rest_args := cli.LoadArgs(args, dataBase)
 	inputQueue := inputqueue.MakeInputQueue(rest_args)
