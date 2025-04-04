@@ -39,12 +39,3 @@ var New = Command{
 		return nil
 	},
 }
-
-var PreProc = Command{
-	"preproc",
-	"preproc",
-	func(inputQueue *inputqueue.InputQueue) error {
-		utils.PreprocessFile("./file.some")
-		return nil
-	},
-}
