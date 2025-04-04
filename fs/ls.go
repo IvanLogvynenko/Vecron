@@ -44,7 +44,7 @@ func ListFilesRecursive(path string) []string {
 			if path == "." || path == "./" {
 				files = append(files, entry.Name())
 			} else {
-				files = append(files, path+entry.Name())
+				files = append(files, path+"/"+entry.Name())
 			}
 		} else {
 			files = append(files, ListFilesRecursive(path+"/"+entry.Name())...)

@@ -11,13 +11,20 @@ import (
 	"github.com/IvanLogvynenko/vecron/utils"
 )
 
+func handleError(err error) {
+	if err != nil {
+		fmt.Println("Caught error: ", err.Error(), ". Prining Help Message")
+		cli.PrintHelp()
+		os.Exit(1)
+	}
+}
+
 func main() {
 	args := os.Args[1:]
-	args = append(args, "pre")
+	args = append(args, []string{"new", "cpp", "some"}...)
 	dataBase := utils.GetDataBaseInstance()
-	rest := cli.LoadArgs(args, dataBase)
-	inputQueue := inputqueue.MakeInputQueue(rest)
-	dataBase.Set("ProjectName", "Vecron")
+	rest_args := cli.LoadArgs(args, dataBase)
+	inputQueue := inputqueue.MakeInputQueue(rest_args)
 
 	cli.Clear()
 	cli.PrintLogo()
@@ -26,16 +33,8 @@ func main() {
 		commands[i] = val
 	}
 	input, err := inputQueue.GetLineFZFStruct("Select command", commands)
-	if err != nil {
-		fmt.Println("Caught error: ", err.Error(), ". Prining Help Message")
-		cli.PrintHelp()
-		os.Exit(1)
-	}
+	handleError(err)
 	selectedCommand := command.Commands[input]
 	err = selectedCommand.Exec(&inputQueue)
-	if err != nil {
-		fmt.Println("Caught error: ", err.Error(), ". Prining Help Message")
-		cli.PrintHelp()
-		os.Exit(1)
-	}
+	handleError(err)
 }

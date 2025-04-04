@@ -8,6 +8,15 @@ import (
 	"github.com/IvanLogvynenko/vecron/utils"
 )
 
+// LAZY LOADING OF CONFIG
+// I 
+// WANT
+// THIS
+// TO
+// FLY
+// So don't waste time loading unnessesary data
+
+
 // Global config, to be loaded when Vecron has to manage projects in the system
 type Config struct {
 	ConfigPath string `json:"ConfigPath"`

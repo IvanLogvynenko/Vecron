@@ -24,6 +24,18 @@ var New = Command{
 		db := utils.GetDataBaseInstance()
 		db.Set("ProjectName", projectName)
 		fs.CpDir(fs.Home()+"/.config/vecron/templates/"+selectedLanguage, "./"+projectName)
+		emptyVariables, err := utils.PreprocessDir("./" + projectName)
+		if err != nil {
+			return err
+		}
+		if len(emptyVariables) != 0 {
+			fmt.Println("\nCouldn't find values for:")
+			for _, v := range emptyVariables {
+				fmt.Println(v)
+			}
+			fmt.Println("Please provide a value in .vecron/db.json")
+			fmt.Println("If Vecron mistakenly parsed your code in {{}} please add them to .vecron/")
+		}
 		return nil
 	},
 }

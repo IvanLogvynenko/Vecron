@@ -1,10 +1,12 @@
 package utils
 
 import (
-	"fmt"
+	"errors"
 	"os"
 	"regexp"
 	"strings"
+
+	"github.com/IvanLogvynenko/vecron/fs"
 )
 
 //Should be able to use passed variable to fill in gaps in the template to create unique projects
@@ -15,7 +17,15 @@ import (
 
 // preprocesses a directory with values loaded from a database. If a value is not found will be returned to caller in list
 func PreprocessDir(path string) ([]string, error) {
-	return nil, nil
+	files := fs.ListFilesRecursive(path)
+	failed := make([]string, 0)
+	var errorList error = nil
+	for _, filePath := range files {
+		tmp, err := PreprocessFile(filePath)
+		errorList = errors.Join(errorList, err)
+		failed = append(failed, tmp...)
+	}
+	return failed, errorList
 }
 
 func PreprocessFile(path string) ([]string, error) {
@@ -29,14 +39,12 @@ func PreprocessFile(path string) ([]string, error) {
 	indexes := re.FindAllStringIndex(data, -1)
 
 	db := GetDataBaseInstance()
-	db.Set("ProjectName", "Vecron")
 
 	for _, mappedRange := range indexes {
 		start, end := mappedRange[0], mappedRange[1]
-		fmt.Println(data[start+2 : end-2])
 		varName := data[start+2 : end-2]
 		value, err := db.Get(varName)
-		fmt.Println(varName, "->", value)
+		// fmt.Println(varName, "->", value)
 		if err != nil {
 			failed = append(failed, varName)
 		} else {
