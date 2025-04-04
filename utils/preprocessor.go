@@ -11,9 +11,6 @@ import (
 
 //Should be able to use passed variable to fill in gaps in the template to create unique projects
 //It is really dumb as it only takes a variable from DataBase and sets it's value but I'm still dumber)
-// re := regexp.MustCompile(`\d+`)
-// indexes := re.FindAllStringIndex("abc123def456", -1)
-// fmt.Println(indexes) // [[3 6] [9 12]]
 
 // preprocesses a directory with values loaded from a database. If a value is not found will be returned to caller in list
 func PreprocessDir(path string) ([]string, error) {
