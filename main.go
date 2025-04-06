@@ -5,6 +5,7 @@ import (
 	"os"
 
 	gofzf "github.com/IvanLogvynenko/go-fzf"
+	"github.com/IvanLogvynenko/vecron/cfg"
 	"github.com/IvanLogvynenko/vecron/cli"
 	"github.com/IvanLogvynenko/vecron/command"
 	inputqueue "github.com/IvanLogvynenko/vecron/inputQueue"
@@ -36,4 +37,5 @@ func main() {
 	selectedCommand := command.Commands[input]
 	err = selectedCommand.Exec(&inputQueue)
 	handleError(err)
+	cfg.SaveIfChanged()
 }

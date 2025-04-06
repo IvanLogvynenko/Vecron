@@ -7,7 +7,7 @@ A project manager aimed to help you create projects and manage them with ease
 - go
 - fzf
 - git
-- gh (github-cli) !authorized!
+- gh (github-cli)
 - unix system `Linux :) or mac :(`
 
 # Installation

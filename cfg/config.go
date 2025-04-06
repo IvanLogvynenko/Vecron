@@ -22,24 +22,25 @@ import (
 
 // Global config, to be loaded when Vecron has to manage projects in the system
 type Config struct {
-	UserHome     string
+	userHome     string
 	VecronHome   string `json:"VecronHome"`
-	ConfigPath   string
-	TemplatePath string
-	LicencePath  string
+	configPath   string
+	templatePath string
+	licencePath  string
 
-	GitUserName string
-	EMail       string
+	gitUserName string
+	email       string
 
 	DevPath      string `json:"DevPath"`
-	ProjectsHome string
-	LibHome      string
+	projectsHome string
+	libHome      string
 
 	DefaultEditor string   `json:"DefaultEditor"`
 	Projects      []string `json:"Projects"`
 
 	DB                 *utils.DataBase
-	availableLanguages []string
+	availableTemplates []string
+	changed            bool
 }
 
 var instance *Config = nil
@@ -49,18 +50,18 @@ const configFileName = "config.json"
 // will search for config path in all suitable places
 // returns empty string is nothing found
 func findConfigPath(config Config) string {
-	_, err := os.Stat(config.UserHome + "/.config/vecron/")
-	fmt.Println(config.UserHome + "/.config/vecron/")
+	_, err := os.Stat(config.userHome + "/.config/vecron/")
+	fmt.Println(config.userHome + "/.config/vecron/")
 	if err == nil {
-		return config.UserHome + "/.config/vecron/"
+		return config.userHome + "/.config/vecron/"
 	}
 	_, err = os.Stat("./" + configFileName)
 	if err == nil {
 		return "./"
 	}
-	_, err = os.Stat(config.UserHome + "/.local/share/vecron")
+	_, err = os.Stat(config.userHome + "/.local/share/vecron")
 	if err == nil {
-		return config.UserHome + "/.local/share/vecron"
+		return config.userHome + "/.local/share/vecron"
 	}
 	return ""
 }
@@ -73,7 +74,7 @@ func GetConfig() (*Config, error) {
 
 	// create new instance
 	instance = &Config{}
-	instance.UserHome = fs.Home()
+	instance.userHome = fs.Home()
 	// search for config in db if not found try to search in fs
 	db := utils.GetDataBaseInstance()
 	instance.DB = db
@@ -106,10 +107,51 @@ func (cfg Config) ToJson() []byte {
 
 func (cfg Config) Save() {
 	json := cfg.ToJson()
-	os.WriteFile(cfg.ConfigPath, json, 0644)
+	os.WriteFile(cfg.configPath, json, 0644)
+}
+
+func SaveIfChanged() {
+	if instance != nil && instance.changed {
+		instance.Save()
+	}
 }
 
 func FromJson(jsonByte []byte) (*Config, error) {
 	config := &Config{}
 	return config, json.Unmarshal(jsonByte, config)
+}
+
+// LOADS AND LOADS of getters
+func (cfg Config) GetVecronHome() string {
+	if cfg.VecronHome == "" {
+		// if this has been called you should be ashamed of how you keep your config
+		cfg.VecronHome = findConfigPath(cfg)
+	}
+	return cfg.VecronHome
+}
+
+func (cfg Config) GetTemplatePath() string {
+	if cfg.templatePath == "" {
+		cfg.templatePath = cfg.GetVecronHome() + "/templates"
+	}
+	return cfg.templatePath
+}
+
+func (cfg Config) GetLicencesPath() string {
+	if cfg.licencePath == "" {
+		cfg.licencePath = cfg.GetVecronHome() + "/licences"
+	}
+	return cfg.licencePath
+}
+
+func (cfg Config) GetAvailableTemplates() []string {
+	if cfg.availableTemplates == nil || len(cfg.availableTemplates) == 0 {
+		cfg.availableTemplates = fs.ListDirectories(cfg.GetTemplatePath())
+	}
+	return cfg.availableTemplates
+}
+
+func (cfg Config) AddNewProject(path string) {
+	cfg.Projects = append(cfg.Projects, path)
+	cfg.changed = true
 }
