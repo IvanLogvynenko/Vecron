@@ -13,7 +13,7 @@ import (
 
 func handleError(err error) {
 	if err != nil {
-		fmt.Println("Caught error: ", err.Error(), ". Prining Help Message")
+		fmt.Println("Caught error:", err.Error(), "\nPrining Help Message")
 		cli.PrintHelp()
 		os.Exit(1)
 	}

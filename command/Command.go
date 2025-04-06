@@ -21,5 +21,5 @@ func (c Command) Exec(inputQueue *inputqueue.InputQueue) error {
 }
 
 var Commands = []Command{
-	New, Help,
+	New, Help, Config, Format,
 }

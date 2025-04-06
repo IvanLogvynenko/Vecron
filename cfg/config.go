@@ -2,6 +2,8 @@ package cfg
 
 import (
 	"encoding/json"
+	"errors"
+	"fmt"
 	"os"
 
 	"github.com/IvanLogvynenko/vecron/fs"
@@ -9,57 +11,89 @@ import (
 )
 
 // LAZY LOADING OF CONFIG
-// I 
+// I
 // WANT
 // THIS
 // TO
 // FLY
 // So don't waste time loading unnessesary data
-
+// Lazy Loading means that only requested parts of data should be loaded
+// as much data as possible should be saved thus saving time on file reading information
 
 // Global config, to be loaded when Vecron has to manage projects in the system
 type Config struct {
-	ConfigPath string `json:"ConfigPath"`
-	DataBase   *utils.DataBase
+	UserHome     string
+	VecronHome   string `json:"VecronHome"`
+	ConfigPath   string
+	TemplatePath string
+	LicencePath  string
+
+	GitUserName string
+	EMail       string
+
+	DevPath      string `json:"DevPath"`
+	ProjectsHome string
+	LibHome      string
+
+	DefaultEditor string   `json:"DefaultEditor"`
+	Projects      []string `json:"Projects"`
+
+	DB                 *utils.DataBase
+	availableLanguages []string
 }
 
 var instance *Config = nil
 
-const configFileName = "cfg.json"
+const configFileName = "config.json"
 
 // will search for config path in all suitable places
 // returns empty string is nothing found
-func getConfigPath() string {
-	if instance != nil {
-		configPath, err := instance.DataBase.Get("configPath")
-		if err == nil {
-			instance.DataBase.Delete("configPath")
-			instance.ConfigPath = configPath
-			return configPath
-		}
-	}
-	_, err := os.Stat("./" + configFileName)
+func findConfigPath(config Config) string {
+	_, err := os.Stat(config.UserHome + "/.config/vecron/")
+	fmt.Println(config.UserHome + "/.config/vecron/")
 	if err == nil {
-		return "./" + configFileName
+		return config.UserHome + "/.config/vecron/"
 	}
-	_, err = os.Stat(fs.Home() + "/.config/vecron/" + configFileName)
+	_, err = os.Stat("./" + configFileName)
 	if err == nil {
-		return fs.Home() + "/.config/vecron/" + configFileName
+		return "./"
 	}
-	_, err = os.Stat(fs.Home() + "/.local/share/vecron" + configFileName)
+	_, err = os.Stat(config.UserHome + "/.local/share/vecron")
 	if err == nil {
-		return fs.Home() + "/.local/share/vecron" + configFileName
+		return config.UserHome + "/.local/share/vecron"
 	}
 	return ""
 }
 
-func GetConfig() *Config {
-	if instance == nil {
-		instance = &Config{}
-		instance.DataBase = utils.GetDataBaseInstance()
-		instance.ConfigPath = getConfigPath()
+// Loads config if found. If not -> run vecron config
+func GetConfig() (*Config, error) {
+	if instance != nil {
+		return instance, nil
 	}
-	return instance
+
+	// create new instance
+	instance = &Config{}
+	instance.UserHome = fs.Home()
+	// search for config in db if not found try to search in fs
+	db := utils.GetDataBaseInstance()
+	instance.DB = db
+	configPath, err := db.Get("configPath")
+
+	if err == nil {
+		instance.DB.Delete("configPath")
+	} else {
+		configPath = findConfigPath(*instance)
+	}
+	fmt.Println("Config: \"", configPath, "\"")
+	if configPath == "" {
+		return nil, errors.New("Couldn't find config. Run \"vecron config --clear\"")
+	}
+
+	file, err := os.ReadFile(configPath + configFileName)
+	if err != nil {
+		panic(err)
+	}
+	return FromJson(file)
 }
 
 func (cfg Config) ToJson() []byte {
@@ -75,21 +109,7 @@ func (cfg Config) Save() {
 	os.WriteFile(cfg.ConfigPath, json, 0644)
 }
 
-func FromJson(jsonByte []byte) *Config {
+func FromJson(jsonByte []byte) (*Config, error) {
 	config := &Config{}
-	err := json.Unmarshal(jsonByte, config)
-	if err != nil {
-		panic(err)
-	}
-	return config
-}
-
-// Prefer this over getconfig as get* will create it from beginning
-func LoadConfig() *Config {
-	configPath := getConfigPath()
-	file, err := os.ReadFile(configPath)
-	if err != nil {
-		panic(err)
-	}
-	return FromJson(file)
+	return config, json.Unmarshal(jsonByte, config)
 }
