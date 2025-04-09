@@ -43,7 +43,7 @@ func (db *DataBase) Delete(key string) {
 func (db DataBase) Print() {
 	fmt.Println("DataBase dump:")
 	for k, v := range db.kv {
-		fmt.Println(k, ": ", v)
+		fmt.Println(k, ":", v)
 	}
 	fmt.Println("______________")
 }

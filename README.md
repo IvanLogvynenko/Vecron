@@ -52,4 +52,4 @@ Config created for every project
 	├── SubProjects	  (List of "sub"-projects e.g Microservice application)
 	└── All {{vecron variables}} that are present in your project.
 ```
-You should fill variables values in db.json and run `vecron format` for vecron to fill those placeholders and scan for new variables. If you want the warning about empty placeholder to disappear please set it to `--skip`, or run vecron format --skip={vars comma-separated}
+You should fill variables values in db.json and run `vecron format` for vecron to fill those placeholders and scan for new variables. If you want the warning about empty placeholder to disappear please set it to `--skip`, or run vecron format --skip={vars comma-separated} or vecron format --{var_name}="--skip"

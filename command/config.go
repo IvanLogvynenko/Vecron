@@ -7,7 +7,7 @@ import (
 	inputqueue "github.com/IvanLogvynenko/vecron/inputQueue"
 )
 
-var Config = Command{
+var config = Command{
 	"config",
 	"View configuration",
 	func(inputQueue *inputqueue.InputQueue) error {

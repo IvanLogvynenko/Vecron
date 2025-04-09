@@ -6,7 +6,7 @@ import (
 	inputqueue "github.com/IvanLogvynenko/vecron/inputQueue"
 )
 
-var Format = Command{
+var format = Command{
 	"format",
 	"Replaces all occurenses of {{var}} with their values\nView vecron config --help for more info",
 	func(inputQueue *inputqueue.InputQueue) error {

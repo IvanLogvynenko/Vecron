@@ -1,4 +1,4 @@
-package fs
+package cli
 
 import "os"
 
@@ -6,12 +6,12 @@ import "os"
 var pwd string = ""
 
 func PWD() string {
-	if pwd != "" {
+	if pwd == "" {
 		tmp, err := os.Getwd()
 		if err != nil {
 			panic(err)
 		}
-		pwd = tmp
+		pwd = tmp + "/"
 	}
 	return pwd
 }

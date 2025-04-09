@@ -2,14 +2,17 @@ package command
 
 import (
 	"fmt"
+	"strings"
 
+	gofzf "github.com/IvanLogvynenko/go-fzf"
 	"github.com/IvanLogvynenko/vecron/cfg"
+	"github.com/IvanLogvynenko/vecron/cli"
 	"github.com/IvanLogvynenko/vecron/fs"
 	inputqueue "github.com/IvanLogvynenko/vecron/inputQueue"
 	"github.com/IvanLogvynenko/vecron/utils"
 )
 
-var New = Command{
+var new = Command{
 	"new",
 	"Copy a template project from your template repository",
 	func(inputQueue *inputqueue.InputQueue) error {
@@ -26,11 +29,30 @@ var New = Command{
 		fmt.Println("Creating new project: ", selectedTemplate)
 		// As a folder for the project can't be created without project name this will be asked here
 		projectName := inputQueue.GetLine("Project name")
-		db := utils.GetDataBaseInstance()
-		projectPath := fs.PWD() + projectName
-		db.Set("ProjectName", projectName)
+		projectPath := cli.PWD() + projectName + "/"
+		config.DB.Set("ProjectName", projectName)
+		fmt.Println("Project path: ", projectPath)
 		fs.CpDir(config.GetTemplatePath()+selectedTemplate, projectPath)
 		config.AddNewProject(projectPath)
+		license, err := config.DB.Get("license")
+		if err == nil {
+			if license == "fzf" || strings.Contains("select", license) {
+				licenses := fs.ListFiles(config.GetLicensesPath())
+				licenses, err = gofzf.FzfPrompt(licenses,
+					gofzf.Cycle(),
+					gofzf.Reverse(),
+					gofzf.Height(30),
+					gofzf.Binds(),
+					gofzf.Style(gofzf.Full))
+				if err != nil {
+					panic(err)
+				}
+				if len(licenses) != 1 && len(licenses) != 0 {
+					panic("How did you manage to select multiple in fzf???")
+				}
+				fs.CopyFile(config.GetLicensesPath()+licenses[0], projectPath+"LICENSE")
+			}
+		}
 		emptyVariables, err := utils.PreprocessDir(projectPath)
 		if err != nil {
 			return err

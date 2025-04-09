@@ -3,7 +3,6 @@ package cfg
 import (
 	"encoding/json"
 	"errors"
-	"fmt"
 	"os"
 
 	"github.com/IvanLogvynenko/vecron/fs"
@@ -51,7 +50,6 @@ const configFileName = "config.json"
 // returns empty string is nothing found
 func findConfigPath(config Config) string {
 	_, err := os.Stat(config.userHome + "/.config/vecron/")
-	fmt.Println(config.userHome + "/.config/vecron/")
 	if err == nil {
 		return config.userHome + "/.config/vecron/"
 	}
@@ -59,9 +57,9 @@ func findConfigPath(config Config) string {
 	if err == nil {
 		return "./"
 	}
-	_, err = os.Stat(config.userHome + "/.local/share/vecron")
+	_, err = os.Stat(config.userHome + "/.local/share/vecron/")
 	if err == nil {
-		return config.userHome + "/.local/share/vecron"
+		return config.userHome + "/.local/share/vecron/"
 	}
 	return ""
 }
@@ -85,7 +83,7 @@ func GetConfig() (*Config, error) {
 	} else {
 		configPath = findConfigPath(*instance)
 	}
-	fmt.Println("Config: \"", configPath, "\"")
+	// fmt.Println("Config: \"", configPath, "\"")
 	if configPath == "" {
 		return nil, errors.New("Couldn't find config. Run \"vecron config --clear\"")
 	}
@@ -118,6 +116,7 @@ func SaveIfChanged() {
 
 func FromJson(jsonByte []byte) (*Config, error) {
 	config := &Config{}
+	config.DB = utils.GetDataBaseInstance()
 	return config, json.Unmarshal(jsonByte, config)
 }
 
@@ -132,14 +131,14 @@ func (cfg Config) GetVecronHome() string {
 
 func (cfg Config) GetTemplatePath() string {
 	if cfg.templatePath == "" {
-		cfg.templatePath = cfg.GetVecronHome() + "/templates"
+		cfg.templatePath = cfg.GetVecronHome() + "/templates/"
 	}
 	return cfg.templatePath
 }
 
-func (cfg Config) GetLicencesPath() string {
+func (cfg Config) GetLicensesPath() string {
 	if cfg.licencePath == "" {
-		cfg.licencePath = cfg.GetVecronHome() + "/licences"
+		cfg.licencePath = cfg.GetVecronHome() + "/licenses/"
 	}
 	return cfg.licencePath
 }

@@ -5,7 +5,7 @@ import (
 	inputqueue "github.com/IvanLogvynenko/vecron/inputQueue"
 )
 
-var Help = Command{
+var help = Command{
 	"help",
 	"Print help message",
 	func(inputQueue *inputqueue.InputQueue) error {
