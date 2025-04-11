@@ -17,7 +17,7 @@ import (
 // FLY
 // So don't waste time loading unnessesary data
 // Lazy Loading means that only requested parts of data should be loaded
-// as much data as possible should be saved thus saving time on file reading information
+// As much requested data as possible should be saved thus saving time on file reading information
 
 // Global config, to be loaded when Vecron has to manage projects in the system
 type Config struct {
@@ -42,7 +42,7 @@ type Config struct {
 	changed            bool
 }
 
-var instance *Config = nil
+var config *Config = nil
 
 const configFileName = "config.json"
 
@@ -66,22 +66,22 @@ func findConfigPath(config Config) string {
 
 // Loads config if found. If not -> run vecron config
 func GetConfig() (*Config, error) {
-	if instance != nil {
-		return instance, nil
+	if config != nil {
+		return config, nil
 	}
 
 	// create new instance
-	instance = &Config{}
-	instance.userHome = fs.Home()
+	config = &Config{}
+	config.userHome = fs.Home()
 	// search for config in db if not found try to search in fs
 	db := utils.GetDataBaseInstance()
-	instance.DB = db
-	configPath, err := db.Get("configPath")
+	config.DB = db
+	configPath := db.Get("configPath")
 
-	if err == nil {
-		instance.DB.Delete("configPath")
+	if configPath == "" {
+		configPath = findConfigPath(*config)
 	} else {
-		configPath = findConfigPath(*instance)
+		config.DB.Delete("configPath")
 	}
 	// fmt.Println("Config: \"", configPath, "\"")
 	if configPath == "" {
@@ -109,8 +109,8 @@ func (cfg Config) Save() {
 }
 
 func SaveIfChanged() {
-	if instance != nil && instance.changed {
-		instance.Save()
+	if config != nil && config.changed {
+		config.Save()
 	}
 }
 

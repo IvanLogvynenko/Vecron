@@ -1,9 +1,15 @@
 package cfg
 
-import "github.com/IvanLogvynenko/vecron/utils"
+import (
+	"encoding/json"
+	"errors"
+	"os"
+
+	"github.com/IvanLogvynenko/vecron/utils"
+)
 
 // LAZY LOADING OF CONFIG
-// I 
+// I
 // WANT
 // THIS
 // TO
@@ -12,6 +18,21 @@ import "github.com/IvanLogvynenko/vecron/utils"
 
 // LocalConfig, to be used when Vecron is working with current project. Like formatting or assembling
 type LocalConfig struct {
-	ProjectPath string
-	DataBase    *utils.DataBase
+	ProjectPath   string `json:"ProjectPath"`
+	ProjectName   string `json:"ProjectName"`
+	DefaultEditor string `json:"DefaultEditor"`
+
+	InitBuilder     []string  `json:"InitBuilder"` //For languages that require such initialization
+	Build           BuildType `json:"Build"`
+	BuildReleaseCmd []string  `json:"BuildReleaseCmd"`
+	BuildDebugCmd   []string  `json:"BuildDebugCmd"`
+
+	RunCmd string `json:"BuildRunCmd"`
+}
+
+func LoadLocalConfig() (*LocalConfig, error) {
+	localConfig := &LocalConfig{}
+	db := utils.GetDataBaseInstance()
+	data, err := os.ReadFile(db.Get("targetPath") + ".vecron/config.json")
+	return localConfig, errors.Join(json.Unmarshal(data, localConfig), err)
 }

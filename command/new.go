@@ -16,6 +16,8 @@ var new = Command{
 	"new",
 	"Copy a template project from your template repository",
 	func(inputQueue *inputqueue.InputQueue) error {
+		cli.Clear()
+		cli.PrintLogo()
 		fmt.Println("Building new project!")
 		config, err := cfg.GetConfig()
 		if err != nil {
@@ -29,13 +31,14 @@ var new = Command{
 		fmt.Println("Creating new project: ", selectedTemplate)
 		// As a folder for the project can't be created without project name this will be asked here
 		projectName := inputQueue.GetLine("Project name")
-		projectPath := cli.PWD() + projectName + "/"
+		projectPath := config.DB.Get("targetPath") + projectName + "/"
 		config.DB.Set("ProjectName", projectName)
+		config.DB.Set("ProjectPath", projectPath)
 		fmt.Println("Project path: ", projectPath)
 		fs.CpDir(config.GetTemplatePath()+selectedTemplate, projectPath)
 		config.AddNewProject(projectPath)
-		license, err := config.DB.Get("license")
-		if err == nil {
+		license := config.DB.Get("license")
+		if license != "" {
 			if license == "fzf" || strings.Contains("select", license) {
 				licenses := fs.ListFiles(config.GetLicensesPath())
 				licenses, err = gofzf.FzfPrompt(licenses,
@@ -62,9 +65,10 @@ var new = Command{
 			for _, v := range emptyVariables {
 				fmt.Println(v)
 			}
-			fmt.Println("Please provide a value in .vecron/config.json")
-			fmt.Println("If Vecron mistakenly parsed your code in {{}} please add them to .vecron/")
+			fmt.Println("Please provide a value in .vecron/db.json")
+			fmt.Println("If Vecron mistakenly parsed your code in {{}} please add it to .vecron/db.json with value --skip")
 		}
+
 		return nil
 	},
 }

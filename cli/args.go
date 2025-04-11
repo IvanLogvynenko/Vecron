@@ -11,7 +11,10 @@ import (
 func ParseArgs(args []string) (map[string]string, []string) {
 	res := make(map[string]string)
 	args, configPath := get(args, "-c")
-	args, targetPath := get(args, "-o")
+	args, targetPath := getOrDefault(args, "-o", PWD())
+	if !strings.HasSuffix(targetPath, "/") {
+		targetPath += "/"
+	}
 	args, license := getBool(args, "-l")
 	res["configPath"] = configPath
 	res["targetPath"] = targetPath
@@ -41,6 +44,15 @@ func get(args []string, opt string) ([]string, string) {
 		args = slices.Delete(args, id, id+2)
 	}
 	return args, result
+}
+
+func getOrDefault(args []string, opt string, defaultValue string) ([]string, string) {
+	args, result := get(args, opt)
+	if result == "" {
+		return args, defaultValue
+	} else {
+		return args, result
+	}
 }
 
 func getBool(args []string, opt string) ([]string, bool) {

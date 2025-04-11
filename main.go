@@ -26,8 +26,10 @@ func main() {
 	rest_args := cli.LoadArgs(args, dataBase)
 	inputQueue := inputqueue.MakeInputQueue(rest_args)
 
-	cli.Clear()
-	cli.PrintLogo()
+	if !inputQueue.HasNext() {
+		cli.Clear()
+		cli.PrintLogo()
+	}
 	commands := make([]gofzf.Struct, len(command.Commands))
 	for i, val := range command.Commands {
 		commands[i] = val

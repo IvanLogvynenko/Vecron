@@ -109,3 +109,8 @@ func (InputQueue *InputQueue) GetLineFZFStruct(prompt string, data []gofzf.Struc
 	}
 	return matches[0], nil
 }
+
+// Checks whether interactive UI like fzf or prompting will be loaded or not
+func (InputQueue *InputQueue) HasNext() bool {
+	return len(InputQueue.inputList) != 0
+}

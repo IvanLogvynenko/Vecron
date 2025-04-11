@@ -19,13 +19,8 @@ func GetDataBaseInstance() *DataBase {
 	return database
 }
 
-func (db DataBase) Get(key string) (string, error) {
-	data := db.kv[key]
-	if data != "" {
-		return data, nil
-	} else {
-		return "", fmt.Errorf("data not found")
-	}
+func (db DataBase) Get(key string) string {
+	return db.kv[key]
 }
 
 func (db *DataBase) Set(key string, value string) {
@@ -33,10 +28,6 @@ func (db *DataBase) Set(key string, value string) {
 }
 
 func (db *DataBase) Delete(key string) {
-	_, err := db.Get(key)
-	if err != nil {
-		panic(err)
-	}
 	delete(db.kv, key)
 }
 
