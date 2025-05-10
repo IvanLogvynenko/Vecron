@@ -1,0 +1,7 @@
+- vecron update to get updates from the template folder
+- source file variants
+- prompt global configuration
+- vecron ignore
+- vecron repair
+- build targets
+- build.sh
