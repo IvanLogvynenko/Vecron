@@ -8,7 +8,7 @@ A project manager aimed to help you create projects and manage them with ease
 - fzf
 - git
 - gh (github-cli)
-- unix system `Linux :) or mac :(`
+- unix-like system `macOS or Linux`
 
 # Installation
 
