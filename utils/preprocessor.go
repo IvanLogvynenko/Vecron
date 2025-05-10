@@ -24,16 +24,16 @@ func PreprocessDir(path string) ([]EmptyVariable, error) {
 	failed := make([]EmptyVariable, 0)
 	var errorList error = nil
 	for _, filePath := range files {
-		tmp, err := PreprocessFile(filePath)
+		fileEmptyVariables, err := PreprocessFile(filePath)
 		errorList = errors.Join(errorList, err)
-		failed = append(failed, tmp...)
+		failed = append(failed, fileEmptyVariables...)
 	}
 	return failed, errorList
 }
 
 func PreprocessFile(path string) ([]EmptyVariable, error) {
 	failed := make([]EmptyVariable, 0)
-	file, err := os.ReadFile(path)
+	file, err := os.ReadFile(path) // closes the file before returning
 	if err != nil {
 		return nil, err
 	}
