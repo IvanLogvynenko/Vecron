@@ -54,6 +54,7 @@ func PreprocessFile(path string) ([]EmptyVariable, error) {
 	// 		}
 	// 	}
 	// }
+	
 	processed := re.ReplaceAllStringFunc(data, func(match string) string {
 		varName := strings.TrimSpace(match[2 : len(match)-2])
 		value := db.Get(varName)
