@@ -5,3 +5,5 @@
 - vecron repair
 - build targets
 - build.sh
+- nested commands (at least such option)
+- rewrite everything in c++
