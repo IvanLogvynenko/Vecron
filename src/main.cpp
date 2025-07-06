@@ -18,7 +18,6 @@ int main(int, char **) {
     //     auto [args, rest] = cli::parse_args(args_str);
     // }
     cli::print_logo();
-    // std::vector<std::string> options = {"one", "two", "three"};
 	std::vector<std::unique_ptr<command::Command>> options = {};
 	options.push_back(std::make_unique<command::NewCommand>());
 

@@ -3,11 +3,12 @@
 #include <functional>
 #include <memory>
 
-namespace util {
+namespace common::util {
 
 template <typename T> struct dereference {
     using type = T;
     static T &get(T &t) { return t; }
+    static const T &get(const T &t) { return t; }
 };
 
 template <typename T> struct dereference<std::reference_wrapper<T>> {
@@ -30,4 +31,4 @@ template <typename T> struct dereference<T *> {
     static T &get(const T *t) { return *t; }
 };
 
-} // namespace util
+} // namespace common::util

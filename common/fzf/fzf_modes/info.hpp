@@ -2,7 +2,6 @@
 #include "fzf/fzf_modes/fzf_mode.hpp"
 #include "util/dereferencers.hpp"
 #include <concepts>
-#include <iostream>
 #include <sstream>
 #include <vector>
 
@@ -22,11 +21,11 @@ public:
         : FzfMode(), _options(options) {}
 
     operator std::vector<std::string>() const noexcept override {
-        using T = util::dereference<Item>::type;
+        using T = common::util::dereference<Item>::type;
         std::stringstream builder{};
         builder << "opts=(";
         for (const Item &tmp : this->_options) {
-            const T &item = util::dereference<Item>::get(tmp);
+            const T &item = common::util::dereference<Item>::get(tmp);
             if constexpr (HasDescription<T>) {
                 builder << '"' << item.description() << "\" ";
             } else if constexpr (std::same_as<std::string, T>)
