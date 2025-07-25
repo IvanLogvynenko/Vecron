@@ -1,16 +1,18 @@
 #pragma once
 #include "fzf/fzf_modes/fzf_mode.hpp"
+#include <optional>
 
 namespace fzf::mode {
 
 class Multiselect : public FzfMode {
 private:
-    const int _max;
+    const std::optional<int> _max;
 
 public:
-    explicit Multiselect(int max = -1) : FzfMode(), _max(max) {}
+	explicit Multiselect() = default;
+    explicit Multiselect(int max) : FzfMode(), _max(max) {}
 
-    operator std::vector<std::string>() const noexcept override;
+    operator std::string() const noexcept override;
 };
 
 } // namespace fzf::mode

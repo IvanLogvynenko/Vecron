@@ -20,21 +20,20 @@ public:
     explicit Info(const std::vector<Item> &options)
         : FzfMode(), _options(options) {}
 
-    operator std::vector<std::string>() const noexcept override {
+    operator std::string() const noexcept override {
         using T = common::util::dereference<Item>::type;
         std::stringstream builder{};
-        builder << "opts=(";
+        builder << "'opts=(";
         for (const Item &tmp : this->_options) {
             const T &item = common::util::dereference<Item>::get(tmp);
-            if constexpr (HasDescription<T>) {
-                builder << '"' << item.description() << "\" ";
+            if constexpr (HasDescription<T>) { builder << '"' << item.description() << "\" ";
             } else if constexpr (std::same_as<std::string, T>)
                 builder << '"' << item << "\" ";
             else
                 builder << '"' << '"' << " ";
         }
-        builder << ") && echo ${opts[{n}+1]}";
-        return {"--preview", builder.str()};
+        builder << ") && echo ${opts[{n}+1]}'";
+        return "--preview " + builder.str();
     }
 };
 

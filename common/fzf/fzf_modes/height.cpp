@@ -14,8 +14,8 @@ Height::border(uint8_t value, uint8_t bottom, uint8_t up) const noexcept {
         return value;
 }
 
-Height::operator std::vector<std::string>() const noexcept {
-    return {"--height", std::to_string(this->_height)};
+Height::operator std::string() const noexcept {
+    return "--height " + std::to_string(this->_height);
 }
 
 } // namespace fzf::mode

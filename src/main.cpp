@@ -1,4 +1,5 @@
-#include "cli/logo.hpp"
+#include "cli/common.hpp"
+#include "command/debug.hpp"
 #include "command/new_command.hpp"
 #include "fzf/fzf_prompt.hpp"
 
@@ -8,8 +9,6 @@
 
 #include "command/command.hpp"
 
-#include <dlfcn.h>
-
 int main(int, char **) {
     // if (argv) {
     //     std::vector<std::string> args_str = {};
@@ -17,16 +16,20 @@ int main(int, char **) {
     //     for (int i = 0; i < argv; i++) { args_str.emplace_back(*(argc + i)); }
     //     auto [args, rest] = cli::parse_args(args_str);
     // }
-    cli::print_logo();
-	std::vector<std::unique_ptr<command::Command>> options = {};
-	options.push_back(std::make_unique<command::NewCommand>());
+	cli::clear();
+    cli::printLogo();
+    std::vector<std::unique_ptr<command::Command>> options = {};
+    options.push_back(std::make_unique<command::NewCommand>());
+    options.push_back(std::make_unique<command::Debug>());
 
-	std::vector<std::unique_ptr<command::Command>> selections = fzf::prompt(std::move(options));
-	if (selections.size() != 1) {
-		std::cerr << "Multiple commands selected, action not permitted\nExitting...\n";
-		return 1;
-	}
-	selections[0]->execute();
+    std::vector<std::unique_ptr<command::Command>> selections =
+        fzf::prompt(std::move(options));
+    if (selections.size() != 1) {
+        std::cerr << "Multiple commands selected, action not "
+                     "permitted\nExitting...\n";
+        return 1;
+    }
+    selections[0]->execute();
 
     return 0;
 }

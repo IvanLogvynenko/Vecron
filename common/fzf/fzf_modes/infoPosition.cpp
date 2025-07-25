@@ -8,8 +8,8 @@ std::shared_ptr<InfoPosition> InfoPosition::DOWN = std::make_shared<InfoPosition
 std::shared_ptr<InfoPosition> InfoPosition::RIGHT = std::make_shared<InfoPosition>("right");
 std::shared_ptr<InfoPosition> InfoPosition::LEFT = std::make_shared<InfoPosition>("left");
 
-InfoPosition::operator std::vector<std::string>() const noexcept {
-    return {std::string("--preview-window=") + this->_position};
+InfoPosition::operator std::string() const noexcept {
+    return std::string("--preview-window=") + this->_position;
 }
 
 } // namespace fzf::mode

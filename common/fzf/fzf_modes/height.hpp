@@ -14,7 +14,7 @@ private:
 public:
     explicit Height(uint8_t height) : FzfMode(), _height(border(height)) {}
 
-    operator std::vector<std::string>() const noexcept override;
+    operator std::string() const noexcept override;
 };
 
 } // namespace fzf::mode

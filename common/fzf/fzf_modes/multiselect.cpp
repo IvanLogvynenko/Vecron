@@ -2,11 +2,11 @@
 
 namespace fzf::mode {
 
-Multiselect::operator std::vector<std::string>() const noexcept {
-    if (_max == -1)
-        return {"--multi"};
+Multiselect::operator std::string() const noexcept {
+    if (_max.has_value())
+        return "--multi";
     else
-        return {"--multi ", std::to_string(_max)};
+        return "--multi " + std::to_string(_max.value());
 }
 
 } // namespace fzf::mode

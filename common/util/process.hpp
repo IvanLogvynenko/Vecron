@@ -1,19 +1,18 @@
 #pragma once
 
 #include <exception>
-#include <initializer_list>
 #include <sstream>
-#include <vector>
 
 namespace common::util {
 
 class ProcessException : public std::exception {
 private:
-	unsigned _code;
-	std::string _message;
+    unsigned _code;
+    std::string _message;
+
 public:
-	ProcessException(std::string, unsigned);
-	const char* what() const noexcept override;
+    ProcessException(std::string, unsigned);
+    const char *what() const noexcept override;
 };
 
 class Process {
@@ -23,12 +22,9 @@ private:
     std::stringstream err;
 
     std::string _command;
-    std::vector<std::string> _args;
 
 public:
-    explicit Process(const std::string& command);
-    Process(std::string command, std::initializer_list<std::string> args);
-    Process(std::string command, std::vector<std::string> args);
+    explicit Process(std::string command) : _command(std::move(command)) {}
 
     Process(const Process &) = delete;
     Process &operator=(const Process &) = delete;
@@ -42,7 +38,7 @@ public:
     std::string run();
 
     /**
-	 * Accepts data as: <input data> | <program name> <arguments>
+	 * Accepts and runs command
 	 * */
     static std::string run(const std::string &command);
 

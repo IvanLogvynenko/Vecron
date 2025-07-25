@@ -2,8 +2,8 @@
 
 namespace fzf::mode {
 
-Reverse::operator std::vector<std::string>() const noexcept {
-    return {"--reverse"};
+Reverse::operator std::string() const noexcept {
+    return "--reverse ";
 }
 
 } // namespace fzf::mode

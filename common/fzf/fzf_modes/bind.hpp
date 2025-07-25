@@ -10,7 +10,7 @@ private:
 public:
     explicit Bind(std::string binds) : FzfMode(), _binds(std::move(binds)) {}
 
-    operator std::vector<std::string>() const noexcept override;
+    operator std::string() const noexcept override;
 };
 
 } // namespace fzf::mode

@@ -10,7 +10,7 @@ private:
 public:
     explicit Header(std::string header) : FzfMode(), _header(std::move(header)) {}
 
-    operator std::vector<std::string>() const noexcept override;
+    operator std::string() const noexcept override;
 };
 
 

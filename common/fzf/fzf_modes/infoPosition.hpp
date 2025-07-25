@@ -12,7 +12,7 @@ public:
     explicit InfoPosition(std::string position)
         : FzfMode(), _position(std::move(position)) {}
 
-    operator std::vector<std::string>() const noexcept override;
+    operator std::string() const noexcept override;
 
     static std::shared_ptr<InfoPosition> UP, LEFT, RIGHT, DOWN;
 };

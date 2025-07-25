@@ -2,8 +2,8 @@
 
 namespace fzf::mode {
 
-Pattern::operator std::vector<std::string>() const noexcept {
-    return {"--filter", this->_pattern};
+Pattern::operator std::string() const noexcept {
+    return "--filter " + this->_pattern;
 }
 
 } // namespace fzf::mode

@@ -1,13 +1,12 @@
 #pragma once
 #include <string>
-#include <vector>
 
 namespace fzf::mode {
 
 class FzfMode {
 public:
 	FzfMode() = default;
-    virtual operator std::vector<std::string>() const noexcept = 0;
+    virtual operator std::string() const noexcept = 0;
     virtual ~FzfMode() = default;
 
     FzfMode(const FzfMode &) = default;

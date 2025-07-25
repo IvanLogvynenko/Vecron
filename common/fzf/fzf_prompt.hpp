@@ -36,9 +36,9 @@ std::string itemToString(const Item &item) {
 }
 
 template <typename Container>
-Container prompt_core(
-    Container &&options,
-    const std::initializer_list<std::shared_ptr<mode::FzfMode>> modes) {
+Container
+prompt_core(Container &&options,
+            const std::initializer_list<std::shared_ptr<mode::FzfMode>> modes) {
     using Item = typename Container::value_type;
     using Obj = common::util::dereference<Item>::type;
     static_assert(FzfItem<Obj>,
@@ -61,23 +61,16 @@ Container prompt_core(
     }
 
     std::string command = "fzf";
-    std::vector<std::string> args = {};
-    for (const auto &mode : modes) {
-        std::vector<std::string> temp = *mode;
-        args.insert(args.end(), temp.begin(), temp.end());
-    }
+    for (const auto &mode : modes) { command += " " + std::string(*mode); }
 
-    //adding info if description method was detected
+//     //adding info if description method was detected
 #ifdef ENABLE_DESCRIPTION_DETECTION
-    if (enableDescriptions &&
-        std::ranges::find(args, "--preview") == args.end()) {
-        auto info = fzf::mode::info<Item>(options);
-        std::vector<std::string> args_info = *info;
-        for (const auto &arg : args_info) args.push_back(arg);
+    if (enableDescriptions && !command.contains("--preview")) {
+        command += " " + static_cast<std::string>(*(fzf::mode::info<Item>(options)));
     }
 #endif
 
-    common::util::Process p(command, args);
+    common::util::Process p(command);
 
     p << input;
 
