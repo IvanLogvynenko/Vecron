@@ -24,6 +24,6 @@ target_include_directories(main PRIVATE ${CMAKE_SOURCE_DIR}/src)
 target_compile_options(main PRIVATE ${DEFAULT_COMPILE_OPTIONS})
 # target_compile_options(main PRIVATE ${DEFAULT_COMPILE_OPTIMIZATION})
 target_compile_definitions(main PRIVATE ENABLE_DESCRIPTION_DETECTION)
-target_link_libraries(main PRIVATE common)
+target_link_libraries(main PRIVATE vecron_common)
 target_link_libraries(main PRIVATE nlohmann_json::nlohmann_json)
 

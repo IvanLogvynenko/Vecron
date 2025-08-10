@@ -2,8 +2,8 @@
 
 #include <string>
 
-namespace fs {
+namespace util {
 
 std::string home();
 
-} // namespace fs
+} // namespace util

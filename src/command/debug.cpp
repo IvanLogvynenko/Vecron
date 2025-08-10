@@ -1,7 +1,9 @@
 #include "debug.hpp"
-#include "config/global_config.hpp"
+#include "controller/controller.hpp"
 #include <print>
 
-void command::Debug::execute() {
-    std::println("{}", config::getGlobalConfigPath().value_or(""));
+int command::Debug::exec(controller::Controller*) noexcept {
+	// std::println("template path: {}", controller->getGlobalConfig().getTemplatePath());
+	std::println("some");
+	return 0;
 }
