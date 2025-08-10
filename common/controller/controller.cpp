@@ -42,22 +42,16 @@ Controller::Controller(const std::vector<std::string> &args) {
 }
 
 int Controller::start() {
-    std::vector<std::unique_ptr<command::Command>> selected =
-        fzf::prompt(std::move(this->_commands));
+    std::unique_ptr<command::Command> selected =
+        this->prompt(std::move(this->_commands));
 
-    if (selected.size() != 1) {
-        std::println("Multiple commands selected... exiting");
-        exit(1);
-    }
-
-    std::unique_ptr<command::Command> command = std::move(selected[0]);
-	return command->exec(this);
-	// might get handy later
+    std::unique_ptr<command::Command> command = std::move(selected);
+    return command->exec(this);
+    // might get handy later
     // this->_commands.clear();
     // for (auto &tmp : command->getCommands()) {
     //     this->_commands.push_back(std::move(tmp));
     // }
-
 }
 
 } // namespace controller

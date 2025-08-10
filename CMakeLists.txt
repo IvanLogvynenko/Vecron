@@ -3,6 +3,11 @@ project(vecron VERSION 0.0.1 LANGUAGES CXX)
 
 include(${CMAKE_SOURCE_DIR}/cmake/defaults.cmake)
 
+set(CMAKE_BUILD_TYPE Debug)
+
+add_compile_options(-fsanitize=address,undefined -fno-omit-frame-pointer -g)
+add_link_options(-fsanitize=address,undefined)
+
 add_subdirectory(common)
 
 set(CMAKE_CXX_STANDARD ${DEFAULT_CXX_STANDARD})

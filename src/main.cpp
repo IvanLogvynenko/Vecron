@@ -20,5 +20,6 @@ int main(int argc, char **argv) {
 	controller.addCommand(std::make_unique<command::Debug>());
 	controller.addCommand(std::make_unique<command::NewCommand>());
 
-    return controller.start();
+    int exit_code = controller.start();
+	return exit_code;
 }

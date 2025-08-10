@@ -11,10 +11,11 @@ int command::NewCommand::exec(controller::Controller* controller) noexcept {
 	std::vector<std::string> data = fzf::prompt(fs::listDirectories(templatesPath));
 	std::vector<std::thread> fileProcessors{};
 
+	std::println("loaded");
+
 	for (const auto& entry : fs::treeDirectory(templatesPath + data[0])) {
 		fileProcessors.emplace_back([&](const std::string& entry) {
 			std::println("{} -> {}", templatesPath + data[0], controller->getTargetPath() + entry);
-
 		}, entry);
 	}
 

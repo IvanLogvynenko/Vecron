@@ -2,9 +2,13 @@
 
 #include "command/command.hpp"
 #include "config/global_config.hpp"
+#include "fzf/fzf_modes.hpp"
+#include "fzf/fzf_prompt.hpp"
 #include <map>
 #include <memory>
+#include <print>
 #include <queue>
+#include <stdexcept>
 #include <string>
 #include <vector>
 
@@ -22,14 +26,14 @@ namespace controller {
  */
 class Controller {
 private:
-    std::vector<std::unique_ptr<command::Command>> _commands;
+    std::vector<std::unique_ptr<command::Command>> _commands = {};
 
-	std::queue<std::string> _inputQueue;
+    std::queue<std::string> _inputQueue = {};
 
     std::map<std::string, std::string> _database;
 
     std::unique_ptr<config::GlobalConfiguration> _globalConfig;
-    std::string _targetPath;
+    std::string _targetPath = "";
 
 public:
     /**
@@ -44,7 +48,27 @@ public:
     Controller &operator=(const Controller &) = delete;
     Controller &operator=(Controller &&) = delete;
 
+    ~Controller() = default;
+
     int start();
+
+    template <typename T> T prompt(std::vector<T> &&data) {
+        std::vector<T> selected = {};
+        std::println("input queue size: {}", _inputQueue.size());
+        if (!this->_inputQueue.empty()) {
+            selected = fzf::prompt(std::move(data),
+                                   {fzf::mode::pattern(_inputQueue.front())});
+            _inputQueue.pop();
+        } else {
+            selected = fzf::prompt(std::move(data));
+        }
+
+        if (selected.size() == 1) {
+            return std::move(selected[0]);
+        } else {
+            throw std::runtime_error("Multiple targets selected");
+        }
+    }
 
     inline void addCommand(std::unique_ptr<command::Command> command) {
         this->_commands.push_back(std::move(command));
