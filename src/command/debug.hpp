@@ -1,8 +1,6 @@
 #pragma once
 
 #include "command/command.hpp"
-#include "controller/controller.hpp"
-#include <memory>
 
 namespace command {
 
@@ -13,11 +11,7 @@ public:
         return {"Give it a try, anything can happen"};
     }
 
-    int exec(controller::Controller *) noexcept override;
-
-    std::vector<std::unique_ptr<Command>> getCommands() const noexcept override {
-        return {};
-    }
+    int exec(controller::Controller &) noexcept override;
 };
 
 } // namespace command

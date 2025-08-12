@@ -1,12 +1,14 @@
 #include "controller.hpp"
 #include "command/command.hpp"
 #include "config/global_config.hpp"
-#include "fzf/fzf_prompt.hpp"
 #include "util/args.hpp"
 #include "util/home.hpp"
 #include <filesystem>
+#include <functional>
+#include <iostream>
 #include <memory>
 #include <print>
+#include <string>
 
 namespace controller {
 
@@ -15,11 +17,9 @@ Controller::Controller(const std::vector<std::string> &args) {
     // if data has no configPath then it will be "" and getGlobalConfigPath has a fallback for such case
     auto globalConfigPath = config::getGlobalConfigPath(data["configPath"]);
     try {
-        this->_globalConfig =
-            std::make_unique<config::GlobalConfiguration>(globalConfigPath);
+        this->_globalConfig = std::make_unique<config::GlobalConfiguration>(globalConfigPath);
     } catch (config::GlobalConfigNotFound) {
-        std::string config = util::home() + ".config/vecron",
-                    share = util::home() + ".local/share/vecron";
+        std::string config = util::home() + ".config/vecron", share = util::home() + ".local/share/vecron";
         if (data["configPath"] != "") {
             std::println("Config was not found at {}\nPlease provide valid "
                          "path, or use config at "
@@ -37,21 +37,45 @@ Controller::Controller(const std::vector<std::string> &args) {
 
     std::string targetPath = data["targetPath"];
     if (targetPath == "") targetPath = std::filesystem::current_path();
+    if (!targetPath.ends_with("/")) targetPath += "/";
+    this->_targetPath = targetPath;
+    this->_database["targetPath"] = targetPath;
+    this->_database["projectDir"] = targetPath;
 
     this->_inputQueue.push_range(rest);
 }
 
 int Controller::start() {
-    std::unique_ptr<command::Command> selected =
-        this->prompt(std::move(this->_commands));
+    std::unique_ptr<command::Command> selected = this->prompt(std::move(this->_commands));
 
     std::unique_ptr<command::Command> command = std::move(selected);
-    return command->exec(this);
+    return command->exec(*this);
     // might get handy later
     // this->_commands.clear();
     // for (auto &tmp : command->getCommands()) {
     //     this->_commands.push_back(std::move(tmp));
     // }
+}
+
+std::string Controller::textPrompt(const std::string &msg,
+                                   const std::function<bool(const std::string &)> &valid,
+                                   const std::string &prompt) {
+    std::string userInput = "";
+	bool input_taken = false;
+    if (!_inputQueue.empty()) {
+		input_taken = true;
+        userInput = _inputQueue.front();
+        _inputQueue.pop();
+    }
+
+
+    while (!input_taken || !valid(userInput)) {
+		input_taken = true;
+        std::println("{}", msg);
+        std::print("{}", prompt);
+        std::getline(std::cin, userInput);
+    }
+    return userInput;
 }
 
 } // namespace controller

@@ -18,11 +18,9 @@
 
 namespace fzf {
 template <class T>
-concept FzfItem = std::convertible_to<T, std::string> || HasLabel<T> ||
-    HasName<T> || HasToString<T>;
+concept FzfItem = std::convertible_to<T, std::string> || HasLabel<T> || HasName<T> || HasToString<T>;
 
-template <typename Item, typename Obj>
-std::string itemToString(const Item &item) {
+template <typename Item, typename Obj> std::string itemToString(const Item &item) {
     const Obj &option = common::util::dereference<Item>::get(item);
 
     if constexpr (HasLabel<Obj>)
@@ -36,13 +34,10 @@ std::string itemToString(const Item &item) {
 }
 
 template <typename Container>
-Container
-prompt_core(Container &&options,
-            const std::initializer_list<std::shared_ptr<mode::FzfMode>> modes) {
+Container prompt_core(Container &&options, const std::initializer_list<std::shared_ptr<mode::FzfMode>> modes) {
     using Item = typename Container::value_type;
     using Obj = common::util::dereference<Item>::type;
-    static_assert(FzfItem<Obj>,
-                  "prompt<Container<T>>() requires T to model FzfItem");
+    static_assert(FzfItem<Obj>, "prompt<Container<T>>() requires T to model FzfItem");
 
     std::string input = "";
 
@@ -52,9 +47,7 @@ prompt_core(Container &&options,
 
     for (const auto &item : options) {
 #ifdef ENABLE_DESCRIPTION_DETECTION
-        if constexpr (fzf::mode::HasDescription<Obj>) {
-            enableDescriptions = true;
-        }
+        if constexpr (fzf::mode::HasDescription<Obj>) { enableDescriptions = true; }
 #endif
 
         input += itemToString<Item, Obj>(item) + '\n';
@@ -79,81 +72,72 @@ prompt_core(Container &&options,
 
     for (const std::string &selection : common::util::split(selections, '\n'))
         for (size_t i = 0; i < options.size(); i++)
-            if (itemToString<Item, Obj>(options[i]) == selection)
-                result.push_back(std::move(options[i]));
+            if (itemToString<Item, Obj>(options[i]) == selection) result.push_back(std::move(options[i]));
     return result;
 }
 
 template <typename T>
     requires FzfItem<T>
-auto prompt(
-    const std::vector<T> &&options,
-    const std::initializer_list<std::shared_ptr<mode::FzfMode>> &modes = {
-        mode::bind(),
-        mode::Style::FULL,
-        mode::height(30),
-        mode::reverse(),
-        mode::cycle(),
-    }) {
+auto prompt(const std::vector<T> &&options,
+            const std::initializer_list<std::shared_ptr<mode::FzfMode>> &modes = {
+                mode::bind(),
+                mode::Style::FULL,
+                mode::height(30),
+                mode::reverse(),
+                mode::cycle(),
+            }) {
     return prompt_core(std::move(options), modes);
 }
 
 template <typename T>
     requires FzfItem<T>
-auto prompt(
-    std::vector<std::reference_wrapper<T>> &&options,
-    const std::initializer_list<std::shared_ptr<mode::FzfMode>> &modes = {
-        mode::bind(),
-        mode::Style::FULL,
-        mode::height(30),
-        mode::reverse(),
-        mode::cycle(),
-    }) {
-    return prompt_core<std::vector<std::reference_wrapper<T>>>(
-        std::move(options), modes);
+auto prompt(std::vector<std::reference_wrapper<T>> &&options,
+            const std::initializer_list<std::shared_ptr<mode::FzfMode>> &modes = {
+                mode::bind(),
+                mode::Style::FULL,
+                mode::height(30),
+                mode::reverse(),
+                mode::cycle(),
+            }) {
+    return prompt_core<std::vector<std::reference_wrapper<T>>>(std::move(options), modes);
 }
 
 template <typename T>
     requires FzfItem<T>
-auto prompt(
-    std::vector<std::unique_ptr<T>> &&options,
-    const std::initializer_list<std::shared_ptr<mode::FzfMode>> &modes = {
-        mode::bind(),
-        mode::Style::FULL,
-        mode::height(30),
-        mode::reverse(),
-        mode::cycle(),
-    }) {
-    return prompt_core<std::vector<std::unique_ptr<T>>>(std::move(options),
-                                                        modes);
+auto prompt(std::vector<std::unique_ptr<T>> &&options,
+            const std::initializer_list<std::shared_ptr<mode::FzfMode>> &modes = {
+                mode::bind(),
+                mode::Style::FULL,
+                mode::height(30),
+                mode::reverse(),
+                mode::cycle(),
+            }) {
+    return prompt_core<std::vector<std::unique_ptr<T>>>(std::move(options), modes);
 }
 
 template <typename T>
     requires FzfItem<T>
-auto prompt(
-    std::vector<std::shared_ptr<T>> &&options,
-    const std::initializer_list<std::shared_ptr<mode::FzfMode>> &modes = {
-        mode::bind(),
-        mode::Style::FULL,
-        mode::height(30),
-        mode::reverse(),
-        mode::cycle(),
-    }) {
-    return prompt_core<std::vector<std::shared_ptr<T>>>(std::move(options),
-                                                        modes);
+auto prompt(std::vector<std::shared_ptr<T>> &&options,
+            const std::initializer_list<std::shared_ptr<mode::FzfMode>> &modes = {
+                mode::bind(),
+                mode::Style::FULL,
+                mode::height(30),
+                mode::reverse(),
+                mode::cycle(),
+            }) {
+    return prompt_core<std::vector<std::shared_ptr<T>>>(std::move(options), modes);
 }
 
 template <typename T>
     requires FzfItem<T>
-auto prompt(
-    std::vector<T *> &&options,
-    const std::initializer_list<std::shared_ptr<mode::FzfMode>> &modes = {
-        mode::bind(),
-        mode::Style::FULL,
-        mode::height(30),
-        mode::reverse(),
-        mode::cycle(),
-    }) {
+auto prompt(std::vector<T *> &&options,
+            const std::initializer_list<std::shared_ptr<mode::FzfMode>> &modes = {
+                mode::bind(),
+                mode::Style::FULL,
+                mode::height(30),
+                mode::reverse(),
+                mode::cycle(),
+            }) {
     return prompt_core<std::vector<T *>>(std::move(options), modes);
 }
 

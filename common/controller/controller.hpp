@@ -4,12 +4,14 @@
 #include "config/global_config.hpp"
 #include "fzf/fzf_modes.hpp"
 #include "fzf/fzf_prompt.hpp"
+#include <functional>
 #include <map>
 #include <memory>
-#include <print>
+#include <optional>
 #include <queue>
 #include <stdexcept>
 #include <string>
+#include <utility>
 #include <vector>
 
 namespace controller {
@@ -54,14 +56,11 @@ public:
 
     template <typename T> T prompt(std::vector<T> &&data) {
         std::vector<T> selected = {};
-        std::println("input queue size: {}", _inputQueue.size());
         if (!this->_inputQueue.empty()) {
-            selected = fzf::prompt(std::move(data),
-                                   {fzf::mode::pattern(_inputQueue.front())});
+            selected = fzf::prompt(std::move(data), {fzf::mode::pattern(_inputQueue.front())});
             _inputQueue.pop();
-        } else {
+        } else
             selected = fzf::prompt(std::move(data));
-        }
 
         if (selected.size() == 1) {
             return std::move(selected[0]);
@@ -70,16 +69,23 @@ public:
         }
     }
 
-    inline void addCommand(std::unique_ptr<command::Command> command) {
-        this->_commands.push_back(std::move(command));
-    }
+    std::string textPrompt(
+        const std::string & = "",
+        const std::function<bool(const std::string &)> & = [](const std::string &input) { return input != ""; },
+        const std::string & = ">>> ");
 
-    inline const config::GlobalConfiguration &getGlobalConfig() const noexcept {
-        return *_globalConfig;
+    inline void addCommand(std::unique_ptr<command::Command> command) { this->_commands.push_back(std::move(command)); }
+
+    std::optional<std::string> operator[](const std::string &key) {
+        if (_database.contains(key))
+            return _database[key];
+        else
+            return std::nullopt;
     }
-    inline const std::string &getTargetPath() const noexcept {
-        return _targetPath;
-    }
+    void addVariableValue(const std::string &key, std::string value) { _database[key] = std::move(value); }
+
+    inline const config::GlobalConfiguration &getGlobalConfig() const noexcept { return *_globalConfig; }
+    inline const std::string &getTargetPath() const noexcept { return _targetPath; }
 };
 
 } // namespace controller

@@ -1,8 +1,6 @@
 #pragma once
 
-#include <memory>
 #include <string>
-#include <vector>
 
 namespace controller {
 class Controller;
@@ -25,9 +23,7 @@ public:
     virtual std::string label() const noexcept = 0;
     virtual std::string description() const noexcept = 0;
 
-    virtual std::vector<std::unique_ptr<Command>>
-    getCommands() const noexcept = 0;
-    virtual int exec(controller::Controller *) noexcept = 0;
+    virtual int exec(controller::Controller &) noexcept = 0;
 };
 
 } // namespace command

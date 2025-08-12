@@ -14,8 +14,7 @@ std::optional<std::string> getGlobalConfigPath(std::string path) noexcept {
                 return path;
             else if (std::filesystem::exists(path + "/config.json"))
                 return path + '/';
-        } else if (std::filesystem::exists(path) &&
-                   path.ends_with("/config.json"))
+        } else if (std::filesystem::exists(path) && path.ends_with("/config.json"))
             return path.substr(0,
                                path.length() - 11); // config.json is 11 chars
         return std::nullopt;
@@ -23,21 +22,14 @@ std::optional<std::string> getGlobalConfigPath(std::string path) noexcept {
 
     // if no path was passed, then searching paths where configurator whould have stored config
     std::string home = util::home();
-    if (std::filesystem::exists(home + ".config/vecron/config.json")) {
-        return home + ".config/vecron/";
-    }
-    if (std::filesystem::exists(home + ".local/share/vecron/config.json")) {
-        return home + ".config/vecron/";
-    }
+    if (std::filesystem::exists(home + ".config/vecron/config.json")) { return home + ".config/vecron/"; }
+    if (std::filesystem::exists(home + ".local/share/vecron/config.json")) { return home + ".config/vecron/"; }
     return std::nullopt;
 }
 
-GlobalConfiguration::GlobalConfiguration(const std::string &path)
-    : _templatePath(path + "templates/") {
-}
+GlobalConfiguration::GlobalConfiguration(const std::string &path) : _templatePath(path + "templates/") {}
 
 GlobalConfiguration::GlobalConfiguration(std::optional<std::string> opt_path)
-    : config::GlobalConfiguration(opt_path ? opt_path.value() :
-                                             throw GlobalConfigNotFound{}) {}
+    : config::GlobalConfiguration(opt_path ? opt_path.value() : throw GlobalConfigNotFound{}) {}
 
 } // namespace config

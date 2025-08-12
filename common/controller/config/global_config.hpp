@@ -34,9 +34,7 @@ public:
     GlobalConfiguration &operator=(const GlobalConfiguration &) = delete;
     GlobalConfiguration &operator=(GlobalConfiguration &&) = delete;
 
-    inline const std::string &getTemplatePath() const noexcept {
-        return _templatePath;
-    }
+    inline const std::string &getTemplatePath() const noexcept { return _templatePath; }
 };
 
 } // namespace config

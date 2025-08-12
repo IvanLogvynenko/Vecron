@@ -7,7 +7,7 @@
 #include <vector>
 
 int main(int argc, char **argv) {
-	// Load args in std::vector, omit program name and pass them to controller
+    // Load args in std::vector, omit program name and pass them to controller
     std::vector<std::string> args_str = {};
     argc -= 1;
     args_str.reserve(static_cast<size_t>(argc));
@@ -17,9 +17,9 @@ int main(int argc, char **argv) {
     cli::clear();
     cli::printLogo();
 
-	controller.addCommand(std::make_unique<command::Debug>());
-	controller.addCommand(std::make_unique<command::NewCommand>());
+    controller.addCommand(std::make_unique<command::Debug>());
+    controller.addCommand(std::make_unique<command::NewCommand>());
 
     int exit_code = controller.start();
-	return exit_code;
+    return exit_code;
 }
