@@ -1,0 +1,5 @@
+{
+	"templateName": "cpp",
+	"build": "cmake --build build",
+	"run": "{{projectPath}}/build/main"
+}
