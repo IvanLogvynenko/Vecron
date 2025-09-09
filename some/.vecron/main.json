@@ -1,0 +1,10 @@
+{
+	"ProjectPath": "/home/ivan/Dev/Projects/vecron/some/",
+	"ProjectName": "some",
+	"DefaultEditor" : "nvim",
+	"InitBuilder": "cmake -S /home/ivan/Dev/Projects/vecron/some/ -B /home/ivan/Dev/Projects/vecron/some/build",
+	"Build" : 1,
+	"BuildReleaseCmd" : "cmake --build build",
+	"BuildDebugCmd" : "cmake --build build",
+	"BuildRunCmd" : "build/main"
+}

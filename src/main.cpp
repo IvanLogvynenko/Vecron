@@ -1,6 +1,8 @@
 #include "cli/common.hpp"
+#include "command/build.hpp"
 #include "command/debug.hpp"
 #include "command/new_command.hpp"
+#include "command/preprocess.hpp"
 #include "controller/controller.hpp"
 
 #include <memory>
@@ -19,7 +21,10 @@ int main(int argc, char **argv) {
 
     controller.addCommand(std::make_unique<command::Debug>());
     controller.addCommand(std::make_unique<command::NewCommand>());
+    controller.addCommand(std::make_unique<command::Build>());
+    controller.addCommand(std::make_unique<command::Preprocess>());
 
-    int exit_code = controller.start();
-    return exit_code;
+    // int exit_code = 
+		return controller.start();
+    // return exit_code;
 }

@@ -18,8 +18,8 @@ namespace config {
  */
 std::optional<std::string> getGlobalConfigPath(std::string = "") noexcept;
 
-class GlobalConfigNotFound : std::exception {};
-class GlobalConfigInvalid : std::exception {};
+class GlobalConfigNotFound : public std::exception {};
+class GlobalConfigInvalid : public std::exception {};
 
 class GlobalConfiguration {
 private:

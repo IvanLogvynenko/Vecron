@@ -7,3 +7,4 @@
 - build.sh
 - nested commands (at least such option)
 - rewrite everything in c++
+- make a shell wrapper to exec several commands in one shell

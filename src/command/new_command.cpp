@@ -58,8 +58,8 @@ int command::NewCommand::exec(controller::Controller &controller) noexcept {
                     std::regex pattern(R"(\{\{(\w+)\}\})");
 
                     std::string result;
-					
-					size_t lastPos = 0;
+
+                    size_t lastPos = 0;
                     for (std::sregex_iterator i = std::sregex_iterator(line.begin(), line.end(), pattern),
                                               end = std::sregex_iterator();
                          i != end;
@@ -67,23 +67,19 @@ int command::NewCommand::exec(controller::Controller &controller) noexcept {
                         const std::smatch &match = *i;
                         std::string key = match.str().substr(2, static_cast<size_t>(match.length()) - 4l);
 
-						result.append(line, lastPos, static_cast<size_t>(match.position()) - lastPos);
+                        result.append(line, lastPos, static_cast<size_t>(match.position()) - lastPos);
 
-						auto value = controller[key];
+                        auto value = controller[key];
                         if (value.has_value()) {
-							result.append(value.value());
-                            // result.replace(static_cast<size_t>(match.position()),
-                            //                static_cast<size_t>(match.length()),
-                            //                value.value());
+                            result.append(value.value());
                         } else {
                             std::lock_guard<std::mutex> guard(_noValueVarsLock);
                             _noValueVars.insert(key);
-							result.append(match.str());
+                            result.append(match.str());
                         }
-						lastPos = static_cast<size_t>(match.position()) + static_cast<size_t>(match.length());
+                        lastPos = static_cast<size_t>(match.position()) + static_cast<size_t>(match.length());
                     }
-					result.append(line, lastPos, line.size() - lastPos);
-					std::println("File: {}, Got line: {}, Resulting line: {}", outputFilePath, line, result);
+                    result.append(line, lastPos, line.size() - lastPos);
                     output << result << '\n';
                 }
 

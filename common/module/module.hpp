@@ -11,3 +11,12 @@
 // std::cout << "Finished execution\n";
 //
 // dlclose(module);
+//
+
+#pragma once
+
+namespace module {
+
+// placholder for now
+class Module {};
+} // namespace module

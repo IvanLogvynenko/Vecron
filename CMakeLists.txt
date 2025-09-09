@@ -28,6 +28,8 @@ target_include_directories(vecron PRIVATE ${CMAKE_SOURCE_DIR}/src)
 target_compile_options(vecron PRIVATE ${DEFAULT_COMPILE_OPTIONS})
 target_compile_definitions(vecron PRIVATE ENABLE_DESCRIPTION_DETECTION)
 target_link_libraries(vecron PRIVATE vecron_common nlohmann_json::nlohmann_json)
+target_include_directories(vecron PRIVATE luajit/src)
+target_link_libraries(vecron PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/luajit/src/libluajit.a dl)
 
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
     target_compile_options(vecron PRIVATE -O3 -DNDEBUG)
