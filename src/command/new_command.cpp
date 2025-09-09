@@ -13,7 +13,7 @@
 
 int command::NewCommand::exec(controller::Controller &controller) noexcept {
     std::string templatesPath = controller.getGlobalConfig().getTemplatePath();
-	std::string templateName = controller.prompt(fs::listDirectories(templatesPath));
+    std::string templateName = controller.prompt(fs::listDirectories(templatesPath));
     std::string selectedTemplatePath = templatesPath + templateName + "/";
     std::vector<std::thread> fileProcessors{};
 
@@ -57,24 +57,33 @@ int command::NewCommand::exec(controller::Controller &controller) noexcept {
                 for (std::string line; std::getline(input, line);) {
                     std::regex pattern(R"(\{\{(\w+)\}\})");
 
-                    std::string result = line;
-
+                    std::string result;
+					
+					size_t lastPos = 0;
                     for (std::sregex_iterator i = std::sregex_iterator(line.begin(), line.end(), pattern),
                                               end = std::sregex_iterator();
                          i != end;
                          i++) {
                         const std::smatch &match = *i;
                         std::string key = match.str().substr(2, static_cast<size_t>(match.length()) - 4l);
-                        auto value = controller[key];
+
+						result.append(line, lastPos, static_cast<size_t>(match.position()) - lastPos);
+
+						auto value = controller[key];
                         if (value.has_value()) {
-                            result.replace(static_cast<size_t>(match.position()),
-                                           static_cast<size_t>(match.length()),
-                                           value.value());
+							result.append(value.value());
+                            // result.replace(static_cast<size_t>(match.position()),
+                            //                static_cast<size_t>(match.length()),
+                            //                value.value());
                         } else {
                             std::lock_guard<std::mutex> guard(_noValueVarsLock);
                             _noValueVars.insert(key);
+							result.append(match.str());
                         }
+						lastPos = static_cast<size_t>(match.position()) + static_cast<size_t>(match.length());
                     }
+					result.append(line, lastPos, line.size() - lastPos);
+					std::println("File: {}, Got line: {}, Resulting line: {}", outputFilePath, line, result);
                     output << result << '\n';
                 }
 
@@ -85,10 +94,10 @@ int command::NewCommand::exec(controller::Controller &controller) noexcept {
     }
 
     for (auto &thread : fileProcessors) {
-		if (thread.joinable()) thread.join();
-	}
+        if (thread.joinable()) thread.join();
+    }
 
-	std::println("Copied template {}", templateName);
+    std::println("Copied template {}", templateName);
 
     if (_noValueVars.size() != 0) {
         std::println("Vecron Variables without value detected! Please provide values for:");
