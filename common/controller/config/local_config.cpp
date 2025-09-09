@@ -4,13 +4,13 @@
 #include <fstream>
 #include <nlohmann/json_fwd.hpp>
 #include <optional>
-#include <print>
+// #include <print>
 #include <utility>
 
 namespace config {
 
 LocalConfiguration::LocalConfiguration(std::string configPath) : _configPath(std::move(configPath)) {
-    std::println("main path: {}", _configPath + "main.json");
+    // std::println("main path: {}", _configPath + "main.json");
     if (std::filesystem::exists(_configPath + "main.json")) {
         std::ifstream mainFile{_configPath + "main.json"};
         nlohmann::json data = nlohmann::json::parse(mainFile);

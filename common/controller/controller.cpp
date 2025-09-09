@@ -40,8 +40,12 @@ Controller::Controller(const std::vector<std::string> &args) {
     if (targetPath == "") targetPath = std::filesystem::current_path();
     if (!targetPath.ends_with("/")) targetPath += "/";
     this->_targetPath = targetPath;
+
     this->_database["targetPath"] = targetPath;
+	//Loading it just to be able to use it
+    this->_database["projectPath"] = targetPath;
     this->_database["projectDir"] = targetPath;
+
     // INFO Probing for vecron dir
     if (std::filesystem::exists(targetPath + ".vecron")) {
 		// std::println("found .vecron!");
