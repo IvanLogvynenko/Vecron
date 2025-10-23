@@ -55,7 +55,6 @@ int command::NewCommand::exec(controller::Controller &controller) noexcept {
                 std::ofstream outputFile{outputFilePath, std::ios::out | std::ios::trunc};
                 if (!outputFile.is_open()) throw std::runtime_error("Error creating file: " + outputFilePath);
 				
-				std::println("from {} to {}", inputFilePath, outputFilePath);
 				auto noValueVars = controller.preprocessStringstream(inputFile, outputFile);
                 
                 inputFile.close();
