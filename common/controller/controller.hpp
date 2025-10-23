@@ -11,6 +11,7 @@
 #include <memory>
 #include <optional>
 #include <queue>
+#include <set>
 #include <stdexcept>
 #include <string>
 #include <utility>
@@ -35,6 +36,7 @@ private:
 
     std::queue<std::string> _inputQueue = {};
 
+    std::mutex _db_lock;
     std::map<std::string, std::string> _database;
 
     std::unique_ptr<config::GlobalConfiguration> _globalConfig;
@@ -82,14 +84,27 @@ public:
 
     inline void addCommand(std::unique_ptr<command::Command> command) { this->_commands.push_back(std::move(command)); }
 
-    std::optional<std::string> operator[](const std::string &key) {
+    inline std::optional<std::string> operator[](const std::string &key) { return this->getVariable(key); }
+    inline std::optional<std::string> getVariable(const std::string &key) {
         if (_database.contains(key))
             return _database[key];
         else
             return std::nullopt;
     }
+
     void addVariableValue(const std::string &key, std::string value) { _database[key] = std::move(value); }
     inline const std::map<std::string, std::string> &getAllVariables() { return this->_database; }
+
+    // INFO: Use safe version if you don't want to lock and unlock manually
+    // best suits for single line preprocessing
+    // If you have more data to be processed and you see that you will be (un)locking it often
+    // then you should lock it one, process stuff and unlock
+    void lockDataBase();
+    void unlockDataBase();
+	std::pair<std::string, std::set<std::string>> preprocessString(const std::string &);
+    std::pair<std::string, std::set<std::string>> preprocessStringSafe(const std::string &);
+	std::set<std::string> preprocessStringstream(std::istream &in, std::ostream &out);
+	std::set<std::string> preprocessStringstreamSafe(std::istream &in, std::ostream &out);
 
     inline const config::GlobalConfiguration &getGlobalConfig() const noexcept { return *_globalConfig; }
     inline const config::LocalConfiguration &getLocalConfig() const noexcept { return *_localConfig; }

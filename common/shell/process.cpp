@@ -8,7 +8,7 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-namespace common::util {
+namespace common::shell {
 
 ProcessException::ProcessException(std::string message, unsigned code)
     : _code(code), _message(std::move(message)) {
@@ -109,4 +109,4 @@ std::string Process::run(const std::string &command) {
     return p.run();
 }
 
-} // namespace common::util
+} // namespace common::shell

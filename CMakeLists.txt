@@ -3,6 +3,13 @@ project(vecron VERSION 0.0.1 LANGUAGES CXX)
 
 include(${CMAKE_SOURCE_DIR}/cmake/defaults.cmake)
 
+option(TEST_COVERAGE "Build with code coverage" ON)
+if(TEST_COVERAGE)
+	message("Adding checks to test for test cases covering code")
+	add_compile_options(-fprofile-instr-generate -fcoverage-mapping)
+	add_link_options(-fprofile-instr-generate -fcoverage-mapping)
+endif()
+
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Debug)
 	add_compile_options(-fsanitize=address,undefined -fno-omit-frame-pointer -g)
@@ -28,12 +35,29 @@ target_include_directories(vecron PRIVATE ${CMAKE_SOURCE_DIR}/src)
 target_compile_options(vecron PRIVATE ${DEFAULT_COMPILE_OPTIONS})
 target_compile_definitions(vecron PRIVATE ENABLE_DESCRIPTION_DETECTION)
 target_link_libraries(vecron PRIVATE vecron_common nlohmann_json::nlohmann_json)
-target_include_directories(vecron PRIVATE luajit/src)
-target_link_libraries(vecron PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/luajit/src/libluajit.a dl)
+# target_include_directories(vecron PRIVATE luajit/src)
+# target_link_libraries(vecron PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/luajit/src/libluajit.a dl)
 
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
     target_compile_options(vecron PRIVATE -O3 -DNDEBUG)
 endif()
 
 install(TARGETS vecron DESTINATION bin)
+
+# === Tests ===
+enable_testing()
+find_package(GTest CONFIG REQUIRED)
+
+file(GLOB_RECURSE VECRON_COMMON_TEST_SOURCES CONFIGURE_DEPENDS ${CMAKE_SOURCE_DIR}/test/common/*.cpp)
+add_executable(vecron_common_tests ${VECRON_COMMON_TEST_SOURCES})
+target_link_libraries(vecron_common_tests PRIVATE vecron_common GTest::gtest GTest::gtest_main)
+target_compile_options(vecron_common_tests PRIVATE -g)
+add_test(NAME vecron_common_tests COMMAND vecron_common_tests)
+
+file(GLOB_RECURSE VECRON_TEST_SOURCES CONFIGURE_DEPENDS ${CMAKE_SOURCE_DIR}/test/src/*.cpp)
+add_executable(vecron_tests ${VECRON_TEST_SOURCES} ${CPP_FILES})
+target_include_directories(vecron_tests PUBLIC ${CMAKE_SOURCE_DIR}/src)
+target_link_libraries(vecron_tests PRIVATE vecron_common GTest::gtest GTest::gtest_main)
+target_compile_options(vecron_tests PRIVATE -g)
+add_test(NAME vecron_tests COMMAND vecron_tests)
 

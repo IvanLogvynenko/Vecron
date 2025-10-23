@@ -35,15 +35,16 @@ int command::NewCommand::exec(controller::Controller &controller) noexcept {
 
     std::set<std::string> _noValueVars;
     std::mutex _noValueVarsLock;
-
+	
+	controller.lockDataBase();
     for (const auto &entry : fs::treeDirectory(selectedTemplatePath)) {
         fileProcessors.emplace_back(
             [&](const std::string &entry) {
                 std::string inputFilePath = selectedTemplatePath + entry;
                 std::string outputFilePath = projectPath + entry;
 
-                std::ifstream input{inputFilePath, std::ios::in};
-                if (!input.is_open()) throw std::runtime_error("Error opening file: " + inputFilePath);
+                std::ifstream inputFile{inputFilePath, std::ios::in};
+                if (!inputFile.is_open()) throw std::runtime_error("Error opening file: " + inputFilePath);
 
                 // if it is in the nested directories, create directory
                 if (outputFilePath.contains("/")) {
@@ -51,47 +52,25 @@ int command::NewCommand::exec(controller::Controller &controller) noexcept {
                     std::filesystem::create_directories(tmp.parent_path());
                 }
 
-                std::ofstream output{outputFilePath, std::ios::out | std::ios::trunc};
-                if (!output.is_open()) throw std::runtime_error("Error creating file: " + outputFilePath);
+                std::ofstream outputFile{outputFilePath, std::ios::out | std::ios::trunc};
+                if (!outputFile.is_open()) throw std::runtime_error("Error creating file: " + outputFilePath);
+				
+				std::println("from {} to {}", inputFilePath, outputFilePath);
+				auto noValueVars = controller.preprocessStringstream(inputFile, outputFile);
+                
+                inputFile.close();
+                outputFile.close();
 
-                for (std::string line; std::getline(input, line);) {
-                    std::regex pattern(R"(\{\{(\w+)\}\})");
-
-                    std::string result;
-
-                    size_t lastPos = 0;
-                    for (std::sregex_iterator i = std::sregex_iterator(line.begin(), line.end(), pattern),
-                                              end = std::sregex_iterator();
-                         i != end;
-                         i++) {
-                        const std::smatch &match = *i;
-                        std::string key = match.str().substr(2, static_cast<size_t>(match.length()) - 4l);
-
-                        result.append(line, lastPos, static_cast<size_t>(match.position()) - lastPos);
-
-                        auto value = controller[key];
-                        if (value.has_value()) {
-                            result.append(value.value());
-                        } else {
-                            std::lock_guard<std::mutex> guard(_noValueVarsLock);
-                            _noValueVars.insert(key);
-                            result.append(match.str());
-                        }
-                        lastPos = static_cast<size_t>(match.position()) + static_cast<size_t>(match.length());
-                    }
-                    result.append(line, lastPos, line.size() - lastPos);
-                    output << result << '\n';
-                }
-
-                input.close();
-                output.close();
+				std::lock_guard<std::mutex> guard(_noValueVarsLock);
+				_noValueVars.insert_range(noValueVars);
             },
             entry);
     }
-
     for (auto &thread : fileProcessors) {
         if (thread.joinable()) thread.join();
     }
+
+	controller.unlockDataBase();
 
     std::println("Copied template {}", templateName);
 

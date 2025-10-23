@@ -1,5 +1,5 @@
 #include "common.hpp"
-#include "util/process.hpp"
+#include "shell/process.hpp"
 #include <iostream>
 #include <print>
 #include <sys/ioctl.h>
@@ -43,7 +43,7 @@ void printLogo() {
 }
 
 void clear() {
-	common::util::Process::run("clear");
+	common::shell::Process::run("clear");
 }
 
 } // namespace cli

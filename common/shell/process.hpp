@@ -3,7 +3,7 @@
 #include <exception>
 #include <sstream>
 
-namespace common::util {
+namespace common::shell {
 
 class ProcessException : public std::exception {
 private:
@@ -48,4 +48,4 @@ public:
     }
 };
 
-} // namespace common::util
+} // namespace common::shell

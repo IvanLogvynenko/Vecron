@@ -5,7 +5,7 @@
 #include "fzf_prompt_helpers.hpp"
 
 #include "util/dereferencers.hpp"
-#include "util/process.hpp"
+#include "shell/process.hpp"
 #include "util/split.hpp"
 
 #include <algorithm>
@@ -63,7 +63,7 @@ Container prompt_core(Container &&options, const std::initializer_list<std::shar
     }
 #endif
 
-    common::util::Process p(command);
+    common::shell::Process p(command);
 
     p << input;
 

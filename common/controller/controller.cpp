@@ -1,15 +1,19 @@
 #include "controller.hpp"
 #include "command/command.hpp"
 #include "config/global_config.hpp"
-#include "controller/config/local_config.hpp"
 #include "controller/config/invalid_config_exception.hpp"
+#include "controller/config/local_config.hpp"
 #include "util/args.hpp"
 #include "util/home.hpp"
+#include <ctime>
 #include <filesystem>
 #include <functional>
 #include <iostream>
 #include <memory>
+#include <mutex>
+#include <ostream>
 #include <print>
+#include <regex>
 #include <string>
 
 namespace controller {
@@ -42,20 +46,17 @@ Controller::Controller(const std::vector<std::string> &args) {
     this->_targetPath = targetPath;
 
     this->_database["targetPath"] = targetPath;
-	//Loading it just to be able to use it
+    //Loading it just to be able to use it
     this->_database["projectPath"] = targetPath;
     this->_database["projectDir"] = targetPath;
 
     // INFO Probing for vecron dir
     if (std::filesystem::exists(targetPath + ".vecron")) {
-		// std::println("found .vecron!");
-		try {
-			this->_localConfig = std::make_unique<config::LocalConfiguration>(targetPath + ".vecron/");
-		} catch (config::InvalidConfig e) {
-			std::println("Caught error while reading local config:\n", e.what());
-		}
-
-	}
+        // std::println("found .vecron!");
+        try {
+            this->_localConfig = std::make_unique<config::LocalConfiguration>(targetPath + ".vecron/");
+        } catch (config::InvalidConfig e) { std::println("Caught error while reading local config:\n", e.what()); }
+    }
 
     this->_inputQueue.push_range(rest);
 }
@@ -90,6 +91,61 @@ std::string Controller::textPrompt(const std::string &msg,
         std::getline(std::cin, userInput);
     }
     return userInput;
+}
+
+void Controller::lockDataBase() {
+    if (!this->_db_lock.try_lock())
+        std::cout << "[DEBUG WARNING] Couldn't asquire lock for Controller::_database as it was already locked\n";
+}
+void Controller::unlockDataBase() { this->_db_lock.unlock(); }
+// TODO: check if set is copied for each std::pair construction
+std::pair<std::string, std::set<std::string>> Controller::preprocessString(const std::string &input) {
+    std::regex pattern(R"(\{\{(\w+)\}\})");
+
+    std::string result;
+
+    size_t lastPos = 0;
+
+    std::set<std::string> noValueVars = {};
+
+    std::sregex_iterator i = std::sregex_iterator(input.begin(), input.end(), pattern);
+    for (std::sregex_iterator end = std::sregex_iterator(); i != end; i++) {
+        const std::smatch &match = *i;
+        std::string key = match.str().substr(2, static_cast<size_t>(match.length()) - 4l);
+
+        result.append(input, lastPos, static_cast<size_t>(match.position()) - lastPos);
+
+        auto value = this->getVariable(key);
+        if (value.has_value()) {
+            result.append(value.value());
+        } else {
+            noValueVars.insert(key);
+            result.append(match.str());
+        }
+        lastPos = static_cast<size_t>(match.position()) + static_cast<size_t>(match.length());
+    }
+    result.append(input, lastPos, input.size() - lastPos);
+    return {result, noValueVars};
+}
+std::pair<std::string, std::set<std::string>> Controller::preprocessStringSafe(const std::string &input) {
+    std::lock_guard<std::mutex> lock{this->_db_lock};
+    return preprocessString(input);
+}
+// TODO: Make line reading unlimited
+std::set<std::string> Controller::preprocessStringstream(std::istream &in, std::ostream &out) {
+    std::set<std::string> noValueVars = {};
+    std::string line = "";
+    line.reserve(100);
+    while (std::getline(in, line)) {
+        auto [result, tmpVars] = this->preprocessString(line);
+        noValueVars.insert_range(tmpVars);
+        out << result << "\n";
+    }
+    return noValueVars;
+}
+std::set<std::string> Controller::preprocessStringstreamSafe(std::istream &in, std::ostream &out) {
+    std::lock_guard<std::mutex> lock{this->_db_lock};
+    return preprocessStringstream(in, out);
 }
 
 } // namespace controller
