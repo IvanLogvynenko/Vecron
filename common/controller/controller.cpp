@@ -13,7 +13,6 @@
 #include <mutex>
 #include <ostream>
 #include <print>
-#include <regex>
 #include <string>
 
 namespace controller {
@@ -100,15 +99,13 @@ void Controller::lockDataBase() {
 void Controller::unlockDataBase() { this->_db_lock.unlock(); }
 // TODO: check if set is copied for each std::pair construction
 std::pair<std::string, std::set<std::string>> Controller::preprocessString(const std::string &input) {
-    std::regex pattern(R"(\{\{(\w+)\}\})");
-
     std::string result;
 
     size_t lastPos = 0;
 
     std::set<std::string> noValueVars = {};
 
-    std::sregex_iterator i = std::sregex_iterator(input.begin(), input.end(), pattern);
+    std::sregex_iterator i = std::sregex_iterator(input.begin(), input.end(), this->pattern);
     for (std::sregex_iterator end = std::sregex_iterator(); i != end; i++) {
         const std::smatch &match = *i;
         std::string key = match.str().substr(2, static_cast<size_t>(match.length()) - 4l);

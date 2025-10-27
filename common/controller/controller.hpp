@@ -16,6 +16,7 @@
 #include <string>
 #include <utility>
 #include <vector>
+#include <regex>
 
 namespace controller {
 
@@ -32,6 +33,8 @@ namespace controller {
  */
 class Controller {
 private:
+	std::regex pattern{R"(\{\{(\w+)\}\})"};
+
     std::vector<std::unique_ptr<command::Command>> _commands = {};
 
     std::queue<std::string> _inputQueue = {};
