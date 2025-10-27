@@ -67,8 +67,8 @@ void Shell::startShell(const std::string& shell_path) {
     }
 }
 
-Shell::CommandResult Shell::execute(const std::string& command) {
-    CommandResult result;
+Shell::CommandExecutionResult Shell::execute(const std::string& command) {
+    CommandExecutionResult result;
     
     if (!is_active) {
         result.error = "Shell is not active";

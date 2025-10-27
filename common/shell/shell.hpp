@@ -15,8 +15,11 @@ private:
     pid_t pid;
     bool is_active;
 
+	void startShell(const std::string& shell_path);
+	std::string readFromPipe(int pipe_fd) const;
+	void writeToPipe(const std::string& data) const;
 public:
-    struct CommandResult {
+    struct CommandExecutionResult {
         int exit_code;
         std::string output;
         std::string error;
@@ -26,13 +29,8 @@ public:
     Shell(const std::string& shell = "/bin/sh");
     ~Shell();
 
-    CommandResult execute(const std::string& command);
+    CommandExecutionResult execute(const std::string& command);
     bool isActive() const { return is_active; }
-
-private:
-    void startShell(const std::string& shell_path);
-    std::string readFromPipe(int pipe_fd) const;
-    void writeToPipe(const std::string& data) const;
 };
 
 } // namespace common::shell
