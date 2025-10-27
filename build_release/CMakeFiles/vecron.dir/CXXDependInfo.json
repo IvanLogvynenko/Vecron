@@ -1,0 +1,67 @@
+{
+	"bmi-installation" : 
+	{
+		"destination" : "bin",
+		"message-level" : "",
+		"permissions" : "",
+		"script-location" : "/home/ivan/Dev/Projects/vecron/build_release/CMakeFiles/vecron.dir/install-cxx-module-bmi-Release.cmake"
+	},
+	"compiler-frontend-variant" : "GNU",
+	"compiler-id" : "Clang",
+	"compiler-simulate-id" : "",
+	"config" : "Release",
+	"cxx-modules" : {},
+	"database-info" : null,
+	"dir-cur-bld" : "/home/ivan/Dev/Projects/vecron/build_release",
+	"dir-cur-src" : "/home/ivan/Dev/Projects/vecron",
+	"dir-top-bld" : "/home/ivan/Dev/Projects/vecron/build_release",
+	"dir-top-src" : "/home/ivan/Dev/Projects/vecron",
+	"exports" : [],
+	"forward-modules-from-target-dirs" : [],
+	"include-dirs" : 
+	[
+		"/home/ivan/Dev/Projects/vecron/src",
+		"/home/ivan/Dev/Projects/vecron/common"
+	],
+	"language" : "CXX",
+	"linked-target-dirs" : [],
+	"module-dir" : "/home/ivan/Dev/Projects/vecron/build_release/CMakeFiles/vecron.dir",
+	"sources" : 
+	{
+		"CMakeFiles/vecron.dir/src/cli/common.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/src/cli/common.cpp"
+		},
+		"CMakeFiles/vecron.dir/src/command/build.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/src/command/build.cpp"
+		},
+		"CMakeFiles/vecron.dir/src/command/debug.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/src/command/debug.cpp"
+		},
+		"CMakeFiles/vecron.dir/src/command/new_command.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/src/command/new_command.cpp"
+		},
+		"CMakeFiles/vecron.dir/src/command/preprocess.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/src/command/preprocess.cpp"
+		},
+		"CMakeFiles/vecron.dir/src/fs/list.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/src/fs/list.cpp"
+		},
+		"CMakeFiles/vecron.dir/src/main.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/src/main.cpp"
+		}
+	}
+}

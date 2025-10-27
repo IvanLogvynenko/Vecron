@@ -1,0 +1,35 @@
+{
+	"bmi-installation" : null,
+	"compiler-frontend-variant" : "GNU",
+	"compiler-id" : "Clang",
+	"compiler-simulate-id" : "",
+	"config" : "Release",
+	"cxx-modules" : {},
+	"database-info" : null,
+	"dir-cur-bld" : "/home/ivan/Dev/Projects/vecron/build_release",
+	"dir-cur-src" : "/home/ivan/Dev/Projects/vecron",
+	"dir-top-bld" : "/home/ivan/Dev/Projects/vecron/build_release",
+	"dir-top-src" : "/home/ivan/Dev/Projects/vecron",
+	"exports" : [],
+	"forward-modules-from-target-dirs" : [],
+	"include-dirs" : 
+	[
+		"/home/ivan/Dev/Projects/vecron/common"
+	],
+	"language" : "CXX",
+	"linked-target-dirs" : [],
+	"module-dir" : "/home/ivan/Dev/Projects/vecron/build_release/CMakeFiles/vecron_common_tests.dir",
+	"sources" : 
+	{
+		"CMakeFiles/vecron_common_tests.dir/test/common/main.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/test/common/main.cpp"
+		},
+		"CMakeFiles/vecron_common_tests.dir/test/common/shell.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/test/common/shell.cpp"
+		}
+	}
+}

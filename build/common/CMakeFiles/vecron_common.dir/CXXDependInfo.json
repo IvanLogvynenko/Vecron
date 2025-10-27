@@ -1,0 +1,130 @@
+{
+	"bmi-installation" : null,
+	"compiler-frontend-variant" : "GNU",
+	"compiler-id" : "Clang",
+	"compiler-simulate-id" : "",
+	"config" : "Release",
+	"cxx-modules" : {},
+	"database-info" : null,
+	"dir-cur-bld" : "/home/ivan/Dev/Projects/vecron/build/common",
+	"dir-cur-src" : "/home/ivan/Dev/Projects/vecron/common",
+	"dir-top-bld" : "/home/ivan/Dev/Projects/vecron/build",
+	"dir-top-src" : "/home/ivan/Dev/Projects/vecron",
+	"exports" : [],
+	"forward-modules-from-target-dirs" : [],
+	"include-dirs" : 
+	[
+		"/home/ivan/Dev/Projects/vecron/common"
+	],
+	"language" : "CXX",
+	"linked-target-dirs" : [],
+	"module-dir" : "/home/ivan/Dev/Projects/vecron/build/common/CMakeFiles/vecron_common.dir",
+	"sources" : 
+	{
+		"common/CMakeFiles/vecron_common.dir/controller/config/global_config.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/common/controller/config/global_config.cpp"
+		},
+		"common/CMakeFiles/vecron_common.dir/controller/config/local_config.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/common/controller/config/local_config.cpp"
+		},
+		"common/CMakeFiles/vecron_common.dir/controller/controller.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/common/controller/controller.cpp"
+		},
+		"common/CMakeFiles/vecron_common.dir/fzf/fzf_modes.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/common/fzf/fzf_modes.cpp"
+		},
+		"common/CMakeFiles/vecron_common.dir/fzf/fzf_modes/bind.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/common/fzf/fzf_modes/bind.cpp"
+		},
+		"common/CMakeFiles/vecron_common.dir/fzf/fzf_modes/cycle.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/common/fzf/fzf_modes/cycle.cpp"
+		},
+		"common/CMakeFiles/vecron_common.dir/fzf/fzf_modes/header.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/common/fzf/fzf_modes/header.cpp"
+		},
+		"common/CMakeFiles/vecron_common.dir/fzf/fzf_modes/height.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/common/fzf/fzf_modes/height.cpp"
+		},
+		"common/CMakeFiles/vecron_common.dir/fzf/fzf_modes/infoPosition.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/common/fzf/fzf_modes/infoPosition.cpp"
+		},
+		"common/CMakeFiles/vecron_common.dir/fzf/fzf_modes/multiselect.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/common/fzf/fzf_modes/multiselect.cpp"
+		},
+		"common/CMakeFiles/vecron_common.dir/fzf/fzf_modes/pattern.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/common/fzf/fzf_modes/pattern.cpp"
+		},
+		"common/CMakeFiles/vecron_common.dir/fzf/fzf_modes/prompt.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/common/fzf/fzf_modes/prompt.cpp"
+		},
+		"common/CMakeFiles/vecron_common.dir/fzf/fzf_modes/reverse.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/common/fzf/fzf_modes/reverse.cpp"
+		},
+		"common/CMakeFiles/vecron_common.dir/fzf/fzf_modes/style.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/common/fzf/fzf_modes/style.cpp"
+		},
+		"common/CMakeFiles/vecron_common.dir/fzf/fzf_prompt.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/common/fzf/fzf_prompt.cpp"
+		},
+		"common/CMakeFiles/vecron_common.dir/module/module.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/common/module/module.cpp"
+		},
+		"common/CMakeFiles/vecron_common.dir/shell/process.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/common/shell/process.cpp"
+		},
+		"common/CMakeFiles/vecron_common.dir/shell/shell.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/common/shell/shell.cpp"
+		},
+		"common/CMakeFiles/vecron_common.dir/util/args.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/common/util/args.cpp"
+		},
+		"common/CMakeFiles/vecron_common.dir/util/home.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/common/util/home.cpp"
+		},
+		"common/CMakeFiles/vecron_common.dir/util/split.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/ivan/Dev/Projects/vecron/common/util/split.cpp"
+		}
+	}
+}

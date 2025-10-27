@@ -1,0 +1,2018 @@
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineSystem.cmake:12 (find_program)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_UNAME"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "uname"
+    candidate_directories:
+      - "/home/ivan/Android/Sdk/platform-tools/"
+      - "/home/ivan/.local/bin/"
+      - "/home/ivan/.cargo/bin/"
+      - "/home/ivan/Dev/Lib/flutter/bin/"
+      - "/home/ivan/go/bin/"
+      - "/home/ivan/Dev/scripts/utils/"
+      - "/home/ivan/.local/share/nvim/mason/bin/"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/"
+      - "/home/ivan/.local/share/zinit/polaris/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/var/lib/snapd/snap/bin/"
+      - "/bin/"
+    searched_directories:
+      - "/home/ivan/Android/Sdk/platform-tools/uname"
+      - "/home/ivan/.local/bin/uname"
+      - "/home/ivan/.cargo/bin/uname"
+      - "/home/ivan/Dev/Lib/flutter/bin/uname"
+      - "/home/ivan/go/bin/uname"
+      - "/home/ivan/Dev/scripts/utils/uname"
+      - "/home/ivan/.local/share/nvim/mason/bin/uname"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/uname"
+      - "/home/ivan/.local/share/zinit/polaris/bin/uname"
+      - "/usr/local/sbin/uname"
+      - "/usr/local/bin/uname"
+    found: "/usr/bin/uname"
+    search_context:
+      ENV{PATH}:
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/nvim/mason/bin"
+        - "/home/ivan/.nvm/versions/node/v22.17.0/bin"
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/zinit/polaris/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/var/lib/snapd/snap/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineSystem.cmake:212 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The system is: Linux - 6.17.4-arch2-1 - x86_64
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeNinjaFindMake.cmake:5 (find_program)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_MAKE_PROGRAM"
+    description: "Program used to build from build.ninja files."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ninja-build"
+      - "ninja"
+      - "samu"
+    candidate_directories:
+      - "/home/ivan/Android/Sdk/platform-tools/"
+      - "/home/ivan/.local/bin/"
+      - "/home/ivan/.cargo/bin/"
+      - "/home/ivan/Dev/Lib/flutter/bin/"
+      - "/home/ivan/go/bin/"
+      - "/home/ivan/Dev/scripts/utils/"
+      - "/home/ivan/.local/share/nvim/mason/bin/"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/"
+      - "/home/ivan/.local/share/zinit/polaris/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/var/lib/snapd/snap/bin/"
+    searched_directories:
+      - "/home/ivan/Android/Sdk/platform-tools/ninja-build"
+      - "/home/ivan/Android/Sdk/platform-tools/ninja"
+      - "/home/ivan/Android/Sdk/platform-tools/samu"
+      - "/home/ivan/.local/bin/ninja-build"
+      - "/home/ivan/.local/bin/ninja"
+      - "/home/ivan/.local/bin/samu"
+      - "/home/ivan/.cargo/bin/ninja-build"
+      - "/home/ivan/.cargo/bin/ninja"
+      - "/home/ivan/.cargo/bin/samu"
+      - "/home/ivan/Dev/Lib/flutter/bin/ninja-build"
+      - "/home/ivan/Dev/Lib/flutter/bin/ninja"
+      - "/home/ivan/Dev/Lib/flutter/bin/samu"
+      - "/home/ivan/go/bin/ninja-build"
+      - "/home/ivan/go/bin/ninja"
+      - "/home/ivan/go/bin/samu"
+      - "/home/ivan/Dev/scripts/utils/ninja-build"
+      - "/home/ivan/Dev/scripts/utils/ninja"
+      - "/home/ivan/Dev/scripts/utils/samu"
+      - "/home/ivan/.local/share/nvim/mason/bin/ninja-build"
+      - "/home/ivan/.local/share/nvim/mason/bin/ninja"
+      - "/home/ivan/.local/share/nvim/mason/bin/samu"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/ninja-build"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/ninja"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/samu"
+      - "/home/ivan/.local/share/zinit/polaris/bin/ninja-build"
+      - "/home/ivan/.local/share/zinit/polaris/bin/ninja"
+      - "/home/ivan/.local/share/zinit/polaris/bin/samu"
+      - "/usr/local/sbin/ninja-build"
+      - "/usr/local/sbin/ninja"
+      - "/usr/local/sbin/samu"
+      - "/usr/local/bin/ninja-build"
+      - "/usr/local/bin/ninja"
+      - "/usr/local/bin/samu"
+      - "/usr/bin/ninja-build"
+    found: "/usr/bin/ninja"
+    search_context:
+      ENV{PATH}:
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/nvim/mason/bin"
+        - "/home/ivan/.nvm/versions/node/v22.17.0/bin"
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/zinit/polaris/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/var/lib/snapd/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompiler.cmake:115 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:71 (_cmake_find_compiler_path)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER_WITH_PATH"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "clang++"
+    candidate_directories:
+      - "/home/ivan/Android/Sdk/platform-tools/"
+      - "/home/ivan/.local/bin/"
+      - "/home/ivan/.cargo/bin/"
+      - "/home/ivan/Dev/Lib/flutter/bin/"
+      - "/home/ivan/go/bin/"
+      - "/home/ivan/Dev/scripts/utils/"
+      - "/home/ivan/.local/share/nvim/mason/bin/"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/"
+      - "/home/ivan/.local/share/zinit/polaris/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/var/lib/snapd/snap/bin/"
+    searched_directories:
+      - "/home/ivan/Android/Sdk/platform-tools/clang++"
+      - "/home/ivan/.local/bin/clang++"
+      - "/home/ivan/.cargo/bin/clang++"
+      - "/home/ivan/Dev/Lib/flutter/bin/clang++"
+      - "/home/ivan/go/bin/clang++"
+      - "/home/ivan/Dev/scripts/utils/clang++"
+      - "/home/ivan/.local/share/nvim/mason/bin/clang++"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/clang++"
+      - "/home/ivan/.local/share/zinit/polaris/bin/clang++"
+      - "/usr/local/sbin/clang++"
+      - "/usr/local/bin/clang++"
+    found: "/usr/bin/clang++"
+    search_context:
+      ENV{PATH}:
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/nvim/mason/bin"
+        - "/home/ivan/.nvm/versions/node/v22.17.0/bin"
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/zinit/polaris/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/var/lib/snapd/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "/usr/share/cmake/Modules/"
+    found: "/usr/share/cmake/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/nvim/mason/bin"
+        - "/home/ivan/.nvm/versions/node/v22.17.0/bin"
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/zinit/polaris/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/var/lib/snapd/snap/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /usr/bin/clang++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+      
+      The CXX compiler identification is Clang, found in:
+        /home/ivan/Dev/Projects/vecron/build/CMakeFiles/4.1.2/CompilerIdCXX/a.out
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_AR"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-ar"
+      - "ar"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/ivan/Android/Sdk/platform-tools/"
+      - "/home/ivan/.local/bin/"
+      - "/home/ivan/.cargo/bin/"
+      - "/home/ivan/Dev/Lib/flutter/bin/"
+      - "/home/ivan/go/bin/"
+      - "/home/ivan/Dev/scripts/utils/"
+      - "/home/ivan/.local/share/nvim/mason/bin/"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/"
+      - "/home/ivan/.local/share/zinit/polaris/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/var/lib/snapd/snap/bin/"
+    found: "/usr/bin/llvm-ar"
+    search_context:
+      ENV{PATH}:
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/nvim/mason/bin"
+        - "/home/ivan/.nvm/versions/node/v22.17.0/bin"
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/zinit/polaris/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/var/lib/snapd/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_RANLIB"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-ranlib"
+      - "ranlib"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/ivan/Android/Sdk/platform-tools/"
+      - "/home/ivan/.local/bin/"
+      - "/home/ivan/.cargo/bin/"
+      - "/home/ivan/Dev/Lib/flutter/bin/"
+      - "/home/ivan/go/bin/"
+      - "/home/ivan/Dev/scripts/utils/"
+      - "/home/ivan/.local/share/nvim/mason/bin/"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/"
+      - "/home/ivan/.local/share/zinit/polaris/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/var/lib/snapd/snap/bin/"
+    found: "/usr/bin/llvm-ranlib"
+    search_context:
+      ENV{PATH}:
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/nvim/mason/bin"
+        - "/home/ivan/.nvm/versions/node/v22.17.0/bin"
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/zinit/polaris/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/var/lib/snapd/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_STRIP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-strip"
+      - "strip"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/ivan/Android/Sdk/platform-tools/"
+      - "/home/ivan/.local/bin/"
+      - "/home/ivan/.cargo/bin/"
+      - "/home/ivan/Dev/Lib/flutter/bin/"
+      - "/home/ivan/go/bin/"
+      - "/home/ivan/Dev/scripts/utils/"
+      - "/home/ivan/.local/share/nvim/mason/bin/"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/"
+      - "/home/ivan/.local/share/zinit/polaris/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/var/lib/snapd/snap/bin/"
+    found: "/usr/bin/llvm-strip"
+    search_context:
+      ENV{PATH}:
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/nvim/mason/bin"
+        - "/home/ivan/.nvm/versions/node/v22.17.0/bin"
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/zinit/polaris/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/var/lib/snapd/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_LINKER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ld.lld"
+      - "ld"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/ivan/Android/Sdk/platform-tools/"
+      - "/home/ivan/.local/bin/"
+      - "/home/ivan/.cargo/bin/"
+      - "/home/ivan/Dev/Lib/flutter/bin/"
+      - "/home/ivan/go/bin/"
+      - "/home/ivan/Dev/scripts/utils/"
+      - "/home/ivan/.local/share/nvim/mason/bin/"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/"
+      - "/home/ivan/.local/share/zinit/polaris/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/var/lib/snapd/snap/bin/"
+    found: "/usr/bin/ld.lld"
+    search_context:
+      ENV{PATH}:
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/nvim/mason/bin"
+        - "/home/ivan/.nvm/versions/node/v22.17.0/bin"
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/zinit/polaris/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/var/lib/snapd/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_NM"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-nm"
+      - "nm"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/ivan/Android/Sdk/platform-tools/"
+      - "/home/ivan/.local/bin/"
+      - "/home/ivan/.cargo/bin/"
+      - "/home/ivan/Dev/Lib/flutter/bin/"
+      - "/home/ivan/go/bin/"
+      - "/home/ivan/Dev/scripts/utils/"
+      - "/home/ivan/.local/share/nvim/mason/bin/"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/"
+      - "/home/ivan/.local/share/zinit/polaris/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/var/lib/snapd/snap/bin/"
+    found: "/usr/bin/llvm-nm"
+    search_context:
+      ENV{PATH}:
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/nvim/mason/bin"
+        - "/home/ivan/.nvm/versions/node/v22.17.0/bin"
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/zinit/polaris/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/var/lib/snapd/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_OBJDUMP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-objdump"
+      - "objdump"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/ivan/Android/Sdk/platform-tools/"
+      - "/home/ivan/.local/bin/"
+      - "/home/ivan/.cargo/bin/"
+      - "/home/ivan/Dev/Lib/flutter/bin/"
+      - "/home/ivan/go/bin/"
+      - "/home/ivan/Dev/scripts/utils/"
+      - "/home/ivan/.local/share/nvim/mason/bin/"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/"
+      - "/home/ivan/.local/share/zinit/polaris/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/var/lib/snapd/snap/bin/"
+    found: "/usr/bin/llvm-objdump"
+    search_context:
+      ENV{PATH}:
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/nvim/mason/bin"
+        - "/home/ivan/.nvm/versions/node/v22.17.0/bin"
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/zinit/polaris/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/var/lib/snapd/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_OBJCOPY"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-objcopy"
+      - "objcopy"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/ivan/Android/Sdk/platform-tools/"
+      - "/home/ivan/.local/bin/"
+      - "/home/ivan/.cargo/bin/"
+      - "/home/ivan/Dev/Lib/flutter/bin/"
+      - "/home/ivan/go/bin/"
+      - "/home/ivan/Dev/scripts/utils/"
+      - "/home/ivan/.local/share/nvim/mason/bin/"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/"
+      - "/home/ivan/.local/share/zinit/polaris/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/var/lib/snapd/snap/bin/"
+    found: "/usr/bin/llvm-objcopy"
+    search_context:
+      ENV{PATH}:
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/nvim/mason/bin"
+        - "/home/ivan/.nvm/versions/node/v22.17.0/bin"
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/zinit/polaris/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/var/lib/snapd/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_READELF"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-readelf"
+      - "readelf"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/ivan/Android/Sdk/platform-tools/"
+      - "/home/ivan/.local/bin/"
+      - "/home/ivan/.cargo/bin/"
+      - "/home/ivan/Dev/Lib/flutter/bin/"
+      - "/home/ivan/go/bin/"
+      - "/home/ivan/Dev/scripts/utils/"
+      - "/home/ivan/.local/share/nvim/mason/bin/"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/"
+      - "/home/ivan/.local/share/zinit/polaris/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/var/lib/snapd/snap/bin/"
+    found: "/usr/bin/llvm-readelf"
+    search_context:
+      ENV{PATH}:
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/nvim/mason/bin"
+        - "/home/ivan/.nvm/versions/node/v22.17.0/bin"
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/zinit/polaris/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/var/lib/snapd/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_DLLTOOL"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-dlltool"
+      - "dlltool"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/ivan/Android/Sdk/platform-tools/"
+      - "/home/ivan/.local/bin/"
+      - "/home/ivan/.cargo/bin/"
+      - "/home/ivan/Dev/Lib/flutter/bin/"
+      - "/home/ivan/go/bin/"
+      - "/home/ivan/Dev/scripts/utils/"
+      - "/home/ivan/.local/share/nvim/mason/bin/"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/"
+      - "/home/ivan/.local/share/zinit/polaris/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/var/lib/snapd/snap/bin/"
+    found: "/usr/bin/llvm-dlltool"
+    search_context:
+      ENV{PATH}:
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/nvim/mason/bin"
+        - "/home/ivan/.nvm/versions/node/v22.17.0/bin"
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/zinit/polaris/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/var/lib/snapd/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_ADDR2LINE"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-addr2line"
+      - "addr2line"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/ivan/Android/Sdk/platform-tools/"
+      - "/home/ivan/.local/bin/"
+      - "/home/ivan/.cargo/bin/"
+      - "/home/ivan/Dev/Lib/flutter/bin/"
+      - "/home/ivan/go/bin/"
+      - "/home/ivan/Dev/scripts/utils/"
+      - "/home/ivan/.local/share/nvim/mason/bin/"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/"
+      - "/home/ivan/.local/share/zinit/polaris/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/var/lib/snapd/snap/bin/"
+    found: "/usr/bin/llvm-addr2line"
+    search_context:
+      ENV{PATH}:
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/nvim/mason/bin"
+        - "/home/ivan/.nvm/versions/node/v22.17.0/bin"
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/zinit/polaris/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/var/lib/snapd/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_TAPI"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "tapi"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/ivan/Android/Sdk/platform-tools/"
+      - "/home/ivan/.local/bin/"
+      - "/home/ivan/.cargo/bin/"
+      - "/home/ivan/Dev/Lib/flutter/bin/"
+      - "/home/ivan/go/bin/"
+      - "/home/ivan/Dev/scripts/utils/"
+      - "/home/ivan/.local/share/nvim/mason/bin/"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/"
+      - "/home/ivan/.local/share/zinit/polaris/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/var/lib/snapd/snap/bin/"
+    searched_directories:
+      - "/usr/bin/tapi"
+      - "/home/ivan/Android/Sdk/platform-tools/tapi"
+      - "/home/ivan/.local/bin/tapi"
+      - "/home/ivan/.cargo/bin/tapi"
+      - "/home/ivan/Dev/Lib/flutter/bin/tapi"
+      - "/home/ivan/go/bin/tapi"
+      - "/home/ivan/Dev/scripts/utils/tapi"
+      - "/home/ivan/.local/share/nvim/mason/bin/tapi"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/tapi"
+      - "/home/ivan/.local/share/zinit/polaris/bin/tapi"
+      - "/usr/local/sbin/tapi"
+      - "/usr/local/bin/tapi"
+      - "/var/lib/flatpak/exports/bin/tapi"
+      - "/usr/lib/jvm/default/bin/tapi"
+      - "/usr/bin/site_perl/tapi"
+      - "/usr/bin/vendor_perl/tapi"
+      - "/usr/bin/core_perl/tapi"
+      - "/var/lib/snapd/snap/bin/tapi"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/nvim/mason/bin"
+        - "/home/ivan/.nvm/versions/node/v22.17.0/bin"
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/zinit/polaris/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/var/lib/snapd/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Compiler/Clang-FindBinUtils.cmake:26 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:207 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER_AR"
+    description: "LLVM archiver"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-ar-21.1"
+      - "llvm-ar-21"
+      - "llvm-ar21"
+      - "llvm-ar"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/ivan/Android/Sdk/platform-tools/"
+      - "/home/ivan/.local/bin/"
+      - "/home/ivan/.cargo/bin/"
+      - "/home/ivan/Dev/Lib/flutter/bin/"
+      - "/home/ivan/go/bin/"
+      - "/home/ivan/Dev/scripts/utils/"
+      - "/home/ivan/.local/share/nvim/mason/bin/"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/"
+      - "/home/ivan/.local/share/zinit/polaris/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/var/lib/snapd/snap/bin/"
+    searched_directories:
+      - "/usr/bin/llvm-ar-21.1"
+      - "/home/ivan/Android/Sdk/platform-tools/llvm-ar-21.1"
+      - "/home/ivan/.local/bin/llvm-ar-21.1"
+      - "/home/ivan/.cargo/bin/llvm-ar-21.1"
+      - "/home/ivan/Dev/Lib/flutter/bin/llvm-ar-21.1"
+      - "/home/ivan/go/bin/llvm-ar-21.1"
+      - "/home/ivan/Dev/scripts/utils/llvm-ar-21.1"
+      - "/home/ivan/.local/share/nvim/mason/bin/llvm-ar-21.1"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/llvm-ar-21.1"
+      - "/home/ivan/.local/share/zinit/polaris/bin/llvm-ar-21.1"
+      - "/usr/local/sbin/llvm-ar-21.1"
+      - "/usr/local/bin/llvm-ar-21.1"
+      - "/var/lib/flatpak/exports/bin/llvm-ar-21.1"
+      - "/usr/lib/jvm/default/bin/llvm-ar-21.1"
+      - "/usr/bin/site_perl/llvm-ar-21.1"
+      - "/usr/bin/vendor_perl/llvm-ar-21.1"
+      - "/usr/bin/core_perl/llvm-ar-21.1"
+      - "/var/lib/snapd/snap/bin/llvm-ar-21.1"
+      - "/usr/bin/llvm-ar-21"
+      - "/home/ivan/Android/Sdk/platform-tools/llvm-ar-21"
+      - "/home/ivan/.local/bin/llvm-ar-21"
+      - "/home/ivan/.cargo/bin/llvm-ar-21"
+      - "/home/ivan/Dev/Lib/flutter/bin/llvm-ar-21"
+      - "/home/ivan/go/bin/llvm-ar-21"
+      - "/home/ivan/Dev/scripts/utils/llvm-ar-21"
+      - "/home/ivan/.local/share/nvim/mason/bin/llvm-ar-21"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/llvm-ar-21"
+      - "/home/ivan/.local/share/zinit/polaris/bin/llvm-ar-21"
+      - "/usr/local/sbin/llvm-ar-21"
+      - "/usr/local/bin/llvm-ar-21"
+      - "/var/lib/flatpak/exports/bin/llvm-ar-21"
+      - "/usr/lib/jvm/default/bin/llvm-ar-21"
+      - "/usr/bin/site_perl/llvm-ar-21"
+      - "/usr/bin/vendor_perl/llvm-ar-21"
+      - "/usr/bin/core_perl/llvm-ar-21"
+      - "/var/lib/snapd/snap/bin/llvm-ar-21"
+      - "/usr/bin/llvm-ar21"
+      - "/home/ivan/Android/Sdk/platform-tools/llvm-ar21"
+      - "/home/ivan/.local/bin/llvm-ar21"
+      - "/home/ivan/.cargo/bin/llvm-ar21"
+      - "/home/ivan/Dev/Lib/flutter/bin/llvm-ar21"
+      - "/home/ivan/go/bin/llvm-ar21"
+      - "/home/ivan/Dev/scripts/utils/llvm-ar21"
+      - "/home/ivan/.local/share/nvim/mason/bin/llvm-ar21"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/llvm-ar21"
+      - "/home/ivan/.local/share/zinit/polaris/bin/llvm-ar21"
+      - "/usr/local/sbin/llvm-ar21"
+      - "/usr/local/bin/llvm-ar21"
+      - "/var/lib/flatpak/exports/bin/llvm-ar21"
+      - "/usr/lib/jvm/default/bin/llvm-ar21"
+      - "/usr/bin/site_perl/llvm-ar21"
+      - "/usr/bin/vendor_perl/llvm-ar21"
+      - "/usr/bin/core_perl/llvm-ar21"
+      - "/var/lib/snapd/snap/bin/llvm-ar21"
+    found: "/usr/bin/llvm-ar"
+    search_context:
+      ENV{PATH}:
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/nvim/mason/bin"
+        - "/home/ivan/.nvm/versions/node/v22.17.0/bin"
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/zinit/polaris/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/var/lib/snapd/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Compiler/Clang-FindBinUtils.cmake:38 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:207 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER_RANLIB"
+    description: "Generate index for LLVM archive"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-ranlib-21.1"
+      - "llvm-ranlib-21"
+      - "llvm-ranlib21"
+      - "llvm-ranlib"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/ivan/Android/Sdk/platform-tools/"
+      - "/home/ivan/.local/bin/"
+      - "/home/ivan/.cargo/bin/"
+      - "/home/ivan/Dev/Lib/flutter/bin/"
+      - "/home/ivan/go/bin/"
+      - "/home/ivan/Dev/scripts/utils/"
+      - "/home/ivan/.local/share/nvim/mason/bin/"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/"
+      - "/home/ivan/.local/share/zinit/polaris/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/var/lib/snapd/snap/bin/"
+    searched_directories:
+      - "/usr/bin/llvm-ranlib-21.1"
+      - "/home/ivan/Android/Sdk/platform-tools/llvm-ranlib-21.1"
+      - "/home/ivan/.local/bin/llvm-ranlib-21.1"
+      - "/home/ivan/.cargo/bin/llvm-ranlib-21.1"
+      - "/home/ivan/Dev/Lib/flutter/bin/llvm-ranlib-21.1"
+      - "/home/ivan/go/bin/llvm-ranlib-21.1"
+      - "/home/ivan/Dev/scripts/utils/llvm-ranlib-21.1"
+      - "/home/ivan/.local/share/nvim/mason/bin/llvm-ranlib-21.1"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/llvm-ranlib-21.1"
+      - "/home/ivan/.local/share/zinit/polaris/bin/llvm-ranlib-21.1"
+      - "/usr/local/sbin/llvm-ranlib-21.1"
+      - "/usr/local/bin/llvm-ranlib-21.1"
+      - "/var/lib/flatpak/exports/bin/llvm-ranlib-21.1"
+      - "/usr/lib/jvm/default/bin/llvm-ranlib-21.1"
+      - "/usr/bin/site_perl/llvm-ranlib-21.1"
+      - "/usr/bin/vendor_perl/llvm-ranlib-21.1"
+      - "/usr/bin/core_perl/llvm-ranlib-21.1"
+      - "/var/lib/snapd/snap/bin/llvm-ranlib-21.1"
+      - "/usr/bin/llvm-ranlib-21"
+      - "/home/ivan/Android/Sdk/platform-tools/llvm-ranlib-21"
+      - "/home/ivan/.local/bin/llvm-ranlib-21"
+      - "/home/ivan/.cargo/bin/llvm-ranlib-21"
+      - "/home/ivan/Dev/Lib/flutter/bin/llvm-ranlib-21"
+      - "/home/ivan/go/bin/llvm-ranlib-21"
+      - "/home/ivan/Dev/scripts/utils/llvm-ranlib-21"
+      - "/home/ivan/.local/share/nvim/mason/bin/llvm-ranlib-21"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/llvm-ranlib-21"
+      - "/home/ivan/.local/share/zinit/polaris/bin/llvm-ranlib-21"
+      - "/usr/local/sbin/llvm-ranlib-21"
+      - "/usr/local/bin/llvm-ranlib-21"
+      - "/var/lib/flatpak/exports/bin/llvm-ranlib-21"
+      - "/usr/lib/jvm/default/bin/llvm-ranlib-21"
+      - "/usr/bin/site_perl/llvm-ranlib-21"
+      - "/usr/bin/vendor_perl/llvm-ranlib-21"
+      - "/usr/bin/core_perl/llvm-ranlib-21"
+      - "/var/lib/snapd/snap/bin/llvm-ranlib-21"
+      - "/usr/bin/llvm-ranlib21"
+      - "/home/ivan/Android/Sdk/platform-tools/llvm-ranlib21"
+      - "/home/ivan/.local/bin/llvm-ranlib21"
+      - "/home/ivan/.cargo/bin/llvm-ranlib21"
+      - "/home/ivan/Dev/Lib/flutter/bin/llvm-ranlib21"
+      - "/home/ivan/go/bin/llvm-ranlib21"
+      - "/home/ivan/Dev/scripts/utils/llvm-ranlib21"
+      - "/home/ivan/.local/share/nvim/mason/bin/llvm-ranlib21"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/llvm-ranlib21"
+      - "/home/ivan/.local/share/zinit/polaris/bin/llvm-ranlib21"
+      - "/usr/local/sbin/llvm-ranlib21"
+      - "/usr/local/bin/llvm-ranlib21"
+      - "/var/lib/flatpak/exports/bin/llvm-ranlib21"
+      - "/usr/lib/jvm/default/bin/llvm-ranlib21"
+      - "/usr/bin/site_perl/llvm-ranlib21"
+      - "/usr/bin/vendor_perl/llvm-ranlib21"
+      - "/usr/bin/core_perl/llvm-ranlib21"
+      - "/var/lib/snapd/snap/bin/llvm-ranlib21"
+    found: "/usr/bin/llvm-ranlib"
+    search_context:
+      ENV{PATH}:
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/nvim/mason/bin"
+        - "/home/ivan/.nvm/versions/node/v22.17.0/bin"
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/zinit/polaris/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/var/lib/snapd/snap/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Compiler/Clang-FindBinUtils.cmake:50 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:207 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS"
+    description: "`clang-scan-deps` dependency scanner"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "clang-scan-deps-21.1"
+      - "clang-scan-deps-21"
+      - "clang-scan-deps21"
+      - "clang-scan-deps"
+    candidate_directories:
+      - "/usr/bin/"
+      - "/home/ivan/Android/Sdk/platform-tools/"
+      - "/home/ivan/.local/bin/"
+      - "/home/ivan/.cargo/bin/"
+      - "/home/ivan/Dev/Lib/flutter/bin/"
+      - "/home/ivan/go/bin/"
+      - "/home/ivan/Dev/scripts/utils/"
+      - "/home/ivan/.local/share/nvim/mason/bin/"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/"
+      - "/home/ivan/.local/share/zinit/polaris/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/var/lib/flatpak/exports/bin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/var/lib/snapd/snap/bin/"
+    searched_directories:
+      - "/usr/bin/clang-scan-deps-21.1"
+      - "/home/ivan/Android/Sdk/platform-tools/clang-scan-deps-21.1"
+      - "/home/ivan/.local/bin/clang-scan-deps-21.1"
+      - "/home/ivan/.cargo/bin/clang-scan-deps-21.1"
+      - "/home/ivan/Dev/Lib/flutter/bin/clang-scan-deps-21.1"
+      - "/home/ivan/go/bin/clang-scan-deps-21.1"
+      - "/home/ivan/Dev/scripts/utils/clang-scan-deps-21.1"
+      - "/home/ivan/.local/share/nvim/mason/bin/clang-scan-deps-21.1"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/clang-scan-deps-21.1"
+      - "/home/ivan/.local/share/zinit/polaris/bin/clang-scan-deps-21.1"
+      - "/usr/local/sbin/clang-scan-deps-21.1"
+      - "/usr/local/bin/clang-scan-deps-21.1"
+      - "/var/lib/flatpak/exports/bin/clang-scan-deps-21.1"
+      - "/usr/lib/jvm/default/bin/clang-scan-deps-21.1"
+      - "/usr/bin/site_perl/clang-scan-deps-21.1"
+      - "/usr/bin/vendor_perl/clang-scan-deps-21.1"
+      - "/usr/bin/core_perl/clang-scan-deps-21.1"
+      - "/var/lib/snapd/snap/bin/clang-scan-deps-21.1"
+      - "/usr/bin/clang-scan-deps-21"
+      - "/home/ivan/Android/Sdk/platform-tools/clang-scan-deps-21"
+      - "/home/ivan/.local/bin/clang-scan-deps-21"
+      - "/home/ivan/.cargo/bin/clang-scan-deps-21"
+      - "/home/ivan/Dev/Lib/flutter/bin/clang-scan-deps-21"
+      - "/home/ivan/go/bin/clang-scan-deps-21"
+      - "/home/ivan/Dev/scripts/utils/clang-scan-deps-21"
+      - "/home/ivan/.local/share/nvim/mason/bin/clang-scan-deps-21"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/clang-scan-deps-21"
+      - "/home/ivan/.local/share/zinit/polaris/bin/clang-scan-deps-21"
+      - "/usr/local/sbin/clang-scan-deps-21"
+      - "/usr/local/bin/clang-scan-deps-21"
+      - "/var/lib/flatpak/exports/bin/clang-scan-deps-21"
+      - "/usr/lib/jvm/default/bin/clang-scan-deps-21"
+      - "/usr/bin/site_perl/clang-scan-deps-21"
+      - "/usr/bin/vendor_perl/clang-scan-deps-21"
+      - "/usr/bin/core_perl/clang-scan-deps-21"
+      - "/var/lib/snapd/snap/bin/clang-scan-deps-21"
+      - "/usr/bin/clang-scan-deps21"
+      - "/home/ivan/Android/Sdk/platform-tools/clang-scan-deps21"
+      - "/home/ivan/.local/bin/clang-scan-deps21"
+      - "/home/ivan/.cargo/bin/clang-scan-deps21"
+      - "/home/ivan/Dev/Lib/flutter/bin/clang-scan-deps21"
+      - "/home/ivan/go/bin/clang-scan-deps21"
+      - "/home/ivan/Dev/scripts/utils/clang-scan-deps21"
+      - "/home/ivan/.local/share/nvim/mason/bin/clang-scan-deps21"
+      - "/home/ivan/.nvm/versions/node/v22.17.0/bin/clang-scan-deps21"
+      - "/home/ivan/.local/share/zinit/polaris/bin/clang-scan-deps21"
+      - "/usr/local/sbin/clang-scan-deps21"
+      - "/usr/local/bin/clang-scan-deps21"
+      - "/var/lib/flatpak/exports/bin/clang-scan-deps21"
+      - "/usr/lib/jvm/default/bin/clang-scan-deps21"
+      - "/usr/bin/site_perl/clang-scan-deps21"
+      - "/usr/bin/vendor_perl/clang-scan-deps21"
+      - "/usr/bin/core_perl/clang-scan-deps21"
+      - "/var/lib/snapd/snap/bin/clang-scan-deps21"
+    found: "/usr/bin/clang-scan-deps"
+    search_context:
+      ENV{PATH}:
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/nvim/mason/bin"
+        - "/home/ivan/.nvm/versions/node/v22.17.0/bin"
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/zinit/polaris/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/var/lib/snapd/snap/bin"
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
+      - "/usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "/home/ivan/Dev/Projects/vecron/build/CMakeFiles/CMakeScratch/TryCompile-ulMZqz"
+      binary: "/home/ivan/Dev/Projects/vecron/build/CMakeFiles/CMakeScratch/TryCompile-ulMZqz"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/usr/bin/clang-scan-deps"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ivan/Dev/Projects/vecron/build/CMakeFiles/CMakeScratch/TryCompile-ulMZqz'
+        
+        Run Build Command(s): /usr/bin/ninja -v cmTC_a5536
+        [1/2] /usr/bin/clang++   -v -MD -MT CMakeFiles/cmTC_a5536.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_a5536.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_a5536.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+        clang version 21.1.3
+        Target: x86_64-pc-linux-gnu
+        Thread model: posix
+        InstalledDir: /usr/bin
+        Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-pc-linux-gnu/15.2.1
+        Found candidate GCC installation: /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1
+        Selected GCC installation: /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1
+        Candidate multilib: .;@m64
+        Candidate multilib: 32;@m32
+        Selected multilib: .;@m64
+         (in-process)
+         "/usr/bin/clang++" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/ivan/Dev/Projects/vecron/build/CMakeFiles/CMakeScratch/TryCompile-ulMZqz -v -fcoverage-compilation-dir=/home/ivan/Dev/Projects/vecron/build/CMakeFiles/CMakeScratch/TryCompile-ulMZqz -resource-dir /usr/lib/clang/21 -dependency-file CMakeFiles/cmTC_a5536.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_a5536.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1 -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/x86_64-pc-linux-gnu -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/backward -internal-isystem /usr/lib/clang/21/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../x86_64-pc-linux-gnu/include -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdeprecated-macro -ferror-limit 19 -stack-protector 2 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_a5536.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+        clang -cc1 version 21.1.3 based upon LLVM 21.1.3 default target x86_64-pc-linux-gnu
+        ignoring nonexistent directory "/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../x86_64-pc-linux-gnu/include"
+        ignoring nonexistent directory "/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1
+         /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/x86_64-pc-linux-gnu
+         /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/backward
+         /usr/lib/clang/21/include
+         /usr/local/include
+         /usr/include
+        End of search list.
+        [2/2] : && /usr/bin/clang++  -v -Wl,-v CMakeFiles/cmTC_a5536.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_a5536   && :
+        clang version 21.1.3
+        Target: x86_64-pc-linux-gnu
+        Thread model: posix
+        InstalledDir: /usr/bin
+        Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-pc-linux-gnu/15.2.1
+        Found candidate GCC installation: /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1
+        Selected GCC installation: /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1
+        Candidate multilib: .;@m64
+        Candidate multilib: 32;@m32
+        Selected multilib: .;@m64
+         "/usr/bin/ld" --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_a5536 /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib64/Scrt1.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib64/crti.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1 -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib64 -L/lib/../lib64 -L/usr/lib64 -L/lib -L/usr/lib -v CMakeFiles/cmTC_a5536.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib64/crtn.o
+        GNU ld (GNU Binutils) 2.45.0
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:217 (message)"
+      - "/usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1]
+          add: [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/x86_64-pc-linux-gnu]
+          add: [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/backward]
+          add: [/usr/lib/clang/21/include]
+          add: [/usr/local/include]
+          add: [/usr/include]
+        end of search list found
+        collapse include dir [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1] ==> [/usr/include/c++/15.2.1]
+        collapse include dir [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/x86_64-pc-linux-gnu] ==> [/usr/include/c++/15.2.1/x86_64-pc-linux-gnu]
+        collapse include dir [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/backward] ==> [/usr/include/c++/15.2.1/backward]
+        collapse include dir [/usr/lib/clang/21/include] ==> [/usr/lib/clang/21/include]
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/usr/include] ==> [/usr/include]
+        implicit include dirs: [/usr/include/c++/15.2.1;/usr/include/c++/15.2.1/x86_64-pc-linux-gnu;/usr/include/c++/15.2.1/backward;/usr/lib/clang/21/include;/usr/local/include;/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:253 (message)"
+      - "/usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
+        ignore line: [Change Dir: '/home/ivan/Dev/Projects/vecron/build/CMakeFiles/CMakeScratch/TryCompile-ulMZqz']
+        ignore line: []
+        ignore line: [Run Build Command(s): /usr/bin/ninja -v cmTC_a5536]
+        ignore line: [[1/2] /usr/bin/clang++   -v -MD -MT CMakeFiles/cmTC_a5536.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_a5536.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_a5536.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [clang version 21.1.3]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /usr/bin]
+        ignore line: [Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-pc-linux-gnu/15.2.1]
+        ignore line: [Found candidate GCC installation: /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1]
+        ignore line: [Selected GCC installation: /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1]
+        ignore line: [Candidate multilib: .]
+        ignore line: [@m64]
+        ignore line: [Candidate multilib: 32]
+        ignore line: [@m32]
+        ignore line: [Selected multilib: .]
+        ignore line: [@m64]
+        ignore line: [ (in-process)]
+        ignore line: [ "/usr/bin/clang++" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/ivan/Dev/Projects/vecron/build/CMakeFiles/CMakeScratch/TryCompile-ulMZqz -v -fcoverage-compilation-dir=/home/ivan/Dev/Projects/vecron/build/CMakeFiles/CMakeScratch/TryCompile-ulMZqz -resource-dir /usr/lib/clang/21 -dependency-file CMakeFiles/cmTC_a5536.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_a5536.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1 -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/x86_64-pc-linux-gnu -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/backward -internal-isystem /usr/lib/clang/21/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../x86_64-pc-linux-gnu/include -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdeprecated-macro -ferror-limit 19 -stack-protector 2 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_a5536.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [clang -cc1 version 21.1.3 based upon LLVM 21.1.3 default target x86_64-pc-linux-gnu]
+        ignore line: [ignoring nonexistent directory "/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../x86_64-pc-linux-gnu/include"]
+        ignore line: [ignoring nonexistent directory "/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1]
+        ignore line: [ /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/x86_64-pc-linux-gnu]
+        ignore line: [ /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../include/c++/15.2.1/backward]
+        ignore line: [ /usr/lib/clang/21/include]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [[2/2] : && /usr/bin/clang++  -v -Wl -v CMakeFiles/cmTC_a5536.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_a5536   && :]
+        ignore line: [clang version 21.1.3]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /usr/bin]
+        ignore line: [Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-pc-linux-gnu/15.2.1]
+        ignore line: [Found candidate GCC installation: /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1]
+        ignore line: [Selected GCC installation: /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1]
+        ignore line: [Candidate multilib: .]
+        ignore line: [@m64]
+        ignore line: [Candidate multilib: 32]
+        ignore line: [@m32]
+        ignore line: [Selected multilib: .]
+        ignore line: [@m64]
+        link line: [ "/usr/bin/ld" --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_a5536 /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib64/Scrt1.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib64/crti.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1 -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib64 -L/lib/../lib64 -L/usr/lib64 -L/lib -L/usr/lib -v CMakeFiles/cmTC_a5536.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib64/crtn.o]
+          arg [/usr/bin/ld] ==> ignore
+          arg [--hash-style=gnu] ==> ignore
+          arg [--build-id] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-pie] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_a5536] ==> ignore
+          arg [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib64/Scrt1.o] ==> obj [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib64/Scrt1.o]
+          arg [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib64/crti.o] ==> obj [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib64/crti.o]
+          arg [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o] ==> obj [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o]
+          arg [-L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1] ==> dir [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1]
+          arg [-L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib64] ==> dir [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib64]
+          arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+          arg [-L/usr/lib64] ==> dir [/usr/lib64]
+          arg [-L/lib] ==> dir [/lib]
+          arg [-L/usr/lib] ==> dir [/usr/lib]
+          arg [-v] ==> ignore
+          arg [CMakeFiles/cmTC_a5536.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [-lstdc++] ==> lib [stdc++]
+          arg [-lm] ==> lib [m]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lc] ==> lib [c]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o] ==> obj [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o]
+          arg [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib64/crtn.o] ==> obj [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib64/crtn.o]
+        linker tool for 'CXX': /usr/bin/ld
+        collapse obj [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib64/Scrt1.o] ==> [/usr/lib64/Scrt1.o]
+        collapse obj [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib64/crti.o] ==> [/usr/lib64/crti.o]
+        collapse obj [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o] ==> [/usr/lib64/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o]
+        collapse obj [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o] ==> [/usr/lib64/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o]
+        collapse obj [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib64/crtn.o] ==> [/usr/lib64/crtn.o]
+        collapse library dir [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1] ==> [/usr/lib64/gcc/x86_64-pc-linux-gnu/15.2.1]
+        collapse library dir [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib64] ==> [/usr/lib64]
+        collapse library dir [/lib/../lib64] ==> [/lib64]
+        collapse library dir [/usr/lib64] ==> [/usr/lib64]
+        collapse library dir [/lib] ==> [/lib]
+        collapse library dir [/usr/lib] ==> [/usr/lib]
+        implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+        implicit objs: [/usr/lib64/Scrt1.o;/usr/lib64/crti.o;/usr/lib64/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o;/usr/lib64/gcc/x86_64-pc-linux-gnu/15.2.1/crtendS.o;/usr/lib64/crtn.o]
+        implicit dirs: [/usr/lib64/gcc/x86_64-pc-linux-gnu/15.2.1;/usr/lib64;/lib64;/lib;/usr/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CMakeDetermineLinkerId.cmake:36 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:299 (cmake_determine_linker_id)"
+      - "/usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the CXX compiler's linker: "/usr/bin/ld" "-v"
+      GNU ld (GNU Binutils) 2.45.0
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "CMakeLists.txt:25 (find_package)"
+    name: "nlohmann_json"
+    configs:
+      -
+        filename: "nlohmann_jsonConfig.cmake"
+        kind: "cmake"
+      -
+        filename: "nlohmann_json-config.cmake"
+        kind: "cmake"
+    version_request:
+      version: "3.12.0"
+      version_complete: "3.12.0"
+      exact: false
+    settings:
+      required: "required_explicit"
+      quiet: false
+      global: false
+      policy_scope: true
+      bypass_provider: false
+      names:
+        - "nlohmann_json"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "/home/ivan/Dev/Projects/vecron/build/CMakeFiles/pkgRedirects/nlohmann_jsonConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/Dev/Projects/vecron/build/CMakeFiles/pkgRedirects/nlohmann_json-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/Android/Sdk/platform-tools/nlohmann_jsonConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/Android/Sdk/platform-tools/nlohmann_json-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/.local/nlohmann_jsonConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/.local/nlohmann_json-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/.cargo/nlohmann_jsonConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/.cargo/nlohmann_json-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/Dev/Lib/flutter/nlohmann_jsonConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/Dev/Lib/flutter/nlohmann_json-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/go/nlohmann_jsonConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/go/nlohmann_json-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/.local/share/nvim/mason/nlohmann_jsonConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/.local/share/nvim/mason/nlohmann_json-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/.nvm/versions/node/v22.17.0/nlohmann_jsonConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/.nvm/versions/node/v22.17.0/nlohmann_json-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/.local/share/zinit/polaris/nlohmann_jsonConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/.local/share/zinit/polaris/nlohmann_json-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/local/nlohmann_jsonConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/local/nlohmann_json-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/nlohmann_jsonConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/nlohmann_json-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+    found:
+      path: "/usr/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake"
+      mode: "config"
+      version: "3.12.0"
+    search_context:
+      ENV{PATH}:
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/nvim/mason/bin"
+        - "/home/ivan/.nvm/versions/node/v22.17.0/bin"
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/zinit/polaris/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/var/lib/snapd/snap/bin"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/usr/local"
+        - "/usr"
+        - "/"
+        - "/usr"
+        - "/usr/local"
+        - "/usr/X11R6"
+        - "/usr/pkg"
+        - "/opt"
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/usr/share/cmake/Modules/CheckCXXSourceCompiles.cmake:103 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/FindThreads.cmake:99 (check_cxx_source_compiles)"
+      - "/usr/share/cmake/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake:78 (find_package)"
+      - "/usr/lib/cmake/GTest/GTestConfig.cmake:39 (find_dependency)"
+      - "CMakeLists.txt:49 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "/home/ivan/Dev/Projects/vecron/build/CMakeFiles/CMakeScratch/TryCompile-RQau0j"
+      binary: "/home/ivan/Dev/Projects/vecron/build/CMakeFiles/CMakeScratch/TryCompile-RQau0j"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/usr/bin/clang-scan-deps"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ivan/Dev/Projects/vecron/build/CMakeFiles/CMakeScratch/TryCompile-RQau0j'
+        
+        Run Build Command(s): /usr/bin/ninja -v cmTC_b5ea0
+        [1/4] "/usr/bin/clang-scan-deps" -format=p1689 -- /usr/bin/clang++ -DCMAKE_HAVE_LIBC_PTHREAD  -std=gnu++23 -x c++ /home/ivan/Dev/Projects/vecron/build/CMakeFiles/CMakeScratch/TryCompile-RQau0j/src.cxx -c -o CMakeFiles/cmTC_b5ea0.dir/src.cxx.o -resource-dir "/usr/lib/clang/21" -MT CMakeFiles/cmTC_b5ea0.dir/src.cxx.o.ddi -MD -MF CMakeFiles/cmTC_b5ea0.dir/src.cxx.o.ddi.d > CMakeFiles/cmTC_b5ea0.dir/src.cxx.o.ddi.tmp && mv CMakeFiles/cmTC_b5ea0.dir/src.cxx.o.ddi.tmp CMakeFiles/cmTC_b5ea0.dir/src.cxx.o.ddi
+        [2/4] /usr/bin/cmake -E cmake_ninja_dyndep --tdi=CMakeFiles/cmTC_b5ea0.dir/CXXDependInfo.json --lang=CXX --modmapfmt=clang --dd=CMakeFiles/cmTC_b5ea0.dir/CXX.dd @CMakeFiles/cmTC_b5ea0.dir/CXX.dd.rsp
+        [3/4] /usr/bin/clang++ -DCMAKE_HAVE_LIBC_PTHREAD  -std=gnu++23 -MD -MT CMakeFiles/cmTC_b5ea0.dir/src.cxx.o -MF CMakeFiles/cmTC_b5ea0.dir/src.cxx.o.d @CMakeFiles/cmTC_b5ea0.dir/src.cxx.o.modmap -o CMakeFiles/cmTC_b5ea0.dir/src.cxx.o -c /home/ivan/Dev/Projects/vecron/build/CMakeFiles/CMakeScratch/TryCompile-RQau0j/src.cxx
+        [4/4] : && /usr/bin/clang++   CMakeFiles/cmTC_b5ea0.dir/src.cxx.o -o cmTC_b5ea0   && :
+        
+      exitCode: 0
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "CMakeLists.txt:49 (find_package)"
+    name: "GTest"
+    configs:
+      -
+        filename: "GTestConfig.cmake"
+        kind: "cmake"
+      -
+        filename: "gtest-config.cmake"
+        kind: "cmake"
+    version_request:
+      exact: false
+    settings:
+      required: "required_explicit"
+      quiet: false
+      global: false
+      policy_scope: true
+      bypass_provider: false
+      names:
+        - "GTest"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "/home/ivan/Dev/Projects/vecron/build/CMakeFiles/pkgRedirects/GTestConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/Dev/Projects/vecron/build/CMakeFiles/pkgRedirects/gtest-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/Android/Sdk/platform-tools/GTestConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/Android/Sdk/platform-tools/gtest-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/.local/GTestConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/.local/gtest-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/.cargo/GTestConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/.cargo/gtest-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/Dev/Lib/flutter/GTestConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/Dev/Lib/flutter/gtest-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/go/GTestConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/go/gtest-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/.local/share/nvim/mason/GTestConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/.local/share/nvim/mason/gtest-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/.nvm/versions/node/v22.17.0/GTestConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/.nvm/versions/node/v22.17.0/gtest-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/.local/share/zinit/polaris/GTestConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/ivan/.local/share/zinit/polaris/gtest-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/local/GTestConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/local/gtest-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/GTestConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/gtest-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+    found:
+      path: "/usr/lib/cmake/GTest/GTestConfig.cmake"
+      mode: "config"
+      version: "1.17.0"
+    search_context:
+      ENV{PATH}:
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/nvim/mason/bin"
+        - "/home/ivan/.nvm/versions/node/v22.17.0/bin"
+        - "/home/ivan/Android/Sdk/platform-tools"
+        - "/home/ivan/.local/bin"
+        - "/home/ivan/.cargo/bin"
+        - "/home/ivan/Dev/Lib/flutter/bin"
+        - "/home/ivan/go/bin"
+        - "/home/ivan/Dev/scripts/utils"
+        - "/home/ivan/.local/share/zinit/polaris/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/var/lib/flatpak/exports/bin"
+        - "/usr/lib/jvm/default/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/var/lib/snapd/snap/bin"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/usr/local"
+        - "/usr"
+        - "/"
+        - "/usr"
+        - "/usr/local"
+        - "/usr/X11R6"
+        - "/usr/pkg"
+        - "/opt"
+...

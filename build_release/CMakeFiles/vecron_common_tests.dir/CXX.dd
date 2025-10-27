@@ -1,0 +1,5 @@
+ninja_dyndep_version = 1.0
+build CMakeFiles/vecron_common_tests.dir/test/common/main.cpp.o: dyndep
+
+build CMakeFiles/vecron_common_tests.dir/test/common/shell.cpp.o: dyndep
+

@@ -1,0 +1,9 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/vecron.dir/src/command/debug.cpp.o"
+    }
+  ],
+  "version": 1
+}

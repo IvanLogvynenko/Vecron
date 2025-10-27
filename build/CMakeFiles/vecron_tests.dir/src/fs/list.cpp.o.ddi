@@ -1,0 +1,9 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/vecron_tests.dir/src/fs/list.cpp.o"
+    }
+  ],
+  "version": 1
+}

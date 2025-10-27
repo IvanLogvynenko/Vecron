@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/ivan/Dev/Projects/vecron/build_release/cmake_install.cmake",
+		"/home/ivan/Dev/Projects/vecron/build_release/common/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

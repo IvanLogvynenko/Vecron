@@ -1,0 +1,15 @@
+ninja_dyndep_version = 1.0
+build CMakeFiles/vecron.dir/src/main.cpp.o: dyndep
+
+build CMakeFiles/vecron.dir/src/cli/common.cpp.o: dyndep
+
+build CMakeFiles/vecron.dir/src/command/build.cpp.o: dyndep
+
+build CMakeFiles/vecron.dir/src/command/debug.cpp.o: dyndep
+
+build CMakeFiles/vecron.dir/src/command/new_command.cpp.o: dyndep
+
+build CMakeFiles/vecron.dir/src/command/preprocess.cpp.o: dyndep
+
+build CMakeFiles/vecron.dir/src/fs/list.cpp.o: dyndep
+

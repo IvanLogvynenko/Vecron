@@ -1,0 +1,98 @@
+[
+{
+  "directory": "/home/ivan/Dev/Projects/vecron/build_release",
+  "command": "/usr/bin/clang++ -DENABLE_DESCRIPTION_DETECTION -I/home/ivan/Dev/Projects/vecron/src -I/home/ivan/Dev/Projects/vecron/common -O3 -DNDEBUG -std=gnu++23 -fprofile-instr-generate -fcoverage-mapping -Wall -Wextra -Wpedantic -Wconversion -O3 -DNDEBUG @CMakeFiles/vecron.dir/src/main.cpp.o.modmap -o CMakeFiles/vecron.dir/src/main.cpp.o -c /home/ivan/Dev/Projects/vecron/src/main.cpp",
+  "file": "/home/ivan/Dev/Projects/vecron/src/main.cpp",
+  "output": "/home/ivan/Dev/Projects/vecron/build_release/CMakeFiles/vecron.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/ivan/Dev/Projects/vecron/build_release",
+  "command": "/usr/bin/clang++ -DENABLE_DESCRIPTION_DETECTION -I/home/ivan/Dev/Projects/vecron/src -I/home/ivan/Dev/Projects/vecron/common -O3 -DNDEBUG -std=gnu++23 -fprofile-instr-generate -fcoverage-mapping -Wall -Wextra -Wpedantic -Wconversion -O3 -DNDEBUG @CMakeFiles/vecron.dir/src/cli/common.cpp.o.modmap -o CMakeFiles/vecron.dir/src/cli/common.cpp.o -c /home/ivan/Dev/Projects/vecron/src/cli/common.cpp",
+  "file": "/home/ivan/Dev/Projects/vecron/src/cli/common.cpp",
+  "output": "/home/ivan/Dev/Projects/vecron/build_release/CMakeFiles/vecron.dir/src/cli/common.cpp.o"
+},
+{
+  "directory": "/home/ivan/Dev/Projects/vecron/build_release",
+  "command": "/usr/bin/clang++ -DENABLE_DESCRIPTION_DETECTION -I/home/ivan/Dev/Projects/vecron/src -I/home/ivan/Dev/Projects/vecron/common -O3 -DNDEBUG -std=gnu++23 -fprofile-instr-generate -fcoverage-mapping -Wall -Wextra -Wpedantic -Wconversion -O3 -DNDEBUG @CMakeFiles/vecron.dir/src/command/build.cpp.o.modmap -o CMakeFiles/vecron.dir/src/command/build.cpp.o -c /home/ivan/Dev/Projects/vecron/src/command/build.cpp",
+  "file": "/home/ivan/Dev/Projects/vecron/src/command/build.cpp",
+  "output": "/home/ivan/Dev/Projects/vecron/build_release/CMakeFiles/vecron.dir/src/command/build.cpp.o"
+},
+{
+  "directory": "/home/ivan/Dev/Projects/vecron/build_release",
+  "command": "/usr/bin/clang++ -DENABLE_DESCRIPTION_DETECTION -I/home/ivan/Dev/Projects/vecron/src -I/home/ivan/Dev/Projects/vecron/common -O3 -DNDEBUG -std=gnu++23 -fprofile-instr-generate -fcoverage-mapping -Wall -Wextra -Wpedantic -Wconversion -O3 -DNDEBUG @CMakeFiles/vecron.dir/src/command/debug.cpp.o.modmap -o CMakeFiles/vecron.dir/src/command/debug.cpp.o -c /home/ivan/Dev/Projects/vecron/src/command/debug.cpp",
+  "file": "/home/ivan/Dev/Projects/vecron/src/command/debug.cpp",
+  "output": "/home/ivan/Dev/Projects/vecron/build_release/CMakeFiles/vecron.dir/src/command/debug.cpp.o"
+},
+{
+  "directory": "/home/ivan/Dev/Projects/vecron/build_release",
+  "command": "/usr/bin/clang++ -DENABLE_DESCRIPTION_DETECTION -I/home/ivan/Dev/Projects/vecron/src -I/home/ivan/Dev/Projects/vecron/common -O3 -DNDEBUG -std=gnu++23 -fprofile-instr-generate -fcoverage-mapping -Wall -Wextra -Wpedantic -Wconversion -O3 -DNDEBUG @CMakeFiles/vecron.dir/src/command/new_command.cpp.o.modmap -o CMakeFiles/vecron.dir/src/command/new_command.cpp.o -c /home/ivan/Dev/Projects/vecron/src/command/new_command.cpp",
+  "file": "/home/ivan/Dev/Projects/vecron/src/command/new_command.cpp",
+  "output": "/home/ivan/Dev/Projects/vecron/build_release/CMakeFiles/vecron.dir/src/command/new_command.cpp.o"
+},
+{
+  "directory": "/home/ivan/Dev/Projects/vecron/build_release",
+  "command": "/usr/bin/clang++ -DENABLE_DESCRIPTION_DETECTION -I/home/ivan/Dev/Projects/vecron/src -I/home/ivan/Dev/Projects/vecron/common -O3 -DNDEBUG -std=gnu++23 -fprofile-instr-generate -fcoverage-mapping -Wall -Wextra -Wpedantic -Wconversion -O3 -DNDEBUG @CMakeFiles/vecron.dir/src/command/preprocess.cpp.o.modmap -o CMakeFiles/vecron.dir/src/command/preprocess.cpp.o -c /home/ivan/Dev/Projects/vecron/src/command/preprocess.cpp",
+  "file": "/home/ivan/Dev/Projects/vecron/src/command/preprocess.cpp",
+  "output": "/home/ivan/Dev/Projects/vecron/build_release/CMakeFiles/vecron.dir/src/command/preprocess.cpp.o"
+},
+{
+  "directory": "/home/ivan/Dev/Projects/vecron/build_release",
+  "command": "/usr/bin/clang++ -DENABLE_DESCRIPTION_DETECTION -I/home/ivan/Dev/Projects/vecron/src -I/home/ivan/Dev/Projects/vecron/common -O3 -DNDEBUG -std=gnu++23 -fprofile-instr-generate -fcoverage-mapping -Wall -Wextra -Wpedantic -Wconversion -O3 -DNDEBUG @CMakeFiles/vecron.dir/src/fs/list.cpp.o.modmap -o CMakeFiles/vecron.dir/src/fs/list.cpp.o -c /home/ivan/Dev/Projects/vecron/src/fs/list.cpp",
+  "file": "/home/ivan/Dev/Projects/vecron/src/fs/list.cpp",
+  "output": "/home/ivan/Dev/Projects/vecron/build_release/CMakeFiles/vecron.dir/src/fs/list.cpp.o"
+},
+{
+  "directory": "/home/ivan/Dev/Projects/vecron/build_release",
+  "command": "/usr/bin/clang++ -DGTEST_LINKED_AS_SHARED_LIBRARY=1 -I/home/ivan/Dev/Projects/vecron/common -O3 -DNDEBUG -std=gnu++23 -fprofile-instr-generate -fcoverage-mapping -g @CMakeFiles/vecron_common_tests.dir/test/common/main.cpp.o.modmap -o CMakeFiles/vecron_common_tests.dir/test/common/main.cpp.o -c /home/ivan/Dev/Projects/vecron/test/common/main.cpp",
+  "file": "/home/ivan/Dev/Projects/vecron/test/common/main.cpp",
+  "output": "/home/ivan/Dev/Projects/vecron/build_release/CMakeFiles/vecron_common_tests.dir/test/common/main.cpp.o"
+},
+{
+  "directory": "/home/ivan/Dev/Projects/vecron/build_release",
+  "command": "/usr/bin/clang++ -DGTEST_LINKED_AS_SHARED_LIBRARY=1 -I/home/ivan/Dev/Projects/vecron/common -O3 -DNDEBUG -std=gnu++23 -fprofile-instr-generate -fcoverage-mapping -g @CMakeFiles/vecron_common_tests.dir/test/common/shell.cpp.o.modmap -o CMakeFiles/vecron_common_tests.dir/test/common/shell.cpp.o -c /home/ivan/Dev/Projects/vecron/test/common/shell.cpp",
+  "file": "/home/ivan/Dev/Projects/vecron/test/common/shell.cpp",
+  "output": "/home/ivan/Dev/Projects/vecron/build_release/CMakeFiles/vecron_common_tests.dir/test/common/shell.cpp.o"
+},
+{
+  "directory": "/home/ivan/Dev/Projects/vecron/build_release",
+  "command": "/usr/bin/clang++ -DGTEST_LINKED_AS_SHARED_LIBRARY=1 -I/home/ivan/Dev/Projects/vecron/src -I/home/ivan/Dev/Projects/vecron/common -O3 -DNDEBUG -std=gnu++23 -fprofile-instr-generate -fcoverage-mapping -g @CMakeFiles/vecron_tests.dir/test/src/main.cpp.o.modmap -o CMakeFiles/vecron_tests.dir/test/src/main.cpp.o -c /home/ivan/Dev/Projects/vecron/test/src/main.cpp",
+  "file": "/home/ivan/Dev/Projects/vecron/test/src/main.cpp",
+  "output": "/home/ivan/Dev/Projects/vecron/build_release/CMakeFiles/vecron_tests.dir/test/src/main.cpp.o"
+},
+{
+  "directory": "/home/ivan/Dev/Projects/vecron/build_release",
+  "command": "/usr/bin/clang++ -DGTEST_LINKED_AS_SHARED_LIBRARY=1 -I/home/ivan/Dev/Projects/vecron/src -I/home/ivan/Dev/Projects/vecron/common -O3 -DNDEBUG -std=gnu++23 -fprofile-instr-generate -fcoverage-mapping -g @CMakeFiles/vecron_tests.dir/src/cli/common.cpp.o.modmap -o CMakeFiles/vecron_tests.dir/src/cli/common.cpp.o -c /home/ivan/Dev/Projects/vecron/src/cli/common.cpp",
+  "file": "/home/ivan/Dev/Projects/vecron/src/cli/common.cpp",
+  "output": "/home/ivan/Dev/Projects/vecron/build_release/CMakeFiles/vecron_tests.dir/src/cli/common.cpp.o"
+},
+{
+  "directory": "/home/ivan/Dev/Projects/vecron/build_release",
+  "command": "/usr/bin/clang++ -DGTEST_LINKED_AS_SHARED_LIBRARY=1 -I/home/ivan/Dev/Projects/vecron/src -I/home/ivan/Dev/Projects/vecron/common -O3 -DNDEBUG -std=gnu++23 -fprofile-instr-generate -fcoverage-mapping -g @CMakeFiles/vecron_tests.dir/src/command/build.cpp.o.modmap -o CMakeFiles/vecron_tests.dir/src/command/build.cpp.o -c /home/ivan/Dev/Projects/vecron/src/command/build.cpp",
+  "file": "/home/ivan/Dev/Projects/vecron/src/command/build.cpp",
+  "output": "/home/ivan/Dev/Projects/vecron/build_release/CMakeFiles/vecron_tests.dir/src/command/build.cpp.o"
+},
+{
+  "directory": "/home/ivan/Dev/Projects/vecron/build_release",
+  "command": "/usr/bin/clang++ -DGTEST_LINKED_AS_SHARED_LIBRARY=1 -I/home/ivan/Dev/Projects/vecron/src -I/home/ivan/Dev/Projects/vecron/common -O3 -DNDEBUG -std=gnu++23 -fprofile-instr-generate -fcoverage-mapping -g @CMakeFiles/vecron_tests.dir/src/command/debug.cpp.o.modmap -o CMakeFiles/vecron_tests.dir/src/command/debug.cpp.o -c /home/ivan/Dev/Projects/vecron/src/command/debug.cpp",
+  "file": "/home/ivan/Dev/Projects/vecron/src/command/debug.cpp",
+  "output": "/home/ivan/Dev/Projects/vecron/build_release/CMakeFiles/vecron_tests.dir/src/command/debug.cpp.o"
+},
+{
+  "directory": "/home/ivan/Dev/Projects/vecron/build_release",
+  "command": "/usr/bin/clang++ -DGTEST_LINKED_AS_SHARED_LIBRARY=1 -I/home/ivan/Dev/Projects/vecron/src -I/home/ivan/Dev/Projects/vecron/common -O3 -DNDEBUG -std=gnu++23 -fprofile-instr-generate -fcoverage-mapping -g @CMakeFiles/vecron_tests.dir/src/command/new_command.cpp.o.modmap -o CMakeFiles/vecron_tests.dir/src/command/new_command.cpp.o -c /home/ivan/Dev/Projects/vecron/src/command/new_command.cpp",
+  "file": "/home/ivan/Dev/Projects/vecron/src/command/new_command.cpp",
+  "output": "/home/ivan/Dev/Projects/vecron/build_release/CMakeFiles/vecron_tests.dir/src/command/new_command.cpp.o"
+},
+{
+  "directory": "/home/ivan/Dev/Projects/vecron/build_release",
+  "command": "/usr/bin/clang++ -DGTEST_LINKED_AS_SHARED_LIBRARY=1 -I/home/ivan/Dev/Projects/vecron/src -I/home/ivan/Dev/Projects/vecron/common -O3 -DNDEBUG -std=gnu++23 -fprofile-instr-generate -fcoverage-mapping -g @CMakeFiles/vecron_tests.dir/src/command/preprocess.cpp.o.modmap -o CMakeFiles/vecron_tests.dir/src/command/preprocess.cpp.o -c /home/ivan/Dev/Projects/vecron/src/command/preprocess.cpp",
+  "file": "/home/ivan/Dev/Projects/vecron/src/command/preprocess.cpp",
+  "output": "/home/ivan/Dev/Projects/vecron/build_release/CMakeFiles/vecron_tests.dir/src/command/preprocess.cpp.o"
+},
+{
+  "directory": "/home/ivan/Dev/Projects/vecron/build_release",
+  "command": "/usr/bin/clang++ -DGTEST_LINKED_AS_SHARED_LIBRARY=1 -I/home/ivan/Dev/Projects/vecron/src -I/home/ivan/Dev/Projects/vecron/common -O3 -DNDEBUG -std=gnu++23 -fprofile-instr-generate -fcoverage-mapping -g @CMakeFiles/vecron_tests.dir/src/fs/list.cpp.o.modmap -o CMakeFiles/vecron_tests.dir/src/fs/list.cpp.o -c /home/ivan/Dev/Projects/vecron/src/fs/list.cpp",
+  "file": "/home/ivan/Dev/Projects/vecron/src/fs/list.cpp",
+  "output": "/home/ivan/Dev/Projects/vecron/build_release/CMakeFiles/vecron_tests.dir/src/fs/list.cpp.o"
+}
+]

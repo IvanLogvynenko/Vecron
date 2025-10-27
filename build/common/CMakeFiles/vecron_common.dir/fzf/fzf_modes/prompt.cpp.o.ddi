@@ -1,0 +1,9 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "common/CMakeFiles/vecron_common.dir/fzf/fzf_modes/prompt.cpp.o"
+    }
+  ],
+  "version": 1
+}

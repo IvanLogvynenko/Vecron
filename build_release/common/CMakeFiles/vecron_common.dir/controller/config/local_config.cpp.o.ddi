@@ -1,0 +1,9 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "common/CMakeFiles/vecron_common.dir/controller/config/local_config.cpp.o"
+    }
+  ],
+  "version": 1
+}

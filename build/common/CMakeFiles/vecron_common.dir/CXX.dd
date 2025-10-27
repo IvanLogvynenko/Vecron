@@ -1,0 +1,43 @@
+ninja_dyndep_version = 1.0
+build common/CMakeFiles/vecron_common.dir/controller/config/global_config.cpp.o: dyndep
+
+build common/CMakeFiles/vecron_common.dir/controller/config/local_config.cpp.o: dyndep
+
+build common/CMakeFiles/vecron_common.dir/controller/controller.cpp.o: dyndep
+
+build common/CMakeFiles/vecron_common.dir/fzf/fzf_modes.cpp.o: dyndep
+
+build common/CMakeFiles/vecron_common.dir/fzf/fzf_modes/bind.cpp.o: dyndep
+
+build common/CMakeFiles/vecron_common.dir/fzf/fzf_modes/cycle.cpp.o: dyndep
+
+build common/CMakeFiles/vecron_common.dir/fzf/fzf_modes/header.cpp.o: dyndep
+
+build common/CMakeFiles/vecron_common.dir/fzf/fzf_modes/height.cpp.o: dyndep
+
+build common/CMakeFiles/vecron_common.dir/fzf/fzf_modes/infoPosition.cpp.o: dyndep
+
+build common/CMakeFiles/vecron_common.dir/fzf/fzf_modes/multiselect.cpp.o: dyndep
+
+build common/CMakeFiles/vecron_common.dir/fzf/fzf_modes/pattern.cpp.o: dyndep
+
+build common/CMakeFiles/vecron_common.dir/fzf/fzf_modes/prompt.cpp.o: dyndep
+
+build common/CMakeFiles/vecron_common.dir/fzf/fzf_modes/reverse.cpp.o: dyndep
+
+build common/CMakeFiles/vecron_common.dir/fzf/fzf_modes/style.cpp.o: dyndep
+
+build common/CMakeFiles/vecron_common.dir/fzf/fzf_prompt.cpp.o: dyndep
+
+build common/CMakeFiles/vecron_common.dir/module/module.cpp.o: dyndep
+
+build common/CMakeFiles/vecron_common.dir/shell/process.cpp.o: dyndep
+
+build common/CMakeFiles/vecron_common.dir/shell/shell.cpp.o: dyndep
+
+build common/CMakeFiles/vecron_common.dir/util/args.cpp.o: dyndep
+
+build common/CMakeFiles/vecron_common.dir/util/home.cpp.o: dyndep
+
+build common/CMakeFiles/vecron_common.dir/util/split.cpp.o: dyndep
+

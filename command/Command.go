@@ -2,7 +2,6 @@ package command
 
 import (
 	inputqueue "github.com/IvanLogvynenko/vecron/inputQueue"
-	"github.com/IvanLogvynenko/vecron/modules/safeModules"
 )
 
 type Command struct {
@@ -30,7 +29,6 @@ var debug = Command{
 	"debug",
 	"anything can happen)))",
 	func(inputQueue *inputqueue.InputQueue) error {
-		safemodules.LoadModule()
 		return nil
 	},
 }

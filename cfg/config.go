@@ -61,7 +61,7 @@ func findConfigPath(config Config) string {
 	if err == nil {
 		return config.userHome + "/.local/share/vecron/"
 	}
-	return ""
+	return "/home/ivan/.config/vecron"
 }
 
 // Loads config if found. If not -> run vecron config
