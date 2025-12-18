@@ -7,4 +7,11 @@
 - build.sh
 - nested commands (at least such option)
 - rewrite everything in c++
-- make a shell wrapper to exec several commands in one shell
+
+- Shell
+-- make a shell wrapper to exec several commands in one shell
+-- make unrestricted shell (resticted by default)
+-- create a shell input filtering, because default restricted shell is too restrictive
+-- if unrestricted shell started then notify user if "allow_unrestricted_shell" is not set 
+-- try to run in restricted shell if "allow_unrestricted_shell" is set to false
+-- add "warn_unrestricted_shell" option to warn user if unrestricted shell is used in case "allow_unrestricted_shell" is true

@@ -1,7 +1,11 @@
 #pragma once
 
+#include "shell/handler.hpp"
+#include <boost/asio/readable_pipe.hpp>
+#include <boost/asio/writable_pipe.hpp>
+#include <boost/process.hpp>
 #include <exception>
-#include <sstream>
+#include <map>
 
 namespace common::shell {
 
@@ -15,37 +19,45 @@ public:
     const char *what() const noexcept override;
 };
 
+template <handlers::Handler InputHandler, handlers::Handler ErrorHandler, handlers::Handler OutputHandler>
 class Process {
 private:
-    std::stringstream in;
-    std::stringstream out;
-    std::stringstream err;
+    InputHandler _in;
+    ErrorHandler _err;
+    OutputHandler _out;
+    boost::process::process _process;
 
-    std::string _command;
+    friend class Shell;
 
 public:
-    explicit Process(std::string command) : _command(std::move(command)) {}
+    Process(boost::asio::io_context &ctx,
+            const std::string &shellPath,
+            const std::string &command,
+            const std::map<std::string, std::string> &environment);
 
-    Process(const Process &) = delete;
-    Process &operator=(const Process &) = delete;
+    // explicit Process(const std::string &command);
+    ~Process() = default;
 
-    Process(Process &&) noexcept;
-    Process &operator=(Process &&) noexcept;
+    // Process(const Process &) = delete;
+    // Process &operator=(const Process &) = delete;
+    //
+    // Process(Process &&) noexcept;
+    // Process &operator=(Process &&) noexcept;
 
     /* *
-	 * runs the program with given args and returns output, throws process::runtime_error if err is not empty
+	 * runs the program with given args and returns exit_code
 	 */
-    std::string run();
+    int run();
 
     /**
 	 * Accepts and runs command
 	 * */
-    static std::string run(const std::string &command);
+    // static int run(const std::string &command);
 
-    template <typename T> Process &operator<<(const T &value) {
-        in << value;
-        return *this;
-    }
+    // template <typename T> Process &operator<<(const T &value) {
+    //     in << value;
+    //     return *this;
+    // }
 };
 
 } // namespace common::shell

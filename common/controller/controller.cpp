@@ -1,10 +1,14 @@
 #include "controller.hpp"
 #include "command/command.hpp"
+
 #include "config/global_config.hpp"
+
 #include "controller/config/invalid_config_exception.hpp"
 #include "controller/config/local_config.hpp"
+
 #include "util/args.hpp"
 #include "util/home.hpp"
+
 #include <ctime>
 #include <filesystem>
 #include <functional>
@@ -17,7 +21,7 @@
 
 namespace controller {
 
-Controller::Controller(const std::vector<std::string> &args) {
+Controller::Controller(const std::vector<std::string> &args) : _boost_ctx{}, _shell(_boost_ctx) {
     auto [data, rest] = util::parse_args(args);
     // if data has no configPath then it will be "" and getGlobalConfigPath has a fallback for such case
     // INFO Loading globalConfig, if none throwing error
@@ -25,23 +29,23 @@ Controller::Controller(const std::vector<std::string> &args) {
     try {
         this->_globalConfig = std::make_unique<config::GlobalConfiguration>(globalConfigPath);
     } catch (config::GlobalConfigNotFound) {
-        std::string config = util::home() + ".config/vecron", share = util::home() + ".local/share/vecron";
+        std::string configFolder = util::home() + ".config/vecron", shareFolder = util::home() + ".local/share/vecron";
 
         if (data["configPath"] != "") {
             std::println("Config was not found at {}\nPlease provide valid path, or use config at \n{}\nor\n{}",
                          data["configPath"],
-                         config,
-                         share);
+                         configFolder,
+                         shareFolder);
         } else {
-            std::println("No config found at expected paths: \n{}\n{}\nPlease create one!", config, share);
+            std::println("No config found at expected paths: \n{}\n{}\nPlease create one!", configFolder, shareFolder);
         }
         exit(1);
     }
 
     // INFO Global config loaded, lodaing variables
     std::string targetPath = data["targetPath"];
-    if (targetPath == "") targetPath = std::filesystem::current_path();
-    if (!targetPath.ends_with("/")) targetPath += "/";
+    if (targetPath == "") { targetPath = std::filesystem::current_path(); }
+    if (!targetPath.ends_with("/")) { targetPath += "/"; }
     this->_targetPath = targetPath;
 
     this->_database["targetPath"] = targetPath;
@@ -93,8 +97,9 @@ std::string Controller::textPrompt(const std::string &msg,
 }
 
 void Controller::lockDataBase() {
-    if (!this->_db_lock.try_lock())
+    if (!this->_db_lock.try_lock()) {
         std::cout << "[DEBUG WARNING] Couldn't asquire lock for Controller::_database as it was already locked\n";
+    }
 }
 void Controller::unlockDataBase() { this->_db_lock.unlock(); }
 // TODO: check if set is copied for each std::pair construction

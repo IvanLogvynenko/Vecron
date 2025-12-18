@@ -6,6 +6,8 @@
 #include "fzf/fzf_modes.hpp"
 #include "fzf/fzf_prompt.hpp"
 #include "module/module.hpp"
+#include "shell/shell.hpp"
+#include <boost/asio/io_context.hpp>
 #include <functional>
 #include <map>
 #include <memory>
@@ -47,6 +49,11 @@ private:
     std::string _targetPath = "";
 
     std::optional<module::Module> _buildProvider;
+
+	//boost operationals
+	boost::asio::io_context _boost_ctx;
+
+	common::shell::Shell _shell;
 
 public:
     /**
@@ -112,6 +119,8 @@ public:
     inline const config::GlobalConfiguration &getGlobalConfig() const noexcept { return *_globalConfig; }
     inline const config::LocalConfiguration &getLocalConfig() const noexcept { return *_localConfig; }
     inline const std::string &getTargetPath() const noexcept { return _targetPath; }
+
+	std::shared_ptr<common::shell::Shell> getShell() const;
 };
 
 } // namespace controller

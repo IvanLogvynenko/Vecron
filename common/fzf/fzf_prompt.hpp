@@ -4,8 +4,8 @@
 #include "fzf_modes.hpp"
 #include "fzf_prompt_helpers.hpp"
 
-#include "util/dereferencers.hpp"
 #include "shell/process.hpp"
+#include "util/dereferencers.hpp"
 #include "util/split.hpp"
 
 #include <algorithm>
@@ -20,17 +20,18 @@ namespace fzf {
 template <class T>
 concept FzfItem = std::convertible_to<T, std::string> || HasLabel<T> || HasName<T> || HasToString<T>;
 
-template <typename Item, typename Obj> std::string itemToString(const Item &item) {
+template <typename Item, typename Obj> constexpr std::string itemToString(const Item &item) {
     const Obj &option = common::util::dereference<Item>::get(item);
 
-    if constexpr (HasLabel<Obj>)
+    if constexpr (HasLabel<Obj>) {
         return option.label();
-    else if constexpr (HasName<Obj>)
+    } else if constexpr (HasName<Obj>) {
         return option.name();
-    else if constexpr (HasToString<Obj>)
+    } else if constexpr (HasToString<Obj>) {
         return option.toString();
-    else if constexpr (std::convertible_to<Obj, std::string>)
+    } else if constexpr (std::convertible_to<Obj, std::string>) {
         return static_cast<std::string>(option);
+    }
 }
 
 template <typename Container>
@@ -63,17 +64,19 @@ Container prompt_core(Container &&options, const std::initializer_list<std::shar
     }
 #endif
 
-    common::shell::Process p(command);
+    // common::shell::Process p(command);
 
-    p << input;
-
-    std::string selections = p.run();
-    std::vector<Item> result = {};
-
-    for (const std::string &selection : common::util::split(selections, '\n'))
-        for (size_t i = 0; i < options.size(); i++)
-            if (itemToString<Item, Obj>(options[i]) == selection) result.push_back(std::move(options[i]));
-    return result;
+    // p << input;
+    //
+    // std::string selections = p.run();
+    // std::vector<Item> result = {};
+    //
+    // for (const std::string &selection : common::util::split(selections, '\n'))
+    //     for (size_t i = 0; i < options.size(); i++)
+    //         if (itemToString<Item, Obj>(options[i]) == selection) result.push_back(std::move(options[i]));
+    // return result;
+    return {};
+    // TODO: uncomment commented code
 }
 
 template <typename T>
