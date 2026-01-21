@@ -4,17 +4,23 @@
 #include "fzf_modes.hpp"
 #include "fzf_prompt_helpers.hpp"
 
+#include "shell/handlers/stdio_handlers.hpp"
+#include "shell/handlers/string_handler.hpp"
 #include "shell/process.hpp"
+#include "shell/shell.hpp"
 #include "util/dereferencers.hpp"
-#include "util/split.hpp"
 
 #include <algorithm>
 #include <concepts>
 #include <functional>
 #include <initializer_list>
 #include <memory>
+#include <print>
+#include <stdexcept>
 #include <string>
 #include <vector>
+
+namespace csh = common::shell::handlers;
 
 namespace fzf {
 template <class T>
@@ -40,8 +46,10 @@ Container prompt_core(Container &&options, const std::initializer_list<std::shar
     using Obj = common::util::dereference<Item>::type;
     static_assert(FzfItem<Obj>, "prompt<Container<T>>() requires T to model FzfItem");
 
-    std::string input = "";
+    std::string command = "fzf";
+    for (const auto &mode : modes) { command += " " + std::string(*mode); }
 
+    std::string input = "";
 #ifdef ENABLE_DESCRIPTION_DETECTION
     bool enableDescriptions = false;
 #endif
@@ -53,35 +61,43 @@ Container prompt_core(Container &&options, const std::initializer_list<std::shar
 
         input += itemToString<Item, Obj>(item) + '\n';
     }
-
-    std::string command = "fzf";
-    for (const auto &mode : modes) { command += " " + std::string(*mode); }
-
-//     //adding info if description method was detected
+    //adding info if description method was detected
 #ifdef ENABLE_DESCRIPTION_DETECTION
     if (enableDescriptions && !command.contains("--preview")) {
         command += " " + static_cast<std::string>(*(fzf::mode::info<Item>(options)));
     }
 #endif
 
-    // common::shell::Process p(command);
+    // std::println("Command: {}", command);
 
-    // p << input;
-    //
-    // std::string selections = p.run();
-    // std::vector<Item> result = {};
-    //
-    // for (const std::string &selection : common::util::split(selections, '\n'))
-    //     for (size_t i = 0; i < options.size(); i++)
-    //         if (itemToString<Item, Obj>(options[i]) == selection) result.push_back(std::move(options[i]));
-    // return result;
-    return {};
-    // TODO: uncomment commented code
+    boost::asio::io_context ctx = {};
+    auto process = common::shell::Shell::execute<csh::InStringHandler, csh::StderrHandler, csh::OutStringHandler>(
+        command, ctx);
+    process->getIn().write(input);
+
+    auto exitCode = process->run();
+    if (exitCode != 0) { throw std::runtime_error("fzf subprocess failed with code: " + std::to_string(exitCode)); }
+    std::vector<Item> result = {};
+
+    auto &processOut = process->getOut();
+    while (!processOut.eof()) {
+        std::string selection = processOut.getLine();
+        // std::println("Selection: <{}>", selection);
+        if (!selection.empty()) { //skip empty lines
+            for (size_t i = 0; i < options.size(); i++) {
+                if (itemToString<Item, Obj>(options[i]) == selection) {
+                    result.push_back(std::move(options[i]));
+                    options.erase(options.begin() + static_cast<long>(i));
+                }
+            }
+        }
+    }
+    return result;
 }
 
 template <typename T>
     requires FzfItem<T>
-auto prompt(const std::vector<T> &&options,
+auto prompt(std::vector<T> &&options,
             const std::initializer_list<std::shared_ptr<mode::FzfMode>> &modes = {
                 mode::bind(),
                 mode::Style::FULL,

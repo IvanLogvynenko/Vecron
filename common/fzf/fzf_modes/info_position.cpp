@@ -1,4 +1,4 @@
-#include "infoPosition.hpp"
+#include "info_position.hpp"
 #include <memory>
 
 namespace fzf::mode {

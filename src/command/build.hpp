@@ -1,10 +1,11 @@
 #pragma once
 
 #include "command/command.hpp"
+// #include ""
 
 namespace command {
 
-class Build : public Command {
+class Build : public command::Command {
 public:
     std::string label() const noexcept override { return "build"; }
     std::string description() const noexcept override { return "Builds an executable\nTo be run from vecron directory"; }

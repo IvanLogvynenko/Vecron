@@ -1,6 +1,6 @@
 {
 	"templateName": "cpp",
-	"build": "cmake --build build",
+	"build": "cmake --build build -j${nproc}",
 	"run": "{{projectPath}}/build/vecron",
 	"customTargets" : {
 		"print_hello": "echo \"hello\""

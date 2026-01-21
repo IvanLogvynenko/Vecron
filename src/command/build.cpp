@@ -7,7 +7,8 @@ int command::Build::exec(controller::Controller &controller) noexcept {
     const auto &localConfig = controller.getLocalConfig();
     const auto &buildCMD = localConfig.getBuildCMD();
     if (buildCMD.has_value()) {
-        std::println("{}", common::shell::Process::run(buildCMD.value()));
+		auto process = controller.getShell().execute(buildCMD.value());
+		return process->run();
     } else {
 		std::println("Error: no build method was provided");
 		return 1;

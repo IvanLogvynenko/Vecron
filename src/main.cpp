@@ -16,7 +16,7 @@ int main(int argc, char **argv) {
     for (int i = 1; i < argc + 1; i++) { args_str.emplace_back(*(argv + i)); }
 
     controller::Controller controller{args_str};
-    cli::clear();
+    controller.getShell().clear();
     cli::printLogo();
 
     controller.addCommand(std::make_unique<command::Debug>());
@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
     controller.addCommand(std::make_unique<command::Build>());
     controller.addCommand(std::make_unique<command::Preprocess>());
 
-    // int exit_code = 
-		return controller.start();
+    // int exit_code =
+    return controller.start();
     // return exit_code;
 }

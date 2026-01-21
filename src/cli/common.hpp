@@ -1,8 +1,6 @@
 #pragma once
 
 #include <string>
-#include <sys/ioctl.h>
-#include <unistd.h>
 
 namespace cli {
 

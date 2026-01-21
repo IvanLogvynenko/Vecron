@@ -9,6 +9,7 @@
 #include "util/args.hpp"
 #include "util/home.hpp"
 
+#include <cstdlib>
 #include <ctime>
 #include <filesystem>
 #include <functional>
@@ -21,7 +22,11 @@
 
 namespace controller {
 
-Controller::Controller(const std::vector<std::string> &args) : _boost_ctx{}, _shell(_boost_ctx) {
+// TODO: make the code a little bit less messy and a little bit more readable
+
+Controller::Controller(const std::vector<std::string> &args)
+	// TODO: find a better way to initialize _shell (1st idea: std::unique_ptr)
+    : _boost_ctx{}, _shell{_boost_ctx, {{"TERM", std::getenv("TERM")}}} {
     auto [data, rest] = util::parse_args(args);
     // if data has no configPath then it will be "" and getGlobalConfigPath has a fallback for such case
     // INFO Loading globalConfig, if none throwing error
@@ -66,9 +71,8 @@ Controller::Controller(const std::vector<std::string> &args) : _boost_ctx{}, _sh
 
 int Controller::start() {
     std::unique_ptr<command::Command> selected = this->prompt(std::move(this->_commands));
+    return selected->exec(*this);
 
-    std::unique_ptr<command::Command> command = std::move(selected);
-    return command->exec(*this);
     // might get handy later
     // this->_commands.clear();
     // for (auto &tmp : command->getCommands()) {
