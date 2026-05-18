@@ -6,6 +6,7 @@
 #include <array>
 #include <boost/asio.hpp>
 #include <boost/asio/buffer.hpp>
+#include <boost/asio/io_context.hpp>
 #include <cstdlib>
 #include <print>
 
@@ -88,3 +89,12 @@ TEST(SHELL, FZF) {
 
     std::println("Return code: {}", process->run());
 }
+
+// TEST(SHELL, WAITING_FZF_FILTER) {
+// 	boost::asio::io_context ctx;
+// 	common::shell::Shell shell{ctx, {}};
+//
+// 	auto process = shell.execute<csh::InStringHandler, >)
+//
+//
+// }

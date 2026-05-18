@@ -80,6 +80,7 @@ public:
     template <typename T> T prompt(std::vector<T> &&data) {
         std::vector<T> selected = {};
         if (!this->_inputQueue.empty()) {
+			// std::println("data from the input queue: <{}>", _inputQueue.front());
             selected = fzf::prompt(std::move(data), {fzf::mode::pattern(_inputQueue.front())});
             _inputQueue.pop();
         } else {
@@ -124,7 +125,7 @@ public:
     std::set<std::string> preprocessStringstreamSafe(std::istream &in, std::ostream &out);
 
     inline const config::GlobalConfiguration &getGlobalConfig() const noexcept { return *_globalConfig; }
-    inline const config::LocalConfiguration &getLocalConfig() const noexcept { return *_localConfig; }
+    inline config::LocalConfiguration &getLocalConfig() const noexcept { return *_localConfig; }
     inline const std::string &getTargetPath() const noexcept { return _targetPath; }
 
     common::shell::Shell &getShell() { return _shell; }

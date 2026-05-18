@@ -58,7 +58,7 @@ public:
 
 // INFO: dumb aliasing
 // TODO: find a better solution
-// 1st idea: jsut readerwriter without specification
+// 1st idea: just readerwriter without specification
 class OutStringHandler : public PipeReader {};
 class ErrStringHandler : public PipeReader {};
 
@@ -67,11 +67,16 @@ public:
     InStringHandler(boost::asio::io_context &ctx) : InPipeHandler{ctx} {}
     void write(const std::string &line) {
         boost::system::error_code ec;
-        size_t n = this->_pipe.write_some(boost::asio::buffer(line), ec);
+        auto buf = boost::asio::buffer(line);
+        size_t n = this->_pipe.write_some(buf, ec);
         if (n != line.size()) {
-            throw std::runtime_error("Failed to write " + std::to_string(line.size()) + "/" + std::to_string(n));
+            throw std::runtime_error("Failed to write " + std::to_string(line.size()) + "/" + std::to_string(n) +
+                                     "\nError: " + ec.what());
         }
     }
+
+    // This method has to be called after all input is written, as the next process will be waiting for eof to execute
+    void done() { this->_pipe.close(); }
 };
 
 } // namespace common::shell::handlers

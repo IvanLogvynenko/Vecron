@@ -68,20 +68,25 @@ Container prompt_core(Container &&options, const std::initializer_list<std::shar
     }
 #endif
 
-    // std::println("Command: {}", command);
+    // std::println("FZF command: {}", command);
 
     boost::asio::io_context ctx = {};
     auto process = common::shell::Shell::execute<csh::InStringHandler, csh::StderrHandler, csh::OutStringHandler>(
-        command, ctx);
+        command, ctx, {}, "/bin/zsh");
+
+	// std::println("input: {}", input);
     process->getIn().write(input);
+	process->getIn().done();
 
     auto exitCode = process->run();
     if (exitCode != 0) { throw std::runtime_error("fzf subprocess failed with code: " + std::to_string(exitCode)); }
+	// std::println("exit_code: {}", exitCode);
     std::vector<Item> result = {};
 
     auto &processOut = process->getOut();
     while (!processOut.eof()) {
         std::string selection = processOut.getLine();
+		// std::println("<{}>", selection);
         // std::println("Selection: <{}>", selection);
         if (!selection.empty()) { //skip empty lines
             for (size_t i = 0; i < options.size(); i++) {
@@ -92,6 +97,7 @@ Container prompt_core(Container &&options, const std::initializer_list<std::shar
             }
         }
     }
+	// std::println("result size: {}", result.size());
     return result;
 }
 

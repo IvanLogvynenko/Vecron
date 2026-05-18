@@ -1,6 +1,7 @@
 #pragma once
 
 #include <boost/asio.hpp>
+#include <print>
 
 namespace common::shell::handlers {
 

@@ -1,17 +1,27 @@
 - vecron update to get updates from the template folder
 - source file variants
+-- option to ignore potential variant set
 - prompt global configuration
+-- version autochange mechanism (support last X versions)
 - vecron ignore
 - vecron repair
 - build targets
 - build.sh
 - nested commands (at least such option)
-- rewrite everything in c++
 
 - Shell
--- make a shell wrapper to exec several commands in one shell
--- make unrestricted shell (resticted by default)
+-- make unrestricted shell (resticted by default) <list of operations that are not "exiting" vecrons sandbox>
 -- create a shell input filtering, because default restricted shell is too restrictive
 -- if unrestricted shell started then notify user if "allow_unrestricted_shell" is not set 
 -- try to run in restricted shell if "allow_unrestricted_shell" is set to false
 -- add "warn_unrestricted_shell" option to warn user if unrestricted shell is used in case "allow_unrestricted_shell" is true
+-- enforce that ALL subprocesses are runnable with "sh", sh is a standart shell
+
+- Logging
+-- Make debug logging with some logging lib
+
+- Configuring
+-- Create imports
+-- Module configs are getting preloaded (due to const access in modules)
+-- Module configs are in separate "space"
+

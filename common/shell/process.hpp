@@ -11,6 +11,8 @@
 #include <map>
 #include <memory>
 
+#include <print>
+
 namespace common::shell {
 
 class ProcessException : public std::exception {
@@ -26,9 +28,15 @@ public:
 template <handlers::Handler InputHandler, handlers::Handler ErrorHandler, handlers::Handler OutputHandler>
 class Process {
 private:
+    boost::asio::io_context &_ctx;
+    const std::string &_shellPath;
+    std::string _command;
+    const std::map<std::string, std::string> &_environment;
+
     std::unique_ptr<InputHandler> _in;
     std::unique_ptr<ErrorHandler> _err;
     std::unique_ptr<OutputHandler> _out;
+
     std::unique_ptr<boost::process::process> _process;
 
     friend class Shell;
@@ -46,17 +54,18 @@ private:
 public:
     Process(boost::asio::io_context &ctx,
             const std::string &shellPath,
-            const std::string &command,
-            const std::map<std::string, std::string> &environment) {
+            std::string command,
+            const std::map<std::string, std::string> &environment)
+        : _ctx(ctx), _shellPath(shellPath), _command(std::move(command)), _environment(environment) {
         _in = this->createHandler<InputHandler>(ctx);
         _err = this->createHandler<ErrorHandler>(ctx);
         _out = this->createHandler<OutputHandler>(ctx);
         _process = std::make_unique<boost::process::process>(
-            ctx,
-            shellPath,
-            std::vector<std::string>{"-c", command},
+            _ctx,
+            _shellPath,
+            std::vector<std::string>{"-c", _command},
             boost::process::process_stdio{.in = _in->get(), .out = _out->get(), .err = _err->get()},
-            boost::process::process_environment(environment));
+            boost::process::process_environment(_environment));
     }
 
     ~Process() = default;
@@ -71,7 +80,9 @@ public:
 	 * runs the program with given args and returns exit_code
 	 */
     int run() {
+        // std::println("process started");
         while (_process->running());
+        // std::println("process finished");
         return _process->exit_code();
     }
 

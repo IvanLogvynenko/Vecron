@@ -20,12 +20,26 @@
 #include <print>
 #include <string>
 
+void configNotFound(std::string configPath) {
+    std::string configFolder = util::home() + ".config/vecron", shareFolder = util::home() + ".local/share/vecron";
+
+    if (configPath != "") {
+        std::println("Config was not found at {}\nPlease provide valid path, or use config at \n{}\nor\n{}",
+                     configPath,
+                     configFolder,
+                     shareFolder);
+    } else {
+        std::println("No config found at expected paths: \n{}\n{}\nPlease create one!", configFolder, shareFolder);
+    }
+    exit(1);
+}
+
 namespace controller {
 
 // TODO: make the code a little bit less messy and a little bit more readable
 
 Controller::Controller(const std::vector<std::string> &args)
-	// TODO: find a better way to initialize _shell (1st idea: std::unique_ptr)
+    // TODO: find a better way to initialize _shell (1st idea: std::unique_ptr)
     : _boost_ctx{}, _shell{_boost_ctx, {{"TERM", std::getenv("TERM")}}} {
     auto [data, rest] = util::parse_args(args);
     // if data has no configPath then it will be "" and getGlobalConfigPath has a fallback for such case
@@ -33,19 +47,7 @@ Controller::Controller(const std::vector<std::string> &args)
     auto globalConfigPath = config::getGlobalConfigPath(data["configPath"]);
     try {
         this->_globalConfig = std::make_unique<config::GlobalConfiguration>(globalConfigPath);
-    } catch (config::GlobalConfigNotFound) {
-        std::string configFolder = util::home() + ".config/vecron", shareFolder = util::home() + ".local/share/vecron";
-
-        if (data["configPath"] != "") {
-            std::println("Config was not found at {}\nPlease provide valid path, or use config at \n{}\nor\n{}",
-                         data["configPath"],
-                         configFolder,
-                         shareFolder);
-        } else {
-            std::println("No config found at expected paths: \n{}\n{}\nPlease create one!", configFolder, shareFolder);
-        }
-        exit(1);
-    }
+    } catch (config::GlobalConfigNotFound) { configNotFound(data["configPath"]); }
 
     // INFO Global config loaded, lodaing variables
     std::string targetPath = data["targetPath"];
@@ -65,6 +67,7 @@ Controller::Controller(const std::vector<std::string> &args)
             this->_localConfig = std::make_unique<config::LocalConfiguration>(targetPath + ".vecron/");
         } catch (config::InvalidConfig e) { std::println("Caught error while reading local config:\n", e.what()); }
     }
+
 
     this->_inputQueue.push_range(rest);
 }
@@ -106,6 +109,7 @@ void Controller::lockDataBase() {
     }
 }
 void Controller::unlockDataBase() { this->_db_lock.unlock(); }
+
 // TODO: check if set is copied for each std::pair construction
 std::pair<std::string, std::set<std::string>> Controller::preprocessString(const std::string &input) {
     std::string result;
@@ -137,7 +141,7 @@ std::pair<std::string, std::set<std::string>> Controller::preprocessStringSafe(c
     std::lock_guard<std::mutex> lock{this->_db_lock};
     return preprocessString(input);
 }
-// TODO: Make line reading unlimited
+// TODO: Make line reading unlimited (the reserve function)
 std::set<std::string> Controller::preprocessStringstream(std::istream &in, std::ostream &out) {
     std::set<std::string> noValueVars = {};
     std::string line = "";

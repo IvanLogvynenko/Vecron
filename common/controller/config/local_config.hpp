@@ -1,7 +1,6 @@
 #pragma once
 
 #include <nlohmann/json.hpp>
-#include <nlohmann/json_fwd.hpp>
 #include <string>
 
 namespace config {
@@ -12,13 +11,14 @@ private:
 
     std::optional<std::string> _build, _run, _init, _initBuild, _initRun;
 
+    nlohmann::json _data;
+
 public:
     explicit LocalConfiguration(std::string);
     ~LocalConfiguration() = default;
 
     inline const std::string &getConfigPath() const noexcept { return _configPath; }
-
-    inline const std::optional<std::string> &getBuildCMD() const noexcept { return this->_build; }
+    const std::optional<std::string> &getBuildCMD() noexcept;
 };
 
 } // namespace config

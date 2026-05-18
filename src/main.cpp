@@ -5,6 +5,7 @@
 #include "command/preprocess.hpp"
 #include "controller/controller.hpp"
 
+#include <cstdlib>
 #include <memory>
 #include <vector>
 
@@ -16,7 +17,7 @@ int main(int argc, char **argv) {
     for (int i = 1; i < argc + 1; i++) { args_str.emplace_back(*(argv + i)); }
 
     controller::Controller controller{args_str};
-    controller.getShell().clear();
+    // controller.getShell().clear();
     cli::printLogo();
 
     controller.addCommand(std::make_unique<command::Debug>());
