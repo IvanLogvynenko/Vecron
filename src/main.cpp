@@ -3,6 +3,7 @@
 #include "command/debug.hpp"
 #include "command/new_command.hpp"
 #include "command/preprocess.hpp"
+#include "command/open.hpp"
 #include "controller/controller.hpp"
 
 #include <cstdlib>
@@ -20,10 +21,11 @@ int main(int argc, char **argv) {
     // controller.getShell().clear();
     cli::printLogo();
 
-    controller.addCommand(std::make_unique<command::Debug>());
-    controller.addCommand(std::make_unique<command::NewCommand>());
-    controller.addCommand(std::make_unique<command::Build>());
-    controller.addCommand(std::make_unique<command::Preprocess>());
+    controller.addCommand("debug", std::make_unique<command::Debug>());
+    controller.addCommand("new", std::make_unique<command::NewCommand>());
+    controller.addCommand("build", std::make_unique<command::Build>());
+    controller.addCommand("preprocess", std::make_unique<command::Preprocess>());
+	controller.addCommand("open", std::make_unique<command::Open>());
 
     // int exit_code =
     return controller.start();

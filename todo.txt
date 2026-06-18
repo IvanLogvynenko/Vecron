@@ -1,13 +1,9 @@
 - vecron update to get updates from the template folder
-- source file variants
--- option to ignore potential variant set
 - prompt global configuration
 -- version autochange mechanism (support last X versions)
 - vecron ignore
-- vecron repair
 - build targets
 - build.sh
-- nested commands (at least such option)
 
 - Shell
 -- make unrestricted shell (resticted by default) <list of operations that are not "exiting" vecrons sandbox>
@@ -24,4 +20,26 @@
 -- Create imports
 -- Module configs are getting preloaded (due to const access in modules)
 -- Module configs are in separate "space"
+
+- Command execution
+info: fzf is a cli gui, the data should be stored in the dynamic "CommandTree"
+This tree consists of nodes of two types: non-executable and executable
+on user level it should be enough to pass a
+1) tree path e.g "build debug"
+2) description
+3) body of exec function
+When current node is executable and there are no entries in the input queue the node should be executed
+Otherwise user should be prompted for a new entry
+
+- repair command (copy-paste the content of the template files)
+-- list all the files that are matched with the template and let user select which to fix
+-- fast execution: user can provide file names (100% match to the file name, any file path prefix),
+fzf multiselect to be discarded
+
+- Template
+-- config file
+--- source file invariants: detection on/off default:off
+-- update command (check if files were changed and update them if so)
+// God I wish this file get empty one day
+
 

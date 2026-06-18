@@ -103,7 +103,7 @@ Container prompt_core(Container &&options, const std::initializer_list<std::shar
 
 template <typename T>
     requires FzfItem<T>
-auto prompt(std::vector<T> &&options,
+std::vector<T> prompt(std::vector<T> &&options,
             const std::initializer_list<std::shared_ptr<mode::FzfMode>> &modes = {
                 mode::bind(),
                 mode::Style::FULL,

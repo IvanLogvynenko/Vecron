@@ -19,6 +19,8 @@ public:
 
     inline const std::string &getConfigPath() const noexcept { return _configPath; }
     const std::optional<std::string> &getBuildCMD() noexcept;
+
+    // const std::optional<std::map<std::string, command::Script>> getTasks();
 };
 
 } // namespace config

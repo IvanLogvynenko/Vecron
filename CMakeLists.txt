@@ -10,12 +10,15 @@ if(TEST_COVERAGE)
 	add_link_options(-fprofile-instr-generate -fcoverage-mapping)
 endif()
 
+
 if(NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE Debug)
+	set(CMAKE_BUILD_TYPE Debug)
 	add_compile_options(-fsanitize=address,undefined -fno-omit-frame-pointer -g -O0)
 	add_link_options(-fsanitize=address,undefined)
 endif()
-
+if(CMAKE_BUILD_TYPE STREQUAL "Release")
+	add_compile_options(vecron PRIVATE -O3 -DNDEBUG)
+endif()
 add_subdirectory(common)
 
 set(CMAKE_CXX_STANDARD ${DEFAULT_CXX_STANDARD})
@@ -37,10 +40,6 @@ target_compile_definitions(vecron PRIVATE ENABLE_DESCRIPTION_DETECTION)
 target_link_libraries(vecron PRIVATE vecron_common nlohmann_json::nlohmann_json)
 # target_include_directories(vecron PRIVATE luajit/src)
 # target_link_libraries(vecron PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/luajit/src/libluajit.a dl)
-
-if(CMAKE_BUILD_TYPE STREQUAL "Release")
-    target_compile_options(vecron PRIVATE -O3 -DNDEBUG)
-endif()
 
 install(TARGETS vecron DESTINATION bin)
 

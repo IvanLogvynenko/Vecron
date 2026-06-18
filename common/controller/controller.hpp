@@ -1,12 +1,16 @@
 #pragma once
 
 #include "command/command.hpp"
-#include "config/global_config.hpp"
+#include "command/tree/command_tree.hpp"
+
+#include "controller/config/global_config.hpp"
 #include "controller/config/local_config.hpp"
+
 #include "fzf/fzf_modes.hpp"
 #include "fzf/fzf_prompt.hpp"
-#include "module/module.hpp"
+// #include "module/module.hpp"
 #include "shell/shell.hpp"
+
 #include <boost/asio/io_context.hpp>
 #include <functional>
 #include <map>
@@ -36,13 +40,15 @@ namespace controller {
  * TODO  Add local config
  * TODO: Add module loading + storing
  * TODO  Add LuaJIT
+ * TODO  Move non template code from header to src file
  *
  */
 class Controller {
 private:
     std::regex pattern{R"(\{\{(\w+)\}\})"};
 
-    std::vector<std::unique_ptr<command::Command>> _commands = {};
+    // std::vector<std::unique_ptr<command::Command>> _commands = {};
+    command::CommandTree _commandTree;
 
     std::queue<std::string> _inputQueue = {};
 
@@ -53,7 +59,7 @@ private:
     std::unique_ptr<config::LocalConfiguration> _localConfig;
     std::string _targetPath = "";
 
-    std::optional<module::Module> _buildProvider;
+    // std::optional<module::Module> _buildProvider;
 
     //boost operationals
     boost::asio::io_context _boost_ctx;
@@ -80,7 +86,40 @@ public:
     template <typename T> T prompt(std::vector<T> &&data) {
         std::vector<T> selected = {};
         if (!this->_inputQueue.empty()) {
-			// std::println("data from the input queue: <{}>", _inputQueue.front());
+            // std::println("data from the input queue: <{}>", _inputQueue.front());
+            selected = fzf::prompt(std::move(data), {fzf::mode::pattern(_inputQueue.front())});
+            _inputQueue.pop();
+        } else {
+            selected = fzf::prompt(std::move(data));
+        }
+
+        if (selected.size() == 1) {
+            return std::move(selected[0]);
+        } else {
+            throw std::runtime_error("Multiple targets selected");
+        }
+    }
+	command::CommandNode& promptCommand() {
+        std::vector<command::CommandNode> selected = {};
+        if (!this->_inputQueue.empty()) {
+            // std::println("data from the input queue: <{}>", _inputQueue.front());
+            selected = fzf::prompt(this->_commandTree.obtainCommands(), {fzf::mode::pattern(_inputQueue.front())});
+            _inputQueue.pop();
+        } else {
+            selected = fzf::prompt(this->_commandTree.obtainCommands());
+        }
+
+        if (selected.size() == 1) {
+			this->_commandTree = std::move(selected[0]);
+            return _commandTree.getRoot();
+        } else {
+            throw std::runtime_error("Multiple targets selected");
+        }
+    }
+	std::string promptString(std::vector<std::string> &&data) {
+        std::vector<std::string> selected = {};
+        if (!this->_inputQueue.empty()) {
+            // std::println("data from the input queue: <{}>", _inputQueue.front());
             selected = fzf::prompt(std::move(data), {fzf::mode::pattern(_inputQueue.front())});
             _inputQueue.pop();
         } else {
@@ -99,7 +138,9 @@ public:
         const std::function<bool(const std::string &)> & = [](const std::string &input) { return input != ""; },
         const std::string & = ">>> ");
 
-    inline void addCommand(std::unique_ptr<command::Command> command) { this->_commands.push_back(std::move(command)); }
+    inline void addCommand(const std::string& path, std::unique_ptr<command::Command> command) {
+		this->_commandTree.addCommand(path, std::move(command));
+    }
 
     inline std::optional<std::string> operator[](const std::string &key) const { return this->getVariable(key); }
     inline std::optional<std::string> getVariable(const std::string &key) const {
@@ -126,9 +167,10 @@ public:
 
     inline const config::GlobalConfiguration &getGlobalConfig() const noexcept { return *_globalConfig; }
     inline config::LocalConfiguration &getLocalConfig() const noexcept { return *_localConfig; }
+
     inline const std::string &getTargetPath() const noexcept { return _targetPath; }
 
-    common::shell::Shell &getShell() { return _shell; }
+    common::shell::Shell &getShell() noexcept { return _shell; }
 };
 
 } // namespace controller

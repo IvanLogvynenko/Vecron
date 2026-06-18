@@ -13,10 +13,10 @@ class Command {
 public:
     Command() = default;
 
-    Command(const Command &) = default;
-    Command(Command &&) = delete;
-    Command &operator=(const Command &) = default;
-    Command &operator=(Command &&) = delete;
+    Command(const Command &) = delete;
+    Command(Command &&) = default;
+    Command &operator=(const Command &) = delete;
+    Command &operator=(Command &&) = default;
 
     virtual ~Command() = default;
 

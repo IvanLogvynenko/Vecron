@@ -1,10 +1,8 @@
 #include "controller.hpp"
 #include "command/command.hpp"
 
-#include "config/global_config.hpp"
-
+#include "command/tree/command_tree.hpp"
 #include "controller/config/invalid_config_exception.hpp"
-#include "controller/config/local_config.hpp"
 
 #include "util/args.hpp"
 #include "util/home.hpp"
@@ -18,6 +16,7 @@
 #include <mutex>
 #include <ostream>
 #include <print>
+#include <ranges>
 #include <string>
 
 void configNotFound(std::string configPath) {
@@ -40,9 +39,11 @@ namespace controller {
 
 Controller::Controller(const std::vector<std::string> &args)
     // TODO: find a better way to initialize _shell (1st idea: std::unique_ptr)
-    : _boost_ctx{}, _shell{_boost_ctx, {{"TERM", std::getenv("TERM")}}} {
+    : _boost_ctx{},
+      _shell{_boost_ctx, {{"TERM", std::getenv("TERM")}}} {
     auto [data, rest] = util::parse_args(args);
     // if data has no configPath then it will be "" and getGlobalConfigPath has a fallback for such case
+
     // INFO Loading globalConfig, if none throwing error
     auto globalConfigPath = config::getGlobalConfigPath(data["configPath"]);
     try {
@@ -54,7 +55,6 @@ Controller::Controller(const std::vector<std::string> &args)
     if (targetPath == "") { targetPath = std::filesystem::current_path(); }
     if (!targetPath.ends_with("/")) { targetPath += "/"; }
     this->_targetPath = targetPath;
-
     this->_database["targetPath"] = targetPath;
     //Loading it just to be able to use it
     this->_database["projectPath"] = targetPath;
@@ -68,19 +68,13 @@ Controller::Controller(const std::vector<std::string> &args)
         } catch (config::InvalidConfig e) { std::println("Caught error while reading local config:\n", e.what()); }
     }
 
-
     this->_inputQueue.push_range(rest);
 }
 
 int Controller::start() {
-    std::unique_ptr<command::Command> selected = this->prompt(std::move(this->_commands));
+    command::CommandNode * selected = &this->promptCommand();
+    while (!selected->isExecutable() || !this->_inputQueue.empty()) { selected = &this->promptCommand(); }
     return selected->exec(*this);
-
-    // might get handy later
-    // this->_commands.clear();
-    // for (auto &tmp : command->getCommands()) {
-    //     this->_commands.push_back(std::move(tmp));
-    // }
 }
 
 std::string Controller::textPrompt(const std::string &msg,
@@ -111,6 +105,7 @@ void Controller::lockDataBase() {
 void Controller::unlockDataBase() { this->_db_lock.unlock(); }
 
 // TODO: check if set is copied for each std::pair construction
+// @returns processed string and set of veriables values of which were not found
 std::pair<std::string, std::set<std::string>> Controller::preprocessString(const std::string &input) {
     std::string result;
 

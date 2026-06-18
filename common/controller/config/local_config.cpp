@@ -51,4 +51,5 @@ const std::optional<std::string> &LocalConfiguration::getBuildCMD() noexcept {
     return this->_build;
 }
 
+// const std::optional<std::map<std::string, command::Script>> LocalConfiguration::getTasks() { return {}; }
 } // namespace config

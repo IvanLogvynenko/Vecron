@@ -6,6 +6,7 @@
 int command::Build::exec(controller::Controller &controller) noexcept {
     auto &localConfig = controller.getLocalConfig();
     const auto &buildCMD = localConfig.getBuildCMD();
+
     if (buildCMD.has_value()) {
         auto process = controller.getShell().execute(buildCMD.value());
         return process->run();
